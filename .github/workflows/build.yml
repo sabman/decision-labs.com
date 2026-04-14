@@ -6,13 +6,11 @@ on:
       - update-dependencies-new-ui
       - main
       - master
-      - gh-pages
   pull_request:
     branches:
       - update-dependencies-new-ui
       - main
       - master
-      - gh-pages
   workflow_dispatch:
 
 permissions:
@@ -63,7 +61,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/gh-pages'
+    if: github.ref == 'refs/heads/master'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
