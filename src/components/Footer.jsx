@@ -4,6 +4,8 @@ import '../styles/global.css'
 const Footer = () => {
   const [isVisible, setIsVisible] = React.useState(false)
   const footerRef = React.useRef(null)
+  const currentYear = new Date().getFullYear()
+  const copyrightYears = currentYear > 2012 ? `2012-${currentYear}` : '2012'
 
   React.useEffect(() => {
     let ticking = false
@@ -57,7 +59,7 @@ const Footer = () => {
             <h3 className="footer-column-title">Legal</h3>
             <a href="/impressum" className="footer-link">Impressum</a>
             <a href="/terms" className="footer-link">Terms & Conditions</a>
-            <p className="footer-copyright">© 2025 SpacialDB UG. All rights reserved.</p>
+            <p className="footer-copyright">© {copyrightYears} SpacialDB UG. All rights reserved.</p>
           </div>
           <div className="footer-column">
             <h3 className="footer-column-title">Contact</h3>
