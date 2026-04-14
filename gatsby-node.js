@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const fetchTwitterPosts = require('./scripts/fetch-twitter-posts')
+const fetchWordpressPosts = require('./scripts/fetch-wordpress-posts')
 
 // Create pages for internal blog posts
 exports.createPages = async ({ graphql, actions }) => {
@@ -110,15 +111,31 @@ async function generateRSSFeed(graphql) {
 
     const posts = result.data.allMarkdownRemark.nodes
     
-    // Filter out invalid posts
-    const validPosts = posts.filter(post => 
-      post && post.frontmatter && post.frontmatter.title && post.frontmatter.date
-    )
+    // Filter out invalid/placeholder markdown posts
+    const validPosts = posts.filter(post => {
+      if (!post || !post.frontmatter || !post.frontmatter.title || !post.frontmatter.date) {
+        return false
+      }
+      const slug = post.frontmatter.slug || post.fields?.slug || post.id
+      return slug !== 'placeholder' && post.frontmatter.title !== 'Placeholder'
+    })
+
+    // Include external feed posts from posts.json (e.g. WordPress, YouTube, partner blogs)
+    const postsJsonPath = path.join(__dirname, 'src', 'data', 'posts.json')
+    let externalPosts = []
+    try {
+      const postsJson = JSON.parse(fs.readFileSync(postsJsonPath, 'utf8'))
+      externalPosts = postsJson.filter(post =>
+        post && post.title && post.date && post.link && post.link.trim() !== ''
+      )
+    } catch (error) {
+      console.warn(`⚠️  Could not read posts.json for RSS merge: ${error.message}`)
+    }
     
     const siteUrl = 'https://decision-labs.com'
     const buildDate = new Date().toUTCString()
 
-    const rssItems = validPosts.map((post) => {
+    const markdownRssItems = validPosts.map((post) => {
       try {
         const pubDate = new Date(post.frontmatter.date).toUTCString()
         if (isNaN(new Date(post.frontmatter.date).getTime())) {
@@ -154,7 +171,38 @@ async function generateRSSFeed(graphql) {
         console.warn(`⚠️  Error processing post: ${error.message}`)
         return null
       }
-    }).filter(Boolean).join('\n')
+    }).filter(Boolean)
+
+    const externalRssItems = externalPosts.map((post) => {
+      try {
+        const pubDate = new Date(post.date).toUTCString()
+        if (isNaN(new Date(post.date).getTime())) {
+          return null
+        }
+
+        const title = post.title || 'Untitled'
+        const description = post.description || ''
+        const link = post.link
+        const author = post.author || 'Decision Labs'
+        const category = post.metadata?.category
+          ? `<category><![CDATA[${post.metadata.category}]]></category>`
+          : ''
+
+        return `    <item>
+      <title><![CDATA[${title}]]></title>
+      <link>${link}</link>
+      <guid isPermaLink="false">${siteUrl}/external/${post.id}</guid>
+      <description><![CDATA[${description}]]></description>
+      <pubDate>${pubDate}</pubDate>
+      <author>${author}</author>
+      ${category}
+    </item>`
+      } catch (error) {
+        return null
+      }
+    }).filter(Boolean)
+
+    const rssItems = [...markdownRssItems, ...externalRssItems].join('\n')
 
     const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -177,7 +225,7 @@ ${rssItems}
 
     const publicPath = path.join(publicDir, 'rss.xml')
     fs.writeFileSync(publicPath, rss, 'utf8')
-    console.log(`✅ RSS feed generated successfully with ${validPosts.length} posts`)
+    console.log(`✅ RSS feed generated successfully with ${validPosts.length + externalPosts.length} posts`)
   } catch (error) {
     console.error('❌ Error generating RSS feed:', error.message)
   }
@@ -186,6 +234,7 @@ ${rssItems}
 // Fetch Twitter posts before build
 exports.onPreBuild = async () => {
   await fetchTwitterPosts()
+  await fetchWordpressPosts()
 }
 
 // Generate RSS feed after build

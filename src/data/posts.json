@@ -1,5 +1,20 @@
 [
   {
+    "id": "wp-blog-decision-labs-0-1773679236000",
+    "title": "The Real Cost of Random I/O in Spatial Queries",
+    "description": "Plan flips are normal in a cost-based optimizer, until they are not. The recent Clerk incident put attention back on a painful failure mode: a query crossing into a much worse plan after statistics/cost assumptions shift, causing a database",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://blog.decision-labs.com/2026/03/16/the-real-cost-of-random-i-o-in-spatial-queries/",
+    "date": "2026-03-16",
+    "author": "Decision Labs",
+    "featured": false,
+    "metadata": {
+      "category": "Blog",
+      "readTime": "External"
+    },
+    "linkType": "external"
+  },
+  {
     "id": "youtube--Pd_yV738mg",
     "title": "Working With Geospatial EmbeddingsWwith PostGIS And PGVector",
     "description": "In this talk, we share how we built geospatial embeddings directly into Geobase.app, our geospatial backend. By extending PostGIS with PGVector, we enabled semantic search and similarity queries over maps, rasters, and vector data sets. We’ll walk through the technical design choices, from embedding generation to storage and retrieval, and show how these capabilities power real-world use cases, such as neighborhood similarity, environmental monitoring, and AI-driven geospatial assistants. The session will highlight lessons learned in integrating modern AI/ML methods with a Postgres-native stack, making advanced retrieval workflows accessible to developers and analysts.",
