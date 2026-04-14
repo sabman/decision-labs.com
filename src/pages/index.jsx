@@ -1,222 +1,237 @@
-import React from 'react';
-import Link from 'gatsby-link';
+import * as React from 'react'
+import { Link } from 'gatsby'
+import { FileText, Mic, Handshake, BookOpen } from 'lucide-react'
+import '../styles/global.css'
+import postsData from '../data/posts.json'
+import Footer from '../components/Footer'
 
-import Fullscreen from '../components/fullscreen';
-import Meta from '../components/meta';
-import Wrapper from '../components/wrapper';
+const IndexPage = ({ location }) => {
+  const pathname = location?.pathname || ''
+  const [activeIndex, setActiveIndex] = React.useState(0)
+  const [textColor, setTextColor] = React.useState('black')
+  const headerRef = React.useRef(null)
+  
+  // Get featured posts, or if none, get recent posts
+  const featuredPosts = postsData.filter(post => post.featured === true)
+  const postsToShow = featuredPosts.length > 0 
+    ? featuredPosts.sort((a, b) => new Date(b.date) - new Date(a.date))
+    : postsData.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3)
+  
+  const currentPost = postsToShow[activeIndex]
 
-import projects from '../data/projects';
-import styles from './styles.module.css';
+  // Get icon component for category
+  const getCategoryIcon = (category) => {
+    const iconProps = { size: 16, style: { display: 'inline-block', verticalAlign: 'middle' } }
+    switch (category) {
+      case 'Blog':
+        return <FileText {...iconProps} />
+      case 'Talk':
+        return <Mic {...iconProps} />
+      case 'Partnership':
+        return <Handshake {...iconProps} />
+      default:
+        return <BookOpen {...iconProps} />
+    }
+  }
 
-// Featured projects - selecting the most impactful ones
-const featuredProjects = [
-  projects.find(p => p.slug === 'geobase'),
-  projects.find(p => p.slug === 'earthgpt'),
-  projects.find(p => p.slug === 'verisat')
-].filter(Boolean);
+  React.useEffect(() => {
+    if (postsToShow.length <= 1) return
+    
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % postsToShow.length)
+    }, 5000) // Change every 5 seconds
 
-const Index = ({ location }) => (
-  <div>
-    <Meta location={location} />
-    <Fullscreen className={styles.intro} firstItem>
-      <Wrapper>
-        <h1>Solving the World's Most Complex Challenges</h1>
+    return () => clearInterval(interval)
+  }, [postsToShow.length])
 
-        <p className={styles.heroSubtitle}>
-          <em>We build AI-driven products, train custom models, and create intelligent systems that turn complex data into actionable insights. From concept to deployment.</em>
-        </p>
+  // Detect background color behind header (throttled for performance)
+  React.useEffect(() => {
+    const header = headerRef.current
+    if (!header) return
 
-        <div className={styles.heroMetrics}>
-          <div className={styles.metric}>
-            <div className={styles.metricNumber}>12+</div>
-            <div className={styles.metricLabel}>AI Products Built</div>
+    let ticking = false
+    const checkBackground = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const headerRect = header.getBoundingClientRect()
+          const headerCenterY = headerRect.top + headerRect.height / 2
+          const headerCenterX = window.innerWidth / 2
+
+          const elementBelow = document.elementFromPoint(headerCenterX, headerCenterY)
+          
+          if (!elementBelow) {
+            setTextColor('black')
+            ticking = false
+            return
+          }
+
+          let currentElement = elementBelow
+          while (currentElement && currentElement !== document.body) {
+            if (currentElement.classList && currentElement.classList.contains('card-primary')) {
+              setTextColor('white')
+              ticking = false
+              return
+            }
+            if (currentElement.classList && (
+              currentElement.classList.contains('card-secondary') ||
+              currentElement.classList.contains('page-container')
+            )) {
+              setTextColor('black')
+              ticking = false
+              return
+            }
+            currentElement = currentElement.parentElement
+          }
+
+          const bgColor = window.getComputedStyle(elementBelow).backgroundColor
+          if (bgColor) {
+            const rgb = bgColor.match(/\d+/g)
+            if (rgb && rgb.length >= 3) {
+              const brightness = (parseInt(rgb[0]) + parseInt(rgb[1]) + parseInt(rgb[2])) / 3
+              setTextColor(brightness < 128 ? 'white' : 'black')
+            } else {
+              setTextColor('black')
+            }
+          } else {
+            setTextColor('black')
+          }
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    checkBackground()
+    window.addEventListener('scroll', checkBackground, { passive: true })
+    window.addEventListener('resize', checkBackground, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', checkBackground)
+      window.removeEventListener('resize', checkBackground)
+    }
+  }, [])
+
+  return (
+    <div className="page-container landing-page">
+      <header className="header" ref={headerRef}>
+        <Link to="/" className="logo" style={{ color: textColor }}>Decision Labs</Link>
+        <nav className="nav">
+          <Link to="/about" className={pathname === '/about' || pathname === '/about/' ? 'active' : ''}>About</Link>
+          <Link to="/blog" className={pathname === '/blog' || pathname === '/blog/' ? 'active' : ''}>Blog</Link>
+          <Link to="/contact" className={pathname === '/contact' || pathname === '/contact/' ? 'active' : ''}>Contact</Link>
+          <Link to="/work" className={pathname === '/work' || pathname === '/work/' ? 'active' : ''}>Work</Link>
+        </nav>
+      </header>
+
+      <main className="main-content">
+        <div className="content-cards">
+          <div className="card card-primary">
+            <div className="card-header">
+            </div>
+            <div className="card-body">
+              <p className="mission-text">
+                We build AI-driven products, train custom models, and create intelligent systems that turn complex data into actionable insights. From concept to deployment.
+              </p>
+            </div>
           </div>
-          <div className={styles.metric}>
-            <div className={styles.metricNumber}>50+</div>
-            <div className={styles.metricLabel}>Models Trained</div>
-          </div>
-          <div className={styles.metric}>
-            <div className={styles.metricNumber}>3</div>
-            <div className={styles.metricLabel}>Research Partnerships</div>
-          </div>
-        </div>
 
-        <div className={styles.heroActions}>
-          <a
-            href="https://cal.com/decision-labs"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.ctaButton}
-          >
-            Book a Discovery Call
-          </a>
-          <Link to="/work" className={styles.ctaButtonSecondary}>
-            View Our Work
-          </Link>
-        </div>
-
-        <div className={styles.scrollIndicator}>
-          <span>scroll down</span>
-          <div className={styles.scrollArrow} />
-        </div>
-      </Wrapper>
-    </Fullscreen>
-
-    <section className={styles.featuredSection}>
-      <Wrapper>
-        <div className={styles.featuredHeader}>
-          <div className={styles.sectionNumber}>01</div>
-          <h2>Featured Projects</h2>
-          <p><em>Custom AI solutions, model training, and intelligent systems that solve real-world problems</em></p>
-        </div>
-
-        <div className={styles.projectGrid}>
-          {featuredProjects.map((project) => {
-            // Map project types to expertise areas
-            const getExpertiseAreas = (slug) => {
-              switch (slug) {
-                case 'geobase': return ['Backend Engineering', 'Cloud Infrastructure'];
-                case 'earthgpt': return ['LLM Integration', 'AI Analytics'];
-                case 'verisat': return ['Computer Vision', 'Model Training'];
-                case 'spendmapp': return ['Data Engineering', 'Analytics Platform'];
-                case 'geoai-js': return ['JavaScript AI', 'Model Deployment'];
-                case 'kp-asis': return ['Data Systems', 'Mobile Apps'];
-                case 'esa-philab': return ['Research', 'Deep Learning'];
-                case 'mangrove': return ['AI Models', 'Monitoring Systems'];
-                default: return ['AI Solutions'];
-              }
-            };
-
-            return (
-              <Link
-                key={project.slug}
-                to={`/work/${project.slug}`}
-                className={styles.projectCard}
-              >
-                <div className={styles.projectCardImage}>
-                  {project.cover && (
-                    <img
-                      src={project.cover}
-                      alt={project.title}
-                      className={styles.projectImage}
-                    />
-                  )}
-                  <div className={styles.projectOverlay}>
-                    <div className={styles.expertiseTags}>
-                      {getExpertiseAreas(project.slug).map(tag => (
-                        <span key={tag} className={styles.expertiseTag}>
-                          {tag}
-                        </span>
-                      ))}
+          <div className="card card-secondary">
+            {currentPost?.link ? (
+              currentPost.link.startsWith('/') ? (
+                <Link
+                  to={currentPost.link}
+                  className="card-clickable"
+                  style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', flex: 1 }}
+                >
+                  <div className="card-header">
+                    {currentPost?.metadata?.category ? (
+                      <span className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        {getCategoryIcon(currentPost.metadata.category)}
+                        <span>{currentPost.metadata.category}</span>
+                      </span>
+                    ) : (
+                      <span className="card-title">Featured</span>
+                    )}
+                  </div>
+                  <div className="card-body featured-post-body">
+                    <div className="featured-post-content">
+                      <h3 className="featured-post-title">{currentPost.title}</h3>
+                      <p className="featured-post-description">{currentPost.description}</p>
                     </div>
                   </div>
+                </Link>
+              ) : (
+                <a
+                  href={currentPost.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card-clickable"
+                  style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', flex: 1 }}
+                >
+                  <div className="card-header">
+                    {currentPost?.metadata?.category ? (
+                      <span className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        {getCategoryIcon(currentPost.metadata.category)}
+                        <span>{currentPost.metadata.category}</span>
+                      </span>
+                    ) : (
+                      <span className="card-title">Featured</span>
+                    )}
+                  </div>
+                  <div className="card-body featured-post-body">
+                    <div className="featured-post-content">
+                      <h3 className="featured-post-title">{currentPost.title}</h3>
+                      <p className="featured-post-description">{currentPost.description}</p>
+                    </div>
+                  </div>
+                </a>
+              )
+            ) : (
+              <>
+                <div className="card-header">
+                  {currentPost?.metadata?.category ? (
+                    <span className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      {getCategoryIcon(currentPost.metadata.category)}
+                      <span>{currentPost.metadata.category}</span>
+                    </span>
+                  ) : (
+                    <span className="card-title">Featured</span>
+                  )}
                 </div>
-                <div className={styles.projectCardContent}>
-                  <h3>{project.title}</h3>
-                  <p>{project.summary}</p>
-                  <span className={styles.projectLink}>
-                    Learn More &rarr;
-                  </span>
+                <div className="card-body featured-post-body">
+                  {currentPost ? (
+                    <div className="featured-post-content">
+                      <h3 className="featured-post-title">{currentPost.title}</h3>
+                      <p className="featured-post-description">{currentPost.description}</p>
+                    </div>
+                  ) : (
+                    <p className="project-text">No posts available</p>
+                  )}
                 </div>
-              </Link>
-            );
-          })}
-        </div>
-
-        <div className={styles.viewAllProjects}>
-          <Link to="/work" className={styles.viewAllButton}>
-            View All Projects
-          </Link>
-          <div className={styles.projectsCta}>
-            <p>Ready to transform your data challenges into opportunities?</p>
-            <a
-              href="https://cal.com/decision-labs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.bookCallButton}
-            >
-              Book a Discovery Call
-            </a>
+              </>
+            )}
+            <div className="card-footer">
+              {postsToShow.length > 1 && (
+                <div className="featured-post-tabs">
+                  {postsToShow.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`tab-indicator ${index === activeIndex ? 'active' : ''}`}
+                      onClick={() => setActiveIndex(index)}
+                      aria-label={`View post ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </Wrapper>
-    </section>
+    </main>
+    <Footer />
+    </div>
+  )
+}
 
-    <section className={styles.testimonialSection}>
-      <Wrapper>
-        <div className={styles.testimonial}>
-          <blockquote>
-            &ldquo;Decision Labs transformed our data infrastructure and helped us make
-            sense of complex urban planning challenges. Their expertise in geospatial
-            analytics delivered insights that directly informed policy decisions.&rdquo;
-          </blockquote>
-          <div className={styles.testimonialAuthor}>
-            <strong>Planning Authority</strong>
-            <span>Government Partner</span>
-          </div>
-        </div>
-      </Wrapper>
-    </section>
+export default IndexPage
 
-    <section className={styles.clientsSection}>
-      <Wrapper>
-        <div className={styles.clientsHeader}>
-          <div className={styles.sectionNumber}>02</div>
-          <h2>Trusted by</h2>
-        </div>
-
-        <div className={styles.clientsGrid}>
-          <div className={styles.clientLogo}>
-            <span>Government Agencies</span>
-          </div>
-          <div className={styles.clientLogo}>
-            <span>Planning Authorities</span>
-          </div>
-          <div className={styles.clientLogo}>
-            <span>Urban Analytics</span>
-          </div>
-          <div className={styles.clientLogo}>
-            <span>Research Institutions</span>
-          </div>
-          <div className={styles.clientLogo}>
-            <span>Tech Startups</span>
-          </div>
-          <div className={styles.clientLogo}>
-            <span>Financial Services</span>
-          </div>
-        </div>
-      </Wrapper>
-    </section>
-
-    <section className={styles.capabilitiesSection}>
-      <Wrapper>
-        <div className={styles.capabilitiesHeader}>
-          <div className={styles.sectionNumber}>03</div>
-          <h2>Our Expertise</h2>
-          <p><em>Where data science meets real-world impact</em></p>
-        </div>
-
-        <div className={styles.capabilitiesGrid}>
-          <div className={styles.capabilityCard}>
-            <h3>Advanced Analytics</h3>
-            <p>Transform raw data into actionable insights with statistical modeling and predictive analytics.</p>
-          </div>
-          <div className={styles.capabilityCard}>
-            <h3>Artificial Intelligence</h3>
-            <p>Deploy machine learning solutions that automate decisions and uncover hidden patterns.</p>
-          </div>
-          <div className={styles.capabilityCard}>
-            <h3>Geospatial Intelligence</h3>
-            <p>Leverage location-based data to understand spatial relationships and urban dynamics.</p>
-          </div>
-          <div className={styles.capabilityCard}>
-            <h3>Data Visualization</h3>
-            <p>Create compelling visual narratives that communicate complex data clearly to stakeholders.</p>
-          </div>
-        </div>
-      </Wrapper>
-    </section>
-  </div>
-);
-
-export default Index;
+export const Head = () => <title>Decision Labs</title>

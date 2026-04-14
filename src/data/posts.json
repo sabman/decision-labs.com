@@ -1,0 +1,156 @@
+[
+  {
+    "id": "youtube--Pd_yV738mg",
+    "title": "Working With Geospatial EmbeddingsWwith PostGIS And PGVector",
+    "description": "In this talk, we share how we built geospatial embeddings directly into Geobase.app, our geospatial backend. By extending PostGIS with PGVector, we enabled semantic search and similarity queries over maps, rasters, and vector data sets. We’ll walk through the technical design choices, from embedding generation to storage and retrieval, and show how these capabilities power real-world use cases, such as neighborhood similarity, environmental monitoring, and AI-driven geospatial assistants. The session will highlight lessons learned in integrating modern AI/ML methods with a Postgres-native stack, making advanced retrieval workflows accessible to developers and analysts.",
+    "image": "https://img.youtube.com/vi/-Pd_yV738mg/maxresdefault.jpg",
+    "link": "https://www.youtube.com/watch?v=-Pd_yV738mg",
+    "date": "2024-01-25",
+    "author": "Decision Labs",
+    "featured": false,
+    "metadata": {
+      "category": "Talk",
+      "readTime": "Watch"
+    }
+  },
+  {
+    "id": "geobase-postgis-day-2025",
+    "title": "PostGIS Day 2025 Talk Now Live - Working with Geospatial Embeddings",
+    "description": "Watch our talk from PostGIS Day 2025 on working with geospatial embeddings and how they're transforming spatial data analysis.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://geobase.app/blog/postgis-day-2025-geospatial-embeddings",
+    "date": "2025-12-08",
+    "author": "GeoBase",
+    "featured": false,
+    "metadata": {
+      "category": "Talk",
+      "readTime": "5 min read"
+    }
+  },
+  {
+    "id": "geobase-geoembeddings-beta",
+    "title": "GeoEmbeddings Private Beta - Join Early Access 🚀",
+    "description": "We're excited to announce the private beta for GeoEmbeddings. Join early access to explore geospatial embeddings and transform how you work with spatial data.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://geobase.app/blog/geoembeddings-private-beta",
+    "date": "2025-12-07",
+    "author": "GeoBase",
+    "featured": false,
+    "metadata": {
+      "category": "Blog",
+      "readTime": "3 min read"
+    }
+  },
+  {
+    "id": "geobase-geoai-js-release",
+    "title": "Announcing the Release of geoai.js 🚀",
+    "description": "We're thrilled to announce the release of geoai.js, a powerful JavaScript library for geospatial AI applications. Build intelligent spatial applications with ease.",
+    "image": "images/blog/geobase-announcing-geoai-js.gif",
+    "link": "https://geobase.app/blog/announcing-geoai-js",
+    "date": "2025-01-25",
+    "author": "GeoBase",
+    "featured": false,
+    "metadata": {
+      "category": "Blog",
+      "readTime": "4 min read"
+    }
+  },
+  {
+    "id": "geobase-duckdb-1-1-3",
+    "title": "Geobase now supports DuckDB 1.1.3 🎉",
+    "description": "We're excited to announce that Geobase now supports DuckDB 1.1.3, bringing enhanced performance and new features to your geospatial workflows.",
+    "image": "images/blog/geobase-duckdb-1-1-3.png",
+    "link": "https://geobase.app/blog/duckdb-1-1-3",
+    "date": "2025-01-22",
+    "author": "GeoBase",
+    "featured": false,
+    "metadata": {
+      "category": "Blog",
+      "readTime": "3 min read"
+    }
+  },
+  {
+    "id": "geobase-launch-beta",
+    "title": "We launched! Join us for Beta!",
+    "description": "After months of development, we're excited to announce that Geobase is now in beta! Join us and help shape the future of geospatial infrastructure.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://geobase.app/blog/beta-launch",
+    "date": "2024-12-20",
+    "author": "GeoBase",
+    "featured": false,
+    "metadata": {
+      "category": "Blog",
+      "readTime": "5 min read"
+    }
+  },
+  {
+    "id": "geobase-globhe-partnership",
+    "title": "Announcing the Globhe Partnership",
+    "description": "We're excited to announce our partnership with Globhe, bringing together cutting-edge geospatial infrastructure with innovative drone data solutions.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://geobase.app/blog/announcing-the-globhe-partnership",
+    "date": "2024-10-14",
+    "author": "GeoBase",
+    "featured": false,
+    "metadata": {
+      "category": "Partnership",
+      "readTime": "4 min read"
+    }
+  },
+  {
+    "id": "geobase-motherduck-boundaries",
+    "title": "Pushing the boundaries of geo data with motherduck and geobase!",
+    "description": "Explore how we're pushing the boundaries of geospatial data processing by combining MotherDuck's analytics capabilities with Geobase's spatial infrastructure.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://geobase.app/blog/geospatial-analytics-with-geobase-and-motherduck",
+    "date": "2024-06-01",
+    "author": "GeoBase",
+    "featured": false,
+    "metadata": {
+      "category": "Blog",
+      "readTime": "6 min read"
+    }
+  },
+  {
+    "id": "geobase-blueprints",
+    "title": "Blueprints - Prebuilt Applications Templates",
+    "description": "Introducing Blueprints: prebuilt application templates that help you get started with Geobase quickly. Build production-ready geospatial applications in minutes.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://geobase.app/blog/blueprints",
+    "date": "2024-05-16",
+    "author": "GeoBase",
+    "featured": false,
+    "metadata": {
+      "category": "Blog",
+      "readTime": "5 min read"
+    }
+  },
+  {
+    "id": "geobase-democratizing-geospatial",
+    "title": "How Geobase is Democratizing Access to the Geospatial Industry",
+    "description": "Learn how Geobase is making geospatial technology more accessible, breaking down barriers and empowering developers to build powerful spatial applications.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://geobase.app/blog/how-geobase-is-democratizing-access-to-the-geospatial-industry",
+    "date": "2024-04-26",
+    "author": "GeoBase",
+    "featured": false,
+    "metadata": {
+      "category": "Blog",
+      "readTime": "7 min read"
+    }
+  },
+  {
+    "id": "geobase-goals-vision",
+    "title": "Our goals and vision for Geobase",
+    "description": "Discover our mission, goals, and vision for Geobase. Learn how we're building the future of geospatial infrastructure and making spatial data accessible to everyone.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://geobase.app/blog/roadmap-2024",
+    "date": "2024-04-21",
+    "author": "GeoBase",
+    "featured": false,
+    "metadata": {
+      "category": "Blog",
+      "readTime": "6 min read"
+    }
+  }
+]

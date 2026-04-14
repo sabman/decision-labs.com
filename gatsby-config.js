@@ -1,16 +1,25 @@
+/**
+ * @type {import('gatsby').GatsbyConfig}
+ */
 module.exports = {
   siteMetadata: {
-    title: "Decision Labs",
-    url: "https://decision-labs.com",
-    description:
-      "Decision Labs is a consultancy specializing in Decision Science."
+    title: `Decision Labs`,
+    siteUrl: `https://decision-labs.com`,
+    description: `Decision Labs is a consultancy specializing in Decision Science. We build AI-driven products, train custom models, and create intelligent systems.`,
   },
   plugins: [
-    // {
-    //   resolve: 'gatsby-plugin-google-analytics',
-    //   options: {
-    //     trackingId: 'UA-114025778-1',
-    //   },
-    // },
-  ]
-};
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/src/blog`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [],
+      },
+    },
+  ],
+}

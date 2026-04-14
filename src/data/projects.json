@@ -1,0 +1,54 @@
+[
+  {
+    "id": "1",
+    "title": "Geobase",
+    "description": "Geobase is a Supabase fork with PostGIS, vector/raster tile servers, and STAC integration. It provides developers with cloud-native geospatial infrastructure to build scalable applications.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://geobase.app",
+    "date": "2024-01-20",
+    "metadata": {
+      "category": "AI/ML",
+      "client": "Enterprise Client",
+      "technologies": ["Python", "TensorFlow", "PostGIS"]
+    }
+  },
+  {
+    "id": "2",
+    "title": "EarthGPT",
+    "description": "EarthGPT enables policy analysts, journalists, and researchers to query satellite data and climate models using natural language, backed by ViTs, LLMs, and RAG pipelines.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://www.earthgpt.app/",
+    "date": "2025-12-23",
+    "metadata": {
+      "category": "Machine Learning",
+      "client": "Fortune 500",
+      "technologies": ["PyTorch", "FastAPI", "AWS"]
+    }
+  },
+  {
+    "id": "3",
+    "title": "Verisat.ai",
+    "description": "Verisat.ai detects fake or manipulated satellite imagery by analyzing noise patterns, FFT fingerprints, and patch-level inconsistencies. Built to support journalists and analysts.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://verisat.ai/",
+    "date": "2023-11-10",
+    "metadata": {
+      "category": "Platform",
+      "client": "Startup",
+      "technologies": ["React", "Node.js", "Kubernetes"]
+    }
+  },
+  {
+    "id": "4",
+    "title": "GeoAI.js",
+    "description": "GeoAI.js brings HuggingFace transformers.js models to the browser and Node.js, enabling client-side geospatial AI. Includes live demos and docs for developers.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://docs.geobase.app/geoai-live",
+    "date": "2024-01-20",
+    "metadata": {
+      "category": "AI/ML",
+      "client": "Enterprise Client",
+      "technologies": ["JavaScript", "Node.js", "HuggingFace"]
+    }
+  }
+]
