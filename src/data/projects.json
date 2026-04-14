@@ -1,10 +1,10 @@
 [
   {
     "id": "1",
-    "title": "GeoBase",
+    "title": "Geobase",
     "description": "Geobase is a Supabase fork with PostGIS, vector/raster tile servers, and STAC integration. It provides developers with cloud-native geospatial infrastructure to build scalable applications.",
     "image": "https://via.placeholder.com/800x400",
-    "link": "View website",
+    "link": "https://geobase.app",
     "date": "2024-01-20",
     "metadata": {
       "category": "AI/ML",
