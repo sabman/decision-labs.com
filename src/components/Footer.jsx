@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
           <div className="footer-column">
             <h3 className="footer-column-title">Follow</h3>
-            <a href="https://linkedin.com/company/decision-labs" target="_blank" rel="noopener noreferrer" className="footer-link footer-link-external">LinkedIn</a>
+            <a href="https://www.linkedin.com/company/spacialdb-ug-decision-labs" target="_blank" rel="noopener noreferrer" className="footer-link footer-link-external">LinkedIn</a>
             <a href="https://github.com/decision-labs" target="_blank" rel="noopener noreferrer" className="footer-link footer-link-external">GitHub</a>
             <a href="/feed" className="footer-link footer-link-follow">Feed</a>
 
