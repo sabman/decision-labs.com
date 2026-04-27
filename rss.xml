@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Decision Labs Blog</title>
+    <link>https://decision-labs.com/blog</link>
+    <description>Insights on AI, machine learning, decision science, and the future of intelligent systems.</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 27 Apr 2026 11:06:37 GMT</lastBuildDate>
+    <atom:link href="https://decision-labs.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[The Real Cost of Random I/O in Spatial Queries]]></title>
+      <link>https://blog.decision-labs.com/2026/03/16/the-real-cost-of-random-i-o-in-spatial-queries/</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/wp-blog-decision-labs-0-1773679236000</guid>
+      <description><![CDATA[Plan flips are normal in a cost-based optimizer, until they are not. The recent Clerk incident put attention back on a painful failure mode: a query crossing into a much worse plan after statistics/cost assumptions shift, causing a database]]></description>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <author>Decision Labs</author>
+      <category><![CDATA[Blog]]></category>
+    </item>
+    <item>
+      <title><![CDATA[AI Deepfakes From Space — Recorded at Web Summit Qatar 2026]]></title>
+      <link>https://www.youtube.com/watch?v=-_mwkTTOAco</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/youtube--_mwkTTOAco</guid>
+      <description><![CDATA[Recorded live at Web Summit Qatar 2026, Shoaib Burq joins Ania Lichtarowicz — former BBC journalist and host of the 'Somewhere on Earth' Global Tech Podcast — to discuss the growing threat of AI-generated and manipulated satellite imagery. He explains how the ESA-backed Verisat AI project detects hidden fingerprints left by generative diffusion models — helping governments, journalists, and humanitarian organisations tell real Earth observation data from artificial deception.]]></description>
+      <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+      <author>Decision Labs</author>
+      <category><![CDATA[Podcast]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Working With Geospatial Embeddings With PostGIS And PGVector]]></title>
+      <link>https://www.youtube.com/watch?v=-Pd_yV738mg</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/youtube--Pd_yV738mg</guid>
+      <description><![CDATA[In this talk, we share how we built geospatial embeddings directly into Geobase.app, our geospatial backend. By extending PostGIS with PGVector, we enabled semantic search and similarity queries over maps, rasters, and vector data sets. We’ll walk through the technical design choices, from embedding generation to storage and retrieval, and show how these capabilities power real-world use cases, such as neighborhood similarity, environmental monitoring, and AI-driven geospatial assistants. The session will highlight lessons learned in integrating modern AI/ML methods with a Postgres-native stack, making advanced retrieval workflows accessible to developers and analysts.]]></description>
+      <pubDate>Thu, 25 Jan 2024 00:00:00 GMT</pubDate>
+      <author>Decision Labs</author>
+      <category><![CDATA[Talk]]></category>
+    </item>
+    <item>
+      <title><![CDATA[PostGIS Day 2025 Talk Now Live - Working with Geospatial Embeddings]]></title>
+      <link>https://geobase.app/blog/postgis-day-2025-geospatial-embeddings</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/geobase-postgis-day-2025</guid>
+      <description><![CDATA[Watch our talk from PostGIS Day 2025 on working with geospatial embeddings and how they're transforming spatial data analysis.]]></description>
+      <pubDate>Mon, 08 Dec 2025 00:00:00 GMT</pubDate>
+      <author>GeoBase</author>
+      <category><![CDATA[Talk]]></category>
+    </item>
+    <item>
+      <title><![CDATA[GeoEmbeddings Private Beta - Join Early Access 🚀]]></title>
+      <link>https://geobase.app/blog/geoembeddings-private-beta</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/geobase-geoembeddings-beta</guid>
+      <description><![CDATA[We're excited to announce the private beta for GeoEmbeddings. Join early access to explore geospatial embeddings and transform how you work with spatial data.]]></description>
+      <pubDate>Sun, 07 Dec 2025 00:00:00 GMT</pubDate>
+      <author>GeoBase</author>
+      <category><![CDATA[Blog]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Announcing the Release of geoai.js 🚀]]></title>
+      <link>https://geobase.app/blog/announcing-geoai-js</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/geobase-geoai-js-release</guid>
+      <description><![CDATA[We're thrilled to announce the release of geoai.js, a powerful JavaScript library for geospatial AI applications. Build intelligent spatial applications with ease.]]></description>
+      <pubDate>Sat, 25 Jan 2025 00:00:00 GMT</pubDate>
+      <author>GeoBase</author>
+      <category><![CDATA[Blog]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Geobase now supports DuckDB 1.1.3 🎉]]></title>
+      <link>https://geobase.app/blog/duckdb-1-1-3</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/geobase-duckdb-1-1-3</guid>
+      <description><![CDATA[We're excited to announce that Geobase now supports DuckDB 1.1.3, bringing enhanced performance and new features to your geospatial workflows.]]></description>
+      <pubDate>Wed, 22 Jan 2025 00:00:00 GMT</pubDate>
+      <author>GeoBase</author>
+      <category><![CDATA[Blog]]></category>
+    </item>
+    <item>
+      <title><![CDATA[We launched! Join us for Beta!]]></title>
+      <link>https://geobase.app/blog/beta-launch</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/geobase-launch-beta</guid>
+      <description><![CDATA[After months of development, we're excited to announce that Geobase is now in beta! Join us and help shape the future of geospatial infrastructure.]]></description>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 GMT</pubDate>
+      <author>GeoBase</author>
+      <category><![CDATA[Blog]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Announcing the Globhe Partnership]]></title>
+      <link>https://geobase.app/blog/announcing-the-globhe-partnership</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/geobase-globhe-partnership</guid>
+      <description><![CDATA[We're excited to announce our partnership with Globhe, bringing together cutting-edge geospatial infrastructure with innovative drone data solutions.]]></description>
+      <pubDate>Mon, 14 Oct 2024 00:00:00 GMT</pubDate>
+      <author>GeoBase</author>
+      <category><![CDATA[Partnership]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Pushing the boundaries of geo data with motherduck and geobase!]]></title>
+      <link>https://geobase.app/blog/geospatial-analytics-with-geobase-and-motherduck</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/geobase-motherduck-boundaries</guid>
+      <description><![CDATA[Explore how we're pushing the boundaries of geospatial data processing by combining MotherDuck's analytics capabilities with Geobase's spatial infrastructure.]]></description>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 GMT</pubDate>
+      <author>GeoBase</author>
+      <category><![CDATA[Blog]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Blueprints - Prebuilt Applications Templates]]></title>
+      <link>https://geobase.app/blog/blueprints</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/geobase-blueprints</guid>
+      <description><![CDATA[Introducing Blueprints: prebuilt application templates that help you get started with Geobase quickly. Build production-ready geospatial applications in minutes.]]></description>
+      <pubDate>Thu, 16 May 2024 00:00:00 GMT</pubDate>
+      <author>GeoBase</author>
+      <category><![CDATA[Blog]]></category>
+    </item>
+    <item>
+      <title><![CDATA[How Geobase is Democratizing Access to the Geospatial Industry]]></title>
+      <link>https://geobase.app/blog/how-geobase-is-democratizing-access-to-the-geospatial-industry</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/geobase-democratizing-geospatial</guid>
+      <description><![CDATA[Learn how Geobase is making geospatial technology more accessible, breaking down barriers and empowering developers to build powerful spatial applications.]]></description>
+      <pubDate>Fri, 26 Apr 2024 00:00:00 GMT</pubDate>
+      <author>GeoBase</author>
+      <category><![CDATA[Blog]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Our goals and vision for Geobase]]></title>
+      <link>https://geobase.app/blog/roadmap-2024</link>
+      <guid isPermaLink="false">https://decision-labs.com/external/geobase-goals-vision</guid>
+      <description><![CDATA[Discover our mission, goals, and vision for Geobase. Learn how we're building the future of geospatial infrastructure and making spatial data accessible to everyone.]]></description>
+      <pubDate>Sun, 21 Apr 2024 00:00:00 GMT</pubDate>
+      <author>GeoBase</author>
+      <category><![CDATA[Blog]]></category>
+    </item>
+  </channel>
+</rss>
