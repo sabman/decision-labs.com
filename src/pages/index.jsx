@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import { FileText, Mic, Handshake, BookOpen } from 'lucide-react'
+import { FileText, Mic, Handshake, BookOpen, Radio } from 'lucide-react'
 import '../styles/global.css'
 import postsData from '../data/posts.json'
 import Footer from '../components/Footer'
@@ -18,6 +18,9 @@ const IndexPage = ({ location }) => {
     : postsData.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3)
   
   const currentPost = postsToShow[activeIndex]
+  const currentPostImage = currentPost?.image && !currentPost.image.includes('via.placeholder.com')
+    ? currentPost.image
+    : null
 
   // Get icon component for category
   const getCategoryIcon = (category) => {
@@ -27,6 +30,8 @@ const IndexPage = ({ location }) => {
         return <FileText {...iconProps} />
       case 'Talk':
         return <Mic {...iconProps} />
+      case 'Podcast':
+        return <Radio {...iconProps} />
       case 'Partnership':
         return <Handshake {...iconProps} />
       default:
@@ -135,7 +140,10 @@ const IndexPage = ({ location }) => {
             </div>
           </div>
 
-          <div className="card card-secondary">
+          <div
+            className={`card card-secondary${currentPostImage ? ' card-has-bg-image' : ''}`}
+            style={currentPostImage ? { backgroundImage: `url(${currentPostImage})` } : {}}
+          >
             {currentPost?.link ? (
               currentPost.link.startsWith('/') ? (
                 <Link

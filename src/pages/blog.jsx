@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
-import { FileText, Mic, Handshake, BookOpen, Grid } from 'lucide-react'
+import { FileText, Mic, Handshake, BookOpen, Grid, Radio } from 'lucide-react'
 import '../styles/global.css'
 import Footer from '../components/Footer'
 import postsData from '../data/posts.json'
@@ -221,6 +221,8 @@ const BlogPage = ({ location, data }) => {
         return <FileText {...iconProps} />
       case 'Talk':
         return <Mic {...iconProps} />
+      case 'Podcast':
+        return <Radio {...iconProps} />
       case 'Partnership':
         return <Handshake {...iconProps} />
       default:
@@ -291,9 +293,14 @@ const BlogPage = ({ location, data }) => {
                 <CardWrapper
                   key={post.id}
                   {...cardProps}
-                  className={`card ${post.featured ? 'card-primary' : 'card-secondary'} blog-card ${post.isInternal ? 'blog-card-internal' : 'blog-card-external'}`}
+                  className={`card ${post.featured ? 'card-primary' : 'card-secondary'} blog-card ${post.isInternal ? 'blog-card-internal' : 'blog-card-external'}${post.image ? ' blog-card-has-image' : ''}`}
                   aria-label={`View ${post.title}`}
                 >
+                  {post.image && !post.image.includes('via.placeholder.com') && (
+                    <div className="blog-card-image-wrap">
+                      <img src={post.image} alt="" className="blog-card-image" loading="lazy" />
+                    </div>
+                  )}
                   <div className="card-body blog-card-body">
                     <div className="card-header">
                       <span></span>
