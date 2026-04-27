@@ -1,5 +1,19 @@
 [
   {
+    "id": "youtube--_mwkTTOAco",
+    "title": "AI Deepfakes From Space — Recorded at Web Summit Qatar 2026",
+    "description": "Recorded live at Web Summit Qatar 2026, Shoaib Burq joins Ania Lichtarowicz — former BBC journalist and host of the 'Somewhere on Earth' Global Tech Podcast — to discuss the growing threat of AI-generated and manipulated satellite imagery. He explains how the ESA-backed Verisat AI project detects hidden fingerprints left by generative diffusion models — helping governments, journalists, and humanitarian organisations tell real Earth observation data from artificial deception.",
+    "image": "https://live.staticflickr.com/65535/55077958163_c5a4e4e96f_b.jpg",
+    "link": "https://www.youtube.com/watch?v=-_mwkTTOAco",
+    "date": "2026-02-24",
+    "author": "Decision Labs",
+    "featured": true,
+    "metadata": {
+      "category": "Podcast",
+      "readTime": "Watch · 20 min"
+    }
+  },
+  {
     "id": "wp-blog-decision-labs-0-1773679236000",
     "title": "The Real Cost of Random I/O in Spatial Queries",
     "description": "Plan flips are normal in a cost-based optimizer, until they are not. The recent Clerk incident put attention back on a painful failure mode: a query crossing into a much worse plan after statistics/cost assumptions shift, causing a database",

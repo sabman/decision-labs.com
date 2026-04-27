@@ -101,7 +101,7 @@ const ImpressumPage = ({ location }) => {
             <section className="impressum-section">
               <h2 className="impressum-heading">Kontakt</h2>
               <p>Telefon: 015778921979</p>
-              <p>E-Mail: <a href="mailto:support@getgeodb.com">support@getgeodb.com</a></p>
+              <p>E-Mail: <a href="mailto:support@decision-labs.com">support@decision-labs.com</a></p>
             </section>
 
             <section className="impressum-section">

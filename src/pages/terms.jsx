@@ -229,7 +229,7 @@ const TermsPage = ({ location }) => {
             <p className="terms-contact-info">
               SpacialDB UG, Chausseestr 105<br />
               10115 Berlin | Deutschland<br />
-              <a href="mailto:info@getgeodb.com">info@getgeodb.com</a>
+              <a href="mailto:info@decision-labs.com">info@decision-labs.com</a>
             </p>
             <p>
               Sie können Ihre Daten bzw. Ihr gesamtes Benutzerprofil jederzeit löschen. Dies kann durch Verwenden der entsprechenden Option in Ihrem Benutzerprofil geschehen. Wir weisen darauf hin, dass im Falle der Löschung Ihrer Daten eine Inanspruchnahme unserer Dienste nicht oder nicht in vollem Umfang möglich ist.
@@ -237,7 +237,7 @@ const TermsPage = ({ location }) => {
 
             <h2>9. Aktualität der Datenschutzerklärung</h2>
             <p>
-              Diese Datenschutzerklärung ist aktuell gültig und datiert vom 13.11.2012. Sie kann jederzeit auf unserer getgeodb.com von Ihnen abgerufen und ausgedruckt werden.
+              Diese Datenschutzerklärung ist aktuell gültig und datiert vom 13.11.2012. Sie kann jederzeit auf unserer decision-labs.com von Ihnen abgerufen und ausgedruckt werden.
             </p>
           </div>
         </div>
