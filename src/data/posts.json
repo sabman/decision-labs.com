@@ -1,5 +1,20 @@
 [
   {
+    "id": "rethinking-roofs",
+    "title": "Rethinking Roofs: Cooling Homes in Informal Settlements with What Already Exists",
+    "description": "We entered the Rethinking Roofs global competition with a simple premise: don't replace what people have. Work with it. Three low-cost roof cooling strategies, three cities, 3–5°C impact.",
+    "image": "/images/blog/rethinking-roofs-hero.png",
+    "link": "/blog/rethinking-roofs",
+    "date": "2026-04-24",
+    "author": "Decision Labs",
+    "featured": true,
+    "linkType": "internal",
+    "metadata": {
+      "category": "Project",
+      "readTime": "4 min read"
+    }
+  },
+  {
     "id": "youtube--_mwkTTOAco",
     "title": "AI Deepfakes From Space — Recorded at Web Summit Qatar 2026",
     "description": "Recorded live at Web Summit Qatar 2026, Shoaib Burq joins Ania Lichtarowicz — former BBC journalist and host of the 'Somewhere on Earth' Global Tech Podcast — to discuss the growing threat of AI-generated and manipulated satellite imagery. He explains how the ESA-backed Verisat AI project detects hidden fingerprints left by generative diffusion models — helping governments, journalists, and humanitarian organisations tell real Earth observation data from artificial deception.",

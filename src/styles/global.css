@@ -804,10 +804,9 @@ img {
 }
 
 .blog-post {
-  max-width: 800px;
+  max-width: 1100px;
+  width: 100%;
   margin: 0;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .blog-post-card {
@@ -869,11 +868,13 @@ img {
   margin-bottom: 3rem;
   border-radius: 12px;
   overflow: hidden;
+  max-height: 400px;
 }
 
 .blog-post-image img {
   width: 100%;
-  height: auto;
+  height: 400px;
+  object-fit: cover;
   display: block;
 }
 
@@ -950,10 +951,20 @@ img {
 }
 
 .blog-post-body img {
-  max-width: 100%;
+  max-width: 680px;
+  width: 100%;
   height: auto;
   border-radius: 8px;
-  margin: 1.5rem 0;
+  margin: 1.5rem auto;
+  display: block;
+}
+
+.blog-post-body iframe {
+  width: 680px;
+  max-width: 100%;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 12px;
 }
 
 /* Work specific styles */
