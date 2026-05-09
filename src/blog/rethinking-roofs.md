@@ -77,8 +77,3 @@ Our contribution sat at the intersection of geomatics and systems design. We ran
 
 We also built the decision framework above — the logic that matches a household's structural capacity, tenure, and space type to the right intervention — and documented it as a reusable toolkit that any community organiser or architect can apply without us in the room.
 
-## Where It Stands
-
-We submitted Stage 1 in January 2026 and were invited to Stage 2, which we submitted in April 2026. Winning entries will be showcased at the World Urban Forum and published in an e-book by the competition organisers.
-
-The work was done in collaboration with practitioners from IIED, SDI Kenya, and SDI — whose field knowledge shaped every design decision from the start.
