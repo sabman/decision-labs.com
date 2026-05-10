@@ -53,17 +53,15 @@ A decision framework matches each household's context — structural capacity, t
 
 The three cities were chosen to represent different climate stress profiles across sub-Saharan Africa. The charts below show annual distributions of dry bulb temperature, relative humidity, solar radiation, and wind speed — the four variables that drive how much heat a roof absorbs and how much it can shed.
 
-**Freetown, Sierra Leone** — Hot and persistently humid year-round. High solar radiation combined with near-constant humidity means little relief overnight. Metal roofs stay hot.
+**Freetown, Sierra Leone** and **Accra, Ghana** present near-identical heat stress profiles. Both are hot-humid West African coastal cities: day temperatures clustered around 28–30°C year-round, humidity persistently in the 80–90% range, and strong solar radiation with almost no overnight relief. If a roof bakes in Freetown, it bakes the same way in Accra. The main difference is Accra has two distinct wet seasons and slightly more variable wind — which matters when you're relying on ventilation gaps to shed heat.
 
 ![Climate profiles for Freetown, Sierra Leone — temperature, humidity, solar radiation, wind speed](/images/blog/freetown-climate-profiles.png)
 
-**Accra, Ghana** — Similar temperatures but slightly drier, with two distinct wet seasons. The radiation load is comparable to Freetown but wind speed is more variable, which matters for ventilation-based solutions.
-
 ![Climate profiles for Accra, Ghana](/images/blog/accra-climate-profiles.png)
 
-**Addis Ababa, Ethiopia** — Cooler and at altitude, but with very high solar radiation intensities during the dry season. Lower absolute temperatures mean the delta from a cooling intervention feels larger relative to comfort thresholds.
+**Addis Ababa, Ethiopia** is the contrasting case. Temperatures are cooler overall (median closer to 18°C) and humidity drops sharply — but solar radiation is actually *higher*, peaking above 1000 Wh/m², because the altitude means a thinner atmosphere and more intense sun. Wind is gustier and more variable. The result is a different kind of thermal problem: intense daytime solar gain followed by a cool night, rather than the relentless humid heat of West Africa.
 
-![Climate profiles for Addis Ababa, Ethiopia](/images/blog/addis-ababa-climate-profiles.png)
+![Climate profiles for Addis Ababa, Ethiopia — cooler, drier, but with higher solar radiation intensity](/images/blog/addis-ababa-climate-profiles.png)
 
 ## Impact
 
