@@ -368,6 +368,17 @@ export const query = graphql`
 export const Head = () => (
   <>
     <title>Blog - Decision Labs</title>
+    <meta name="description" content="Insights on AI, machine learning, decision science, and geospatial technology from Decision Labs." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Decision Labs" />
+    <meta property="og:url" content="https://decision-labs.com/blog" />
+    <meta property="og:title" content="Blog - Decision Labs" />
+    <meta property="og:description" content="Insights on AI, machine learning, decision science, and geospatial technology from Decision Labs." />
+    <meta property="og:image" content="https://decision-labs.com/images/og-default.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Blog - Decision Labs" />
+    <meta name="twitter:description" content="Insights on AI, machine learning, decision science, and geospatial technology from Decision Labs." />
+    <meta name="twitter:image" content="https://decision-labs.com/images/og-default.png" />
     <link rel="alternate" type="application/rss+xml" title="Decision Labs RSS Feed" href="/rss.xml" />
   </>
 )

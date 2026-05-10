@@ -144,14 +144,39 @@ export const pageQuery = graphql`
         category
         readTime
         image
+        slug
       }
     }
   }
 `
 
-export const Head = ({ data }) => (
-  <>
-    <title>{data.markdownRemark.frontmatter.title} - Decision Labs Blog</title>
-    <meta name="description" content={data.markdownRemark.excerpt} />
-  </>
-)
+const SITE_URL = 'https://decision-labs.com'
+
+export const Head = ({ data }) => {
+  const { title, image, slug } = data.markdownRemark.frontmatter
+  const description = data.markdownRemark.excerpt
+  const canonicalUrl = `${SITE_URL}/blog/${slug}`
+  const ogImage = image
+    ? image.startsWith('http') ? image : `${SITE_URL}${image}`
+    : `${SITE_URL}/images/og-default.png`
+
+  return (
+    <>
+      <title>{title} - Decision Labs Blog</title>
+      <meta name="description" content={description} />
+      <link rel="canonical" href={canonicalUrl} />
+
+      <meta property="og:type" content="article" />
+      <meta property="og:site_name" content="Decision Labs" />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={ogImage} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImage} />
+    </>
+  )
+}
