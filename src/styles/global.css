@@ -698,10 +698,7 @@ img {
   overflow: hidden;
 }
 
-.blog-posts-grid .card-primary {
-  grid-column: span 2;
-}
-
+.blog-posts-grid .card-primary,
 .blog-posts-grid .card-secondary {
   grid-column: span 1;
 }
@@ -788,9 +785,6 @@ img {
   display: block;
 }
 
-.blog-posts-grid .card-primary .blog-card-image {
-  height: 280px;
-}
 
 .blog-empty {
   padding: 4rem 0;
