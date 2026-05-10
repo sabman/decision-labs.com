@@ -75,3 +75,5 @@ Our contribution sat at the intersection of geomatics and systems design. We ran
 
 We also built the decision framework above — the logic that matches a household's structural capacity, tenure, and space type to the right intervention — and documented it as a reusable toolkit that any community organiser or architect can apply without us in the room.
 
+For a closer look at the Accra site — housing typologies, local materials markets, and what the structures actually look like on the ground — see [Field Notes: Accra](/blog/field-notes-accra).
+
