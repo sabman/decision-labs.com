@@ -65,7 +65,7 @@ The three cities were chosen to represent different climate stress profiles acro
 
 ## Impact
 
-Climate simulations across three cities — Kroo Bay (Freetown), Alogboshie-Achimota (Accra), and Kirkos (Addis Ababa) — point to **3–5°C reductions in peak indoor temperature**. That gap is the difference between sleeping and not sleeping, between a child being able to study and not being able to.
+Climate simulations across three cities — Kroo Bay (Freetown), Agbogbloshie-Achimota (Accra), and Kirkos (Addis Ababa) — point to **3–5°C reductions in peak indoor temperature**. That gap is the difference between sleeping and not sleeping, between a child being able to study and not being able to.
 
 Beyond thermal comfort: the interventions also address fire risk (covering exposed metal edges), pest control (mesh vents block rodents and insects), and create visible value in roof infrastructure that shifts community behaviour around maintenance.
 
