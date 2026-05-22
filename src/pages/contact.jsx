@@ -104,7 +104,7 @@ const ContactPage = ({ location }) => {
 
           <div className="contact-links-container">
             <div className="contact-links-grid">
-              <a href="https://github.com" className="contact-link-card" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/decision-labs/" className="contact-link-card" target="_blank" rel="noopener noreferrer">
                 <div className="contact-link-icon">
                   <FaGithub size={24} />
                 </div>
