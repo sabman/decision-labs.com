@@ -12,6 +12,7 @@
     "fetch-twitter": "node scripts/fetch-twitter-posts.js"
   },
   "dependencies": {
+    "@formspree/react": "^3.0.0",
     "gatsby": "^5.14.0",
     "gatsby-source-filesystem": "^5.15.0",
     "gatsby-transformer-remark": "^6.15.0",

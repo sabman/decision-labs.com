@@ -65,6 +65,7 @@ const Footer = () => {
             <h3 className="footer-column-title">Contact</h3>
             <a href="mailto:team@decision-labs.com" className="footer-link footer-link-external">team@decision-labs.com</a>
             <a href="/contact" className="footer-link">Book a Call</a>
+            <a href="/newsletter" className="footer-link">Newsletter</a>
           </div>
           <div className="footer-column">
             <h3 className="footer-column-title">Follow</h3>

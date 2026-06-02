@@ -135,6 +135,13 @@ const ContactPage = ({ location }) => {
                 <div className="contact-link-label">Book a Call</div>
                 <div className="contact-link-helper">30-minute consultation • Free • No commitment</div>
               </a>
+              <Link to="/newsletter" className="contact-link-card contact-link-card-wide">
+                <div className="contact-link-icon">
+                  <Mail size={24} className="lucide-icon" />
+                </div>
+                <div className="contact-link-label">Newsletter</div>
+                <div className="contact-link-helper">Sign up for practical updates from Decision Labs</div>
+              </Link>
             </div>
           </div>
         </div>
