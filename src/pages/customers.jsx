@@ -1,16 +1,15 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import { Mail, Calendar } from 'lucide-react'
-import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6'
 import '../styles/global.css'
+import customersData from '../data/customers.json'
 import Footer from '../components/Footer'
+import CustomerLogo from '../components/CustomerLogo'
 
-const ContactPage = ({ location }) => {
+const CustomersPage = ({ location }) => {
   const pathname = location?.pathname || ''
   const [textColor, setTextColor] = React.useState('black')
   const headerRef = React.useRef(null)
 
-  // Detect background color behind header (throttled for performance)
   React.useEffect(() => {
     const header = headerRef.current
     if (!header) return
@@ -24,7 +23,7 @@ const ContactPage = ({ location }) => {
           const headerCenterX = window.innerWidth / 2
 
           const elementBelow = document.elementFromPoint(headerCenterX, headerCenterY)
-          
+
           if (!elementBelow) {
             setTextColor('black')
             ticking = false
@@ -76,7 +75,7 @@ const ContactPage = ({ location }) => {
       window.removeEventListener('resize', checkBackground)
     }
   }, [])
-  
+
   return (
     <div className="page-container">
       <header className="header" ref={headerRef}>
@@ -90,59 +89,38 @@ const ContactPage = ({ location }) => {
         </nav>
       </header>
 
-      <main className="main-content contact-content">
-        <div className="content-cards contact-cards">
-          <div className="card card-primary contact-main-card">
-            <h1 className="contact-page-title">Contact</h1>
+      <main className="main-content customers-content">
+        <div className="content-cards customers-cards">
+          <div className="card card-primary customers-hero-card">
+            <h1 className="customers-page-title">Customers</h1>
             <div className="card-body">
               <p className="mission-text">
-                Let's discuss how we can help transform your data into actionable insights. Reach out to start a conversation about your next project.
+                We work with leading organizations across finance, government, space, and technology — from custom AI products to geospatial infrastructure on Geobase.
               </p>
             </div>
-            <div className="card-footer">
-            </div>
           </div>
+        </div>
 
-          <div className="contact-links-container">
-            <div className="contact-links-grid">
-              <a href="https://github.com/decision-labs/" className="contact-link-card" target="_blank" rel="noopener noreferrer">
-                <div className="contact-link-icon">
-                  <FaGithub size={24} />
+        <div className="customers-grid">
+          {customersData.map((customer) => (
+            <div key={customer.id} className="card card-secondary customer-card">
+              <div className="customer-card-body">
+                <div className="customer-logo">
+                  <CustomerLogo customerId={customer.id} name={customer.name} />
                 </div>
-                <div className="contact-link-label">GitHub</div>
-              </a>
-              <a href="mailto:team@decision-labs.com" className="contact-link-card">
-                <div className="contact-link-icon">
-                  <Mail size={24} className="lucide-icon" />
-                </div>
-                <div className="contact-link-label">Email</div>
-              </a>
-              <a href="https://www.linkedin.com/company/spacialdb-ug-decision-labs/" className="contact-link-card" target="_blank" rel="noopener noreferrer">
-                <div className="contact-link-icon">
-                  <FaLinkedin size={24} />
-                </div>
-                <div className="contact-link-label">LinkedIn</div>
-              </a>
-              <a href="https://twitter.com/geobaseapp" className="contact-link-card" target="_blank" rel="noopener noreferrer">
-                <div className="contact-link-icon">
-                  <FaXTwitter size={24} />
-                </div>
-                <div className="contact-link-label">Twitter</div>
-              </a>
-              <a href="https://cal.com/decision-labs" className="contact-link-card contact-link-card-wide" target="_blank" rel="noopener noreferrer">
-                <div className="contact-link-icon">
-                  <Calendar size={24} className="lucide-icon" />
-                </div>
-                <div className="contact-link-label">Book a Call</div>
-                <div className="contact-link-helper">30-minute consultation • Free • No commitment</div>
-              </a>
-              <Link to="/newsletter" className="contact-link-card contact-link-card-wide">
-                <div className="contact-link-icon">
-                  <Mail size={24} className="lucide-icon" />
-                </div>
-                <div className="contact-link-label">Newsletter</div>
-                <div className="contact-link-helper">Sign up for practical updates from Decision Labs</div>
-              </Link>
+                <h2 className="customer-name">{customer.name}</h2>
+                <span className="customer-category">{customer.category}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="content-cards customers-cards">
+          <div className="card card-secondary customers-migration-card">
+            <div className="card-body">
+              <p className="mission-text">
+                Many teams have moved from CartoDB to Geobase for Postgres-native geospatial infrastructure — lower cost, full data ownership, and modern AI workflows.
+              </p>
             </div>
           </div>
         </div>
@@ -152,7 +130,6 @@ const ContactPage = ({ location }) => {
   )
 }
 
-export default ContactPage
+export default CustomersPage
 
-export const Head = () => <title>Contact - Decision Labs</title>
-
+export const Head = () => <title>Customers - Decision Labs</title>

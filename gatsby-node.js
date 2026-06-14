@@ -2,6 +2,8 @@ const fs = require('fs')
 const path = require('path')
 const fetchTwitterPosts = require('./scripts/fetch-twitter-posts')
 const fetchWordpressPosts = require('./scripts/fetch-wordpress-posts')
+const generateLlmFiles = require('./scripts/generate-llm-files')
+const optimizeCustomerLogos = require('./scripts/optimize-customer-logos')
 
 // Create pages for internal blog posts
 exports.createPages = async ({ graphql, actions }) => {
@@ -231,14 +233,21 @@ ${rssItems}
   }
 }
 
+// Generate LLM files during develop and before production assets are finalized
+exports.onPreBootstrap = async () => {
+  await optimizeCustomerLogos()
+  await generateLlmFiles()
+}
+
 // Fetch Twitter posts before build
 exports.onPreBuild = async () => {
   await fetchTwitterPosts()
   await fetchWordpressPosts()
 }
 
-// Generate RSS feed after build
+// Generate RSS feed and LLM files after build
 exports.onPostBuild = async ({ graphql }) => {
   await generateRSSFeed(graphql)
+  await generateLlmFiles()
 }
 

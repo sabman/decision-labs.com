@@ -9,7 +9,9 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "fetch-twitter": "node scripts/fetch-twitter-posts.js"
+    "fetch-twitter": "node scripts/fetch-twitter-posts.js",
+    "generate:llm": "node scripts/generate-llm-files.js",
+    "optimize:logos": "node scripts/optimize-customer-logos.js"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",

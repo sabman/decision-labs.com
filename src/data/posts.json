@@ -1,5 +1,20 @@
 [
   {
+    "id": "wp-blog-decision-labs-0-1773679236000",
+    "title": "The Real Cost of Random I/O in Spatial Queries",
+    "description": "Plan flips are normal in a cost-based optimizer, until they are not. The recent Clerk incident put attention back on a painful failure mode: a query crossing into a much worse plan after statistics/cost assumptions shift, causing a database",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://blog.decision-labs.com/2026/03/16/the-real-cost-of-random-i-o-in-spatial-queries/",
+    "date": "2026-03-16",
+    "author": "Decision Labs",
+    "featured": false,
+    "metadata": {
+      "category": "Blog",
+      "readTime": "External"
+    },
+    "linkType": "external"
+  },
+  {
     "id": "rethinking-roofs",
     "title": "Rethinking Roofs: Cooling Homes in Informal Settlements with What Already Exists",
     "description": "We entered the Rethinking Roofs global competition with a simple premise: don't replace what people have. Work with it. Three low-cost roof cooling strategies, three cities, 3–5°C impact.",
@@ -27,21 +42,6 @@
       "category": "Podcast",
       "readTime": "Watch · 20 min"
     }
-  },
-  {
-    "id": "wp-blog-decision-labs-0-1773679236000",
-    "title": "The Real Cost of Random I/O in Spatial Queries",
-    "description": "Plan flips are normal in a cost-based optimizer, until they are not. The recent Clerk incident put attention back on a painful failure mode: a query crossing into a much worse plan after statistics/cost assumptions shift, causing a database",
-    "image": "https://via.placeholder.com/800x400",
-    "link": "https://blog.decision-labs.com/2026/03/16/the-real-cost-of-random-i-o-in-spatial-queries/",
-    "date": "2026-03-16",
-    "author": "Decision Labs",
-    "featured": true,
-    "metadata": {
-      "category": "Blog",
-      "readTime": "External"
-    },
-    "linkType": "external"
   },
   {
     "id": "youtube--Pd_yV738mg",

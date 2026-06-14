@@ -131,6 +131,12 @@ const NewsletterPage = ({ location }) => {
           >
             Contact
           </Link>
+          <Link
+            to="/customers"
+            className={pathname === '/customers' || pathname === '/customers/' ? 'active' : ''}
+          >
+            Customers
+          </Link>
           <Link to="/work" className={pathname === '/work' || pathname === '/work/' ? 'active' : ''}>
             Work
           </Link>

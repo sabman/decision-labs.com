@@ -1,0 +1,28 @@
+[
+  {
+    "id": "morgan-stanley",
+    "name": "Morgan Stanley",
+    "category": "Financial Services"
+  },
+  {
+    "id": "hugging-face",
+    "name": "Hugging Face",
+    "category": "AI & Open Source"
+  },
+  {
+    "id": "esa",
+    "name": "European Space Agency",
+    "shortName": "ESA",
+    "category": "Space & Earth Observation"
+  },
+  {
+    "id": "australian-government",
+    "name": "Australian Government",
+    "category": "Government"
+  },
+  {
+    "id": "naver",
+    "name": "Naver",
+    "category": "Technology"
+  }
+]
