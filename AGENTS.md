@@ -1,4 +1,4 @@
-# Agent instructions — decision-labs.com
+# Agent instructions: decision-labs.com
 
 ## Git remotes (keep in sync)
 
@@ -50,3 +50,15 @@ Production deploys via `.github/workflows/build.yml` on push to `master` on `ori
 - Dev: `npm run dev`
 - Production build: `npm run build` (also generates RSS, LLM files, optimized customer logos)
 - LLM index: `npm run generate:llm` → `/llms.txt`, `/llm.txt`, `/llm/*.md`
+
+## Writing style
+
+When writing or editing copy for this site (blog posts, page text, descriptions, meta tags):
+
+- **No em dashes.** Do not use `—` or `--` as punctuation. Use commas, colons, periods, parentheses, or restructure the sentence instead.
+- **Plain English.** Write clearly and directly. Prefer short sentences and common words over jargon or ornate phrasing.
+- **No superlatives.** Avoid words like "best", "leading", "world-class", "cutting-edge", "revolutionary", and similar.
+- **No marketing tone.** Do not write like a landing page or press release. State what something is and what it does; skip hype, filler, and inflated claims.
+- **No sleazy overclaims.** Do not promise outcomes you cannot support, exaggerate impact, or use urgency tricks ("don't miss out", "game-changing", etc.).
+
+Match the tone of existing posts in `src/blog/` unless the user asks for something different.
