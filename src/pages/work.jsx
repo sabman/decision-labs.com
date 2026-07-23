@@ -177,39 +177,6 @@ const WorkPage = ({ location }) => {
   }, [])
 
 
-  // Load-in effects for metrics
-  React.useEffect(() => {
-    const metricItems = document.querySelectorAll('.work-metric-item')
-    
-    if (metricItems.length === 0) return
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '-10% 0px -10% 0px',
-      threshold: 0.1
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible')
-          }, index * 150) // Stagger the animations
-        }
-      })
-    }, observerOptions)
-
-    metricItems.forEach((item) => {
-      observer.observe(item)
-    })
-
-    return () => {
-      metricItems.forEach((item) => {
-        observer.unobserve(item)
-      })
-    }
-  }, [])
-
   return (
     <div className="page-container">
       <header className="header" ref={headerRef}>
@@ -228,20 +195,6 @@ const WorkPage = ({ location }) => {
           <div className="card card-primary work-hero-card">
             <div className="work-hero-header">
               <h1 className="work-page-title">Work</h1>
-              <div className="work-metrics">
-                <div className="work-metric work-metric-item">
-                  <span className="work-metric-number">12+</span>
-                  <span className="work-metric-label">AI Products</span>
-                </div>
-                <div className="work-metric work-metric-item">
-                  <span className="work-metric-number">50+</span>
-                  <span className="work-metric-label">Models Trained</span>
-                </div>
-                <div className="work-metric work-metric-item">
-                  <span className="work-metric-number">3</span>
-                  <span className="work-metric-label">Research Partnerships</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
