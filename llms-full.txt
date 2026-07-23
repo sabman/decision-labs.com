@@ -1,0 +1,736 @@
+# Decision Labs
+
+> AI-driven products, custom ML models, and geospatial infrastructure from concept to deployment.
+
+- HTML: https://decision-labs.com/
+- LLM: https://decision-labs.com/llm/index.md
+
+## Summary
+
+Decision Labs builds AI-driven products, trains custom models, and creates intelligent systems that turn complex data into actionable insights. We also operate Geobase, a Postgres-native geospatial platform used by enterprise and government teams.
+
+## Featured content
+
+- **Announcing Decision Labs Edge** (2026-07-23) — On-device AI for field hardware: LiteRT time-series and perception weights that run on cameras, buoys, drones, and sensor nodes without a cloud round-trip.
+  - Link: https://decision-labs.com/blog/announcing-decision-labs-edge
+
+## Key links
+
+- Work and products: https://decision-labs.com/work
+- Customers: https://decision-labs.com/customers
+- Blog: https://decision-labs.com/blog
+- Contact: https://decision-labs.com/contact
+- Book a call: https://cal.com/decision-labs
+- Email: team@decision-labs.com
+
+
+---
+
+# About Decision Labs
+
+> Consulting on digital transformation, analytics, and data science capabilities.
+
+- HTML: https://decision-labs.com/about
+- LLM: https://decision-labs.com/llm/about.md
+
+## Mission
+
+We help our clients achieve efficiencies through digital transformation, develop analytics and data science capabilities.
+
+## Our process
+
+### 1. Scoping & Architecture Design
+
+First, we need to understand your problem better. Once we determine there is a fit for Machine Learning, we will work closely together to prepare a roadmap, review the scientific literature, and determine requirements.
+
+### 2. Data Collection & Exploration
+
+Machine Learning needs data. If you have data needed to train the models, we will perform an exploratory analysis phase to find patterns and correlations. If you don't, we will collect the data for you using online sources (if possible).
+
+### 3. Model Development
+
+We run thousands of experiments in parallel to develop a machine learning model. A model is the core of a machine learning system - trained on historical data it can predict the future trends or understand the semantics of a text.
+
+### 4. Full-stack application development
+
+We integrate the model with a REST API or a front-end application, developing all necessary features to access the model in an user-friendly way. Scalable and with the state-of-the-art security.
+
+
+---
+
+# Work
+
+> Products and platforms built by Decision Labs, including Geobase, EarthGPT, Verisat.ai, and GeoAI.js.
+
+- HTML: https://decision-labs.com/work
+- LLM: https://decision-labs.com/llm/work.md
+
+## Metrics
+
+- 12+ AI products
+- 50+ models trained
+- 3 research partnerships
+
+## Projects
+
+### Decision Labs Edge
+
+On-device AI for field hardware: LiteRT time-series and perception weights that run on cameras, buoys, drones, and sensor nodes without a cloud round-trip.
+
+- URL: https://edge.decision-labs.com/
+- Category: AI/ML
+- Technologies: LiteRT, TFLite, ONNX, Time series
+
+### EarthGPT
+
+EarthGPT enables policy analysts, journalists, and researchers to query satellite data and climate models using natural language, backed by ViTs, LLMs, and RAG pipelines.
+
+- URL: https://www.earthgpt.app/
+- Category: Machine Learning
+- Technologies: PyTorch, FastAPI, AWS
+
+### Geobase
+
+Geobase is a Supabase fork with PostGIS, vector/raster tile servers, and STAC integration. It provides developers with cloud-native geospatial infrastructure to build scalable applications.
+
+- URL: https://geobase.app
+- Category: AI/ML
+- Technologies: Python, TensorFlow, PostGIS
+
+### GeoAI.js
+
+GeoAI.js brings HuggingFace transformers.js models to the browser and Node.js, enabling client-side geospatial AI. Includes live demos and docs for developers.
+
+- URL: https://docs.geobase.app/geoai-live
+- Category: AI/ML
+- Technologies: JavaScript, Node.js, HuggingFace
+
+### Verisat.ai
+
+Verisat.ai detects fake or manipulated satellite imagery by analyzing noise patterns, FFT fingerprints, and patch-level inconsistencies. Built to support journalists and analysts.
+
+- URL: https://verisat.ai/
+- Category: Platform
+- Technologies: React, Node.js, Kubernetes
+
+
+---
+
+# Customers
+
+> Organizations that work with Decision Labs on AI, geospatial infrastructure, and analytics.
+
+- HTML: https://decision-labs.com/customers
+- LLM: https://decision-labs.com/llm/customers.md
+
+## Customers
+
+- **Morgan Stanley** — Financial Services
+- **Hugging Face** — AI & Open Source
+- **European Space Agency** — Space & Earth Observation
+- **Australian Government** — Government
+- **Naver** — Technology
+
+## CartoDB to Geobase migrations
+
+Many teams have moved from CartoDB to Geobase for Postgres-native geospatial infrastructure — lower cost, full data ownership, and modern AI workflows.
+
+
+---
+
+# Contact
+
+> Reach Decision Labs to discuss AI, geospatial, or analytics projects.
+
+- HTML: https://decision-labs.com/contact
+- LLM: https://decision-labs.com/llm/contact.md
+
+## Get in touch
+
+Let's discuss how we can help transform your data into actionable insights.
+
+- Email: team@decision-labs.com
+- Book a call: https://cal.com/decision-labs (30-minute consultation, free, no commitment)
+- GitHub: https://github.com/decision-labs/
+- LinkedIn: https://www.linkedin.com/company/spacialdb-ug-decision-labs/
+- Twitter/X: https://twitter.com/geobaseapp
+- Newsletter: https://decision-labs.com/newsletter
+
+
+---
+
+# Blog
+
+> Posts, talks, podcasts, and partnerships from Decision Labs.
+
+- HTML: https://decision-labs.com/blog
+- LLM: https://decision-labs.com/llm/blog.md
+
+## Internal posts (full LLM markdown available)
+
+- [AI Agents for Earth Observation: Talk and BoF at BiDS 2025](https://decision-labs.com/llm/blog/ai-agents-for-earth-observation.md) (2026-06-21) — Talk
+  - HTML: https://decision-labs.com/blog/ai-agents-for-earth-observation
+- [Announcing Decision Labs Edge](https://decision-labs.com/llm/blog/announcing-decision-labs-edge.md) (2026-07-23) — Blog
+  - HTML: https://decision-labs.com/blog/announcing-decision-labs-edge
+- [Field Notes: Accra](https://decision-labs.com/llm/blog/field-notes-accra.md) (2026-05-01) — Field Notes
+  - HTML: https://decision-labs.com/blog/field-notes-accra
+- [Building GeoAgents: Workshop at GeoAI 2026](https://decision-labs.com/llm/blog/geoai-2026-geoagents-workshop.md) (2026-06-21) — Talk
+  - HTML: https://decision-labs.com/blog/geoai-2026-geoagents-workshop
+- [Rethinking Roofs: Cooling Homes in Informal Settlements with What Already Exists](https://decision-labs.com/llm/blog/rethinking-roofs.md) (2026-04-24) — Project
+  - HTML: https://decision-labs.com/blog/rethinking-roofs
+
+## External posts and media
+
+- **The Real Cost of Random I/O in Spatial Queries** (2026-03-16) — Blog
+  - Plan flips are normal in a cost-based optimizer, until they are not. The recent Clerk incident put attention back on a painful failure mode: a query crossing into a much worse plan after statistics/cost assumptions shift, causing a database
+  - Link: https://blog.decision-labs.com/2026/03/16/the-real-cost-of-random-i-o-in-spatial-queries/
+- **AI Deepfakes From Space — Recorded at Web Summit Qatar 2026** (2026-02-24) — Podcast
+  - Recorded live at Web Summit Qatar 2026, Shoaib Burq joins Ania Lichtarowicz — former BBC journalist and host of the 'Somewhere on Earth' Global Tech Podcast — to discuss the growing threat of AI-generated and manipulated satellite imagery. He explains how the ESA-backed Verisat AI project detects hidden fingerprints left by generative diffusion models — helping governments, journalists, and humanitarian organisations tell real Earth observation data from artificial deception.
+  - Link: https://www.youtube.com/watch?v=-_mwkTTOAco
+- **PostGIS Day 2025 Talk Now Live - Working with Geospatial Embeddings** (2025-12-08) — Talk
+  - Watch our talk from PostGIS Day 2025 on working with geospatial embeddings and how they're transforming spatial data analysis.
+  - Link: https://geobase.app/blog/postgis-day-2025-geospatial-embeddings
+- **GeoEmbeddings Private Beta - Join Early Access 🚀** (2025-12-07) — Blog
+  - We're excited to announce the private beta for GeoEmbeddings. Join early access to explore geospatial embeddings and transform how you work with spatial data.
+  - Link: https://geobase.app/blog/geoembeddings-private-beta
+- **Announcing the Release of geoai.js 🚀** (2025-01-25) — Blog
+  - We're thrilled to announce the release of geoai.js, a powerful JavaScript library for geospatial AI applications. Build intelligent spatial applications with ease.
+  - Link: https://geobase.app/blog/announcing-geoai-js
+- **Geobase now supports DuckDB 1.1.3 🎉** (2025-01-22) — Blog
+  - We're excited to announce that Geobase now supports DuckDB 1.1.3, bringing enhanced performance and new features to your geospatial workflows.
+  - Link: https://geobase.app/blog/duckdb-1-1-3
+- **We launched! Join us for Beta!** (2024-12-20) — Blog
+  - After months of development, we're excited to announce that Geobase is now in beta! Join us and help shape the future of geospatial infrastructure.
+  - Link: https://geobase.app/blog/beta-launch
+- **Announcing the Globhe Partnership** (2024-10-14) — Partnership
+  - We're excited to announce our partnership with Globhe, bringing together cutting-edge geospatial infrastructure with innovative drone data solutions.
+  - Link: https://geobase.app/blog/announcing-the-globhe-partnership
+- **Pushing the boundaries of geo data with motherduck and geobase!** (2024-06-01) — Blog
+  - Explore how we're pushing the boundaries of geospatial data processing by combining MotherDuck's analytics capabilities with Geobase's spatial infrastructure.
+  - Link: https://geobase.app/blog/geospatial-analytics-with-geobase-and-motherduck
+- **Blueprints - Prebuilt Applications Templates** (2024-05-16) — Blog
+  - Introducing Blueprints: prebuilt application templates that help you get started with Geobase quickly. Build production-ready geospatial applications in minutes.
+  - Link: https://geobase.app/blog/blueprints
+- **How Geobase is Democratizing Access to the Geospatial Industry** (2024-04-26) — Blog
+  - Learn how Geobase is making geospatial technology more accessible, breaking down barriers and empowering developers to build powerful spatial applications.
+  - Link: https://geobase.app/blog/how-geobase-is-democratizing-access-to-the-geospatial-industry
+- **Our goals and vision for Geobase** (2024-04-21) — Blog
+  - Discover our mission, goals, and vision for Geobase. Learn how we're building the future of geospatial infrastructure and making spatial data accessible to everyone.
+  - Link: https://geobase.app/blog/roadmap-2024
+- **Working With Geospatial Embeddings With PostGIS And PGVector** (2024-01-25) — Talk
+  - In this talk, we share how we built geospatial embeddings directly into Geobase.app, our geospatial backend. By extending PostGIS with PGVector, we enabled semantic search and similarity queries over maps, rasters, and vector data sets. We’ll walk through the technical design choices, from embedding generation to storage and retrieval, and show how these capabilities power real-world use cases, such as neighborhood similarity, environmental monitoring, and AI-driven geospatial assistants. The session will highlight lessons learned in integrating modern AI/ML methods with a Postgres-native stack, making advanced retrieval workflows accessible to developers and analysts.
+  - Link: https://www.youtube.com/watch?v=-Pd_yV738mg
+
+
+---
+
+# Newsletter
+
+> Monthly insights on geospatial data products, AI workflows, and client work.
+
+- HTML: https://decision-labs.com/newsletter
+- LLM: https://decision-labs.com/llm/newsletter.md
+
+Subscribe at https://decision-labs.com/newsletter for monthly updates on geospatial data products, AI workflows, and practical lessons from our client work.
+
+
+---
+
+# Feed
+
+> Combined feed of Decision Labs blog posts and updates.
+
+- HTML: https://decision-labs.com/feed
+- LLM: https://decision-labs.com/llm/feed.md
+
+The feed page aggregates recent posts and updates from Decision Labs. RSS is also available at https://decision-labs.com/rss.xml.
+
+
+---
+
+# Impressum
+
+> Legal imprint for SpacialDB UG (Decision Labs), Berlin, Germany.
+
+- HTML: https://decision-labs.com/impressum
+- LLM: https://decision-labs.com/llm/impressum.md
+
+## Handelsregister
+
+HRB 143970 B
+
+Registergericht: Amtsgericht Charlottenburg (Berlin)
+
+Vertreten durch: Kashif Rasul Shoaib Burq
+
+## Kontakt
+
+Telefon: 015778921979
+
+E-Mail: support@decision-labs.com
+
+## Umsatzsteuer-ID
+
+Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: DE286113991
+
+
+---
+
+# Terms & Conditions
+
+> Privacy policy and terms for decision-labs.com (German legal text on the website).
+
+- HTML: https://decision-labs.com/terms
+- LLM: https://decision-labs.com/llm/terms.md
+
+This page contains German-language terms, privacy policy, and data protection information for SpacialDB UG (Decision Labs).
+
+For the complete legal text, use the HTML version at https://decision-labs.com/terms.
+
+Operator: SpacialDB UG, Chausseestr 105, 10115 Berlin, Germany.
+
+
+---
+
+# AI Agents for Earth Observation: Talk and BoF at BiDS 2025
+
+> Blog post by Shoaib Burq & M. Hassan.
+
+- HTML: https://decision-labs.com/blog/ai-agents-for-earth-observation
+- LLM: https://decision-labs.com/llm/blog/ai-agents-for-earth-observation.md
+
+- Published: 2026-06-21
+- Author: Shoaib Burq & M. Hassan
+- Category: Talk
+
+At [Big Data from Space 2025](https://www.bigdatafromspace2025.org/) (BiDS) in Riga, Latvia, we ran two sessions on agentic AI for Earth observation: a talk on how agents work in EO, and a Birds of a Feather (BoF) session to start community work on open specifications.
+
+## The talk
+
+**Agentic AI for Earth Observation** | S. Burq & M. Hassan, Decision Labs
+
+[Video: https://speakerdeck.com/player/467d9112eaa54f3ab1c180dfb849ef22](https://speakerdeck.com/player/467d9112eaa54f3ab1c180dfb849ef22)
+
+[View the full slide deck on Speaker Deck →](https://speakerdeck.com/sabman/ai-agents-for-earth-observation)
+
+### How agentic AI works: a primer for Earth observation
+
+The talk had four goals:
+
+- Introduce the concept of agentic AI
+- Explain how agents work
+- Provide examples of EO-related agents
+- Call to action for collaboration on open EO agents
+
+### Motivating example: EarthGPT.app
+
+![EarthGPT.app, a conversational Earth observation interface](https://decision-labs.com/images/blog/earthgpt.jpg)
+
+Our starting point was [EarthGPT.app](https://www.earthgpt.app/), a conversational interface for EO tasks. It shows what agents can do when they have access to a geospatial toolbox.
+
+### Introduction to agentic AI
+
+The talk introduced a vocabulary that is becoming standard in agentic systems:
+
+- **Tools**
+- **Agents**
+- **Workflows**
+- **Memory**
+- **Evals**
+
+![What is an agent? An LLM-driven planner that selects and sequences tools](https://decision-labs.com/images/blog/what-is-agent.png)
+
+An **agent** is an LLM-driven planner. Given a user goal, it decides which tools to call and in what order. The user does not wire each step manually.
+
+### Travel planner workflow
+
+To make this concrete before moving to EO, we used a simple travel example, the kind of question anyone in Riga might ask:
+
+*"I am in Riga today, can you suggest some places to visit and what should I wear?"*
+
+The agent's toolbox for this task:
+
+- **`geocode-destination()`**: get coordinates for the destination city
+- **`get-weather-info()`**: get weather information for the destination
+- **`find-attractions()`**: find attractions and points of interest
+- **`create-itinerary()`**: create a daily itinerary with optimized routes
+- **`generate-tour-summary()`**: generate a tour summary with recommendations
+
+![Travel planner workflow: geocode, weather, attractions, itinerary, summary](https://decision-labs.com/images/blog/travel-planner.gif)
+
+The LLM plans the workflow and calls the tools in the correct order: `geocode-destination()` → `get-weather-info()` → `find-attractions()` → `create-itinerary()` → `generate-tour-summary()`.
+
+The same pattern applies to EO: the user states a goal, the agent assembles the pipeline.
+
+### EO-related agent examples
+
+The deck lists agent types that map onto real EO work:
+
+- **Catalog Agent**: searches satellite archives (Copernicus, Sentinel, Landsat)
+- **Database Agent**: queries PostGIS and vector DBs
+- **File Agent**: loads GeoJSON, shapefiles, NetCDF datasets
+- **Imagery Agent**: processes SAR, multispectral, and hyperspectral data
+- **Forecasting Agent**: predicts weather, climate, and crop yield using ML/ARIMA
+- **Visualization Agent**: plots maps (Deck.gl, Leaflet, Mapbox, Kepler.gl)
+- **Vision Agent**: detects objects in images (cars, buildings, vessels, crops)
+
+A single user request can involve several agents working in sequence or in parallel.
+
+### Tools: the arms and sensors of an agent
+
+Tools are how agents interact with the world. In EO, they fall into four types:
+
+- **APIs**: geocoders, routing, catalog services
+- **Models**: vision, multimodal, forecasting
+- **Commands**: `gdal`, `ogr2ogr`, and other CLI geospatial tools
+- **Data access**: STAC catalogues, vector databases
+
+![geoai-sdk, an open toolkit for geospatial agent tools](https://decision-labs.com/images/blog/tools.png)
+
+We highlighted [geoai-sdk](https://github.com/decision-labs/geoai-sdk) as an open toolkit that wraps many of these capabilities into a consistent interface agents can call.
+
+### Multi-agent topology
+
+Complex EO tasks rarely involve a single agent. Multi-agent systems coordinate specialised agents (catalog search, imagery processing, vector analysis) under a planner or orchestrator.
+
+![Multi-agent topology for Earth observation workflows](https://decision-labs.com/images/blog/multiagent-topography.png)
+
+*Principle of building AI agents, [Sam Bhagwat](https://sam-bhagwat.github.io/)*
+
+### Case study: maritime and fisheries
+
+**Illegal fishing detection in the Mediterranean**
+
+User asks: *"Detect vessels fishing illegally in EU waters."*
+
+Tools:
+
+- **ESA Sentinel-1 SAR** → vessel detection
+- **AIS data integration** → match vessels with AIS signals
+- **Vector analysis tool** → cross-check with legal fishing zones
+- **Routing tool** → closest coast guard patrols
+
+**Output:** alerts and patrol coordination. The analyst gets actionable results, not a stack of intermediate files to interpret manually.
+
+Workflow: Sentinel-1 SAR → AIS integration → vector analysis → routing.
+
+### What we covered
+
+- What is an agent?
+- What are tools?
+- What is a workflow?
+- What is a multi-agent system?
+- What are examples of Earth Observation agents?
+
+### What's next
+
+![Example EO agent workflows](https://decision-labs.com/images/blog/example-workflows.png)
+
+Open problems and active areas of work:
+
+- **Context length**: fitting larger EO workflows and datasets into agent memory
+- **MCP, A2A, RAG, vector DBs**: standard protocols and retrieval over spatial data
+- **Multi-agent systems**: orchestration at scale across specialised EO agents
+
+## Birds of a Feather: Towards an Open Ecosystem
+
+Alongside the talk, we hosted a 60-minute BoF session, **AI Agents for Earth Observation Analytics: Towards an Open Ecosystem**, with EO practitioners, AI/ML researchers, data scientists, and developers from across the conference.
+
+The goal was a working session, not another presentation: start a community effort to develop specifications for EO AI agents, so tools, frameworks, and workflows can interoperate rather than each team building in isolation.
+
+### What we discussed
+
+Participants mapped the current landscape: what agent tools and frameworks people are already using, where interoperability breaks down between EO systems, and which specification gaps hurt most in practice.
+
+Four core specification areas emerged as priorities:
+
+- **Agent interface standards**: APIs, protocols, and data formats for how EO agents expose capabilities and exchange messages
+- **Tool integration specifications**: plugin architecture, capability discovery, and consistent wrappers around GDAL, STAC, vision models, and the rest of the EO stack
+- **Workflow definition standards**: how multi-step pipelines are described, executed, monitored, and recovered when something fails
+- **Metadata and testing**: agent capability descriptions, versioning, backward compatibility, and validation frameworks so implementations can be verified against the spec
+
+The technical discussion covered agent topologies (hierarchical, peer-to-peer, federated), communication patterns (message passing, event-driven, REST/GraphQL), and alignment with existing EO standards (STAC, OGC, OpenAPI) rather than reinventing what the community already has.
+
+### EO Agent Specifications Working Group
+
+The BoF proposed forming an **EO Agent Specifications Working Group** with a clear charter:
+
+| Area | Focus |
+|------|-------|
+| **Specification Development** | Core technical specs for agent interfaces, tools, and workflows |
+| **Community & Outreach** | Engagement, adoption, and contributor onboarding |
+| **Testing & Validation** | Compliance frameworks and reference implementations |
+| **Documentation & Education** | Guides, examples, and training resources |
+
+Governance would follow an open contribution model: a steering committee of key stakeholders, focused technical working groups for each spec area, and a community advisory board for broader input.
+
+### Roadmap
+
+The group outlined an initial deliverable timeline:
+
+- **Month 3**: Core specification framework
+- **Month 6**: Agent interface standards (first draft)
+- **Month 9**: Tool integration specifications
+- **Month 12**: Reference implementations
+- **Month 15**: Testing and validation suite
+
+Immediate next steps include setting up communication channels, a shared repository with contribution guidelines, and scheduling the first working group meeting.
+
+## Get involved
+
+If you attended the BoF in Riga or are reading this from elsewhere, we are building an open EO agent ecosystem and welcome collaborators.
+
+If you work on agentic EO systems, build tools that agents should call, or care about interoperability standards for spatial AI, [get in touch](/contact). Join our [newsletter](/newsletter) for working group updates.
+
+![Decision Labs newsletter QR code](https://decision-labs.com/images/blog/decision-labs-newsletter-qr-code.png)
+
+
+---
+
+# Announcing Decision Labs Edge
+
+> Blog post by Decision Labs.
+
+- HTML: https://decision-labs.com/blog/announcing-decision-labs-edge
+- LLM: https://decision-labs.com/llm/blog/announcing-decision-labs-edge.md
+
+- Published: 2026-07-23
+- Author: Decision Labs
+- Category: Blog
+
+We are launching [Decision Labs Edge](https://edge.decision-labs.com/): on-device AI weights and tooling for hardware that cannot rely on a stable cloud link.
+
+Field devices such as camera traps, buoys, drones, and sensor nodes often run with patchy uplinks, tight power budgets, and hard latency limits. Cloud round-trips fail when the network drops. On-device inference is how those systems act on telemetry and sensor streams where the data is collected.
+
+## What it is
+
+Decision Labs Edge converts and ships production [LiteRT](https://ai.google.dev/edge/litert) (`.tflite`) checkpoints for time-series forecasting, with geospatial perception models on the roadmap. One artifact is meant to run across CPU, GPU, and NPU targets on Android, iOS, Linux edge, Web, and embedded systems, without rebuilding a separate pipeline per platform.
+
+Available now in the [model store](https://edge.decision-labs.com/):
+
+- **Toto-2** edge checkpoints (from 4M up through larger field sizes)
+- **Chronos-2** (120M)
+- **TimesFM 2.5** (200M)
+
+Geospatial detection and segmentation weights (buildings, vehicles, ships, solar panels, land cover, and related classes) are listed as coming soon.
+
+## Who it is for
+
+Teams that need local decisions on equipment telemetry, environmental sensor networks, and (soon) overhead imagery: predictive maintenance, air and water sensing, and field perception where every watt and every second of latency counts.
+
+## Get started
+
+Browse models and use cases at [edge.decision-labs.com](https://edge.decision-labs.com/). If you need help with LiteRT integration or field rollout, the Edge site also links a one-hour support session with our team.
+
+Questions: [get in touch](/contact).
+
+
+---
+
+# Field Notes: Accra
+
+> Blog post by Decision Labs.
+
+- HTML: https://decision-labs.com/blog/field-notes-accra
+- LLM: https://decision-labs.com/llm/blog/field-notes-accra.md
+
+- Published: 2026-05-01
+- Author: Decision Labs
+- Category: Field Notes
+
+Alogboshie-Achimota sits on the northern edge of Accra, wedged between a main road and the Achimota forest reserve. From the air it reads as a dense patchwork of rooftops — corrugated zinc, tarpaulin, plywood, sheet metal — each structure pressed tight against the next.
+
+![Satellite view of Alogboshie settlement, Accra](https://decision-labs.com/images/blog/accra-settlement-overview.jpg)
+
+On the ground, the dominant housing unit is a single-room kiosk: metal sheet walls on a timber or steel frame, a corrugated zinc roof, a raised concrete plinth to keep out floodwater. Many have been standing for years, patched and re-patched as materials fail.
+
+![Blue corrugated zinc kiosk — a typical single-room dwelling in Alogboshie](https://decision-labs.com/images/blog/accra-zinc-kiosk.jpg)
+
+The gaps between structures are narrow — sometimes barely a shoulder's width. Shared eaves overlap, drainage channels run between foundations, and utility lines thread through the gaps. This density shapes every design decision: anything that works on the roof has to be installable without scaffold, without a crane, and without disturbing a neighbour's structure.
+
+![Narrow passage between homes, showing shared roof overhangs and open drainage channels](https://decision-labs.com/images/blog/accra-narrow-alley.jpg)
+
+Up close, the walls tell the full story of how these structures age. Timber planks swell, split, and rot from the bottom up as moisture wicks in during the rainy season. Gaps appear, get stuffed with whatever is to hand — plastic, fabric, offcuts — and eventually the whole face needs replacing. The wood in the image below has been there long enough to develop a particular blue-grey patina; the base is already gone.
+
+![Close-up of a heavily weathered timber wall, showing decay at the base and improvised repairs](https://decision-labs.com/images/blog/accra-timber-decay.jpg)
+
+## What the Market Holds
+
+One of the first things we wanted to know: what materials can someone actually buy within walking distance of the settlement, and at what price?
+
+The answer, it turns out, is quite a lot. Accra's building materials markets are dense and competitive. Within two kilometres of Alogboshie you can source sawn timber in multiple sections, corrugated zinc sheeting in various gauges, plastic sheet (used locally as budget waterproofing), wire mesh, nails, rope, and basic hand tools — all sold by the piece, at quantities a household can afford.
+
+![Team sourcing and pricing timber at a local building materials market near Alogboshie](https://decision-labs.com/images/blog/accra-market-timber-sourcing.jpg)
+
+The timber yard below is one of several operating in the area. Freshly sawn planks and battens are stacked and sold by length, priced per piece rather than per cubic metre — a small but important distinction for households working with irregular incomes and no bulk-purchasing power.
+
+![Timber yard near Alogboshie stocking sawn planks and battens for local construction](https://decision-labs.com/images/blog/accra-timber-yard.jpg)
+
+Plastic sheeting — typically sold in rolls — doubles as a roof underlayer, a temporary wall patch, and a floor cover. It is everywhere in the settlement. In the context of our interventions, it matters as a locally available proxy for the vapour barrier layer specified in the layered roof design.
+
+![Rolls of plastic sheeting and waterproofing materials available at a local market stall](https://decision-labs.com/images/blog/accra-waterproofing-materials.jpg)
+
+## The Upgraded Structure
+
+Scattered through the settlement are newer builds that hint at what residents aspire to when they have slightly more resources: fibre-cement panels on a steel or timber frame, a corrugated roof with a proper overhang, raised on concrete columns to improve drainage and ventilation at the base.
+
+![A newer fibre-cement panel structure in Alogboshie, raised on concrete columns with a corrugated metal roof](https://decision-labs.com/images/blog/accra-upgraded-structure.jpg)
+
+This typology is significant. It suggests the community already has a mental model of incremental improvement — adding a proper overhang, raising the floor, replacing metal sheet with a more durable panel — and that the materials and skills to build it exist locally. Our cooling interventions are designed to layer on top of this logic, not replace it.
+
+## Watch the Full Story
+
+The field documentation from Accra — settlement mapping, thermal surveys, community interviews, and the full material sourcing process — is captured in our Stage 2 submission video. It goes into considerably more detail on the household conditions and the rationale behind the interventions we proposed.
+
+[Video: https://www.youtube.com/embed/QEjREusF9Dk](https://www.youtube.com/embed/QEjREusF9Dk)
+
+For the broader project context — including the three cooling strategies, the decision framework, and results from all three cities — see the [Rethinking Roofs](/blog/rethinking-roofs) post.
+
+
+---
+
+# Building GeoAgents: Workshop at GeoAI 2026
+
+> Blog post by Shoaib Burq.
+
+- HTML: https://decision-labs.com/blog/geoai-2026-geoagents-workshop
+- LLM: https://decision-labs.com/llm/blog/geoai-2026-geoagents-workshop.md
+
+- Published: 2026-06-21
+- Author: Shoaib Burq
+- Category: Talk
+
+We attended [GeoAI 2026](https://geoaiconference.org/) in Ghent, Belgium (3 to 6 June 2026) and ran a pre-conference workshop on the afternoon of 3 June: **Building GeoAgents: A Hands-on Guide to Agent Protocols** (workshop W6).
+
+The conference theme was *GeoAI – Bridging AI and Geography for Science and Society*. Our session focused on agent protocols for geospatial systems: how to wire up UI, orchestration, and backend services in a way that different tools can work together.
+
+![GeoAI 2026 workshop session in Ghent](https://decision-labs.com/images/blog/geoai-2026-workshop-hero.jpg)
+
+[More photos from the workshop](https://photos.google.com/share/AF1QipOhyoBjeKbnSiOSXionqxe5HSWxRtAN4Qb791G8sMrtlMAL2_gYmIEcavLG86P0VQ?key=eTEyVXJCWVoteEtXNkFoYzBybHpzSGdRQm5ndlR3)
+
+## What we covered
+
+Agentic AI is showing up in more geospatial applications. The workshop looked at three protocol layers that are starting to appear in production-style setups:
+
+- **Agent-Governed UI (AG-UI)**: frontend patterns for human-in-the-loop workflows
+- **Agent-to-Agent (A2A)**: backend orchestration and communication between agents
+- **Model Context Protocol (MCP)**: state management and reproducibility for agent tools
+
+Examples drew on [EarthGPT.app](https://www.earthgpt.app/) and [Geobase](https://geobase.app/), both built with protocol-driven agent architectures.
+
+## Exercises
+
+Participants worked through a spiral of Colab notebooks and local apps in the [workshop repository](https://github.com/decision-labs/geoai-2026-practical-exercise):
+
+1. **Setup** (Exercise 0): API keys and Colab port map
+2. **Routing MCP** (Exercise 1): OpenRouteService tools over MCP
+3. **Agentic chat** (Exercises 2 to 3): Pydantic AI agents with AG-UI and map clients
+4. **Geocoding and routing** (Exercise 5): combined ORS MCP plus place-name routing
+5. **A2A orchestration** (Exercise 6): routing and weather agents behind an AG-UI orchestrator
+6. **Human-in-the-loop** (Exercise 7, optional): geospatial analysis with approval steps before drawing isochrones in chat
+
+![Human-in-the-loop isochrone workflow from Exercise 7](https://decision-labs.com/images/blog/geoai-2026-hitl.png)
+
+7. **Geobase demo** (Exercise 8): Kroo Bay similarity search with CLI agents and MapLibre
+
+Most exercises run in Colab with pre-configured environments. No local setup was required for the core path.
+
+![Workshop participants working through exercises](https://decision-labs.com/images/blog/geoai-2026-workshop-1.jpg)
+
+![Workshop room at GeoAI 2026](https://decision-labs.com/images/blog/geoai-2026-workshop-2.jpg)
+
+![Hands-on session in progress](https://decision-labs.com/images/blog/geoai-2026-workshop-3.jpg)
+
+## Materials
+
+Workshop code, notebooks, slide decks, and a glossary are in the GitHub repository:
+
+[github.com/decision-labs/geoai-2026-practical-exercise](https://github.com/decision-labs/geoai-2026-practical-exercise)
+
+Start with [Exercise 0](https://github.com/decision-labs/geoai-2026-practical-exercise/tree/main/00-workshop-setup) if you want to work through the notebooks on your own. The repo includes Colab badges for each exercise.
+
+## Related work
+
+This workshop followed work we presented at [BiDS 2025](/blog/ai-agents-for-earth-observation) on AI agents for Earth observation. GeoAI 2026 shifted the focus from EO agent types and specifications to the protocol stack needed to build and run them.
+
+Questions or feedback on the workshop materials: [get in touch](/contact).
+
+
+---
+
+# Rethinking Roofs: Cooling Homes in Informal Settlements with What Already Exists
+
+> Blog post by Decision Labs.
+
+- HTML: https://decision-labs.com/blog/rethinking-roofs
+- LLM: https://decision-labs.com/llm/blog/rethinking-roofs.md
+
+- Published: 2026-04-24
+- Author: Decision Labs
+- Category: Project
+
+In Kroo Bay, Freetown, 91% of homes have corrugated zinc or metal roofs. On a hot afternoon, those roofs turn living spaces into ovens — temperatures inside can exceed outdoor air temperatures by several degrees. The people most affected are women and young children, who spend the most time indoors.
+
+We entered the [Rethinking Roofs](https://sdinet.org/2025/12/rethinking-roofs/) global competition — organised by SDI (Shack/Slum Dwellers International) and IIED — with a simple premise: don't replace what people have. Work with it.
+
+[Video: https://www.youtube.com/embed/NwAcO32TnWk](https://www.youtube.com/embed/NwAcO32TnWk)
+
+## Stage 2 Submission
+
+[Video: https://www.youtube.com/embed/QEjREusF9Dk](https://www.youtube.com/embed/QEjREusF9Dk)
+
+## The Toolkit
+
+Together with architect Rayane Djaffafla, we designed three complementary strategies that communities can choose from based on their structure, ownership status, and available space.
+
+**Alt 1 — Layered Cooling Roof**
+
+A shading mat sits above the existing metal roof, held by ballast (no drilling, no damage). A 150–300mm ventilated air gap lets hot air escape before it radiates into the room below. Blocks 60–80% of direct solar load. Best for owner-occupied homes with solid structures. Cost: ~$750/dwelling.
+
+![Exploded view of the Layered Cooling Roof showing bamboo woven panels, timber frame, fiber cement board, and wire mesh over the existing corrugated metal roof](https://decision-labs.com/images/blog/alt1-layered-roof-exploded.png)
+
+**Alt 2 — Suspended Cooling Ceiling**
+
+A woven panel suspended below the metal roof creates a thermal buffer entirely inside the room. No work on the roof at all — ideal for renters or fragile structures where adding roof weight is a risk. Installed room by room. Cost: ~$450/dwelling.
+
+![Suspended Cooling Ceiling — woven panel suspended inside below the existing metal roof](https://decision-labs.com/images/blog/alt2-layered-ceiling.png)
+
+**Alt 3 — Detached Canopy**
+
+A community-owned shade structure for courtyards and shared spaces, anchored with gabions (wire mesh filled with local stone) — no foundations, no land title required. Can carry solar panels. Cost: ~$650 serving 3–6 dwellings.
+
+All three are lightweight, relocatable, and designed for incremental rollout so households can spread costs over time.
+
+## Choosing the Right Intervention
+
+A decision framework matches each household's context — structural capacity, tenure status, space type — to the right alternative. No field expertise required to use it.
+
+![Decision tree for selecting the right roof cooling intervention based on structure, tenure, and space type](https://decision-labs.com/images/blog/roof-diagnosis-decision-tree.png)
+
+## Climate Context
+
+The three cities were chosen to represent different climate stress profiles across sub-Saharan Africa. The charts below show annual distributions of dry bulb temperature, relative humidity, solar radiation, and wind speed — the four variables that drive how much heat a roof absorbs and how much it can shed.
+
+**Freetown, Sierra Leone** and **Accra, Ghana** present near-identical heat stress profiles. Both are hot-humid West African coastal cities: day temperatures clustered around 28–30°C year-round, humidity persistently in the 80–90% range, and strong solar radiation with almost no overnight relief. If a roof bakes in Freetown, it bakes the same way in Accra. The main difference is Accra has two distinct wet seasons and slightly more variable wind — which matters when you're relying on ventilation gaps to shed heat.
+
+![Climate profiles for Freetown, Sierra Leone — temperature, humidity, solar radiation, wind speed](https://decision-labs.com/images/blog/freetown-climate-profiles.png)
+
+![Climate profiles for Accra, Ghana](https://decision-labs.com/images/blog/accra-climate-profiles.png)
+
+**Addis Ababa, Ethiopia** is the contrasting case. Temperatures are cooler overall (median closer to 18°C) and humidity drops sharply — but solar radiation is actually *higher*, peaking above 1000 Wh/m², because the altitude means a thinner atmosphere and more intense sun. Wind is gustier and more variable. The result is a different kind of thermal problem: intense daytime solar gain followed by a cool night, rather than the relentless humid heat of West Africa.
+
+![Climate profiles for Addis Ababa, Ethiopia — cooler, drier, but with higher solar radiation intensity](https://decision-labs.com/images/blog/addis-ababa-climate-profiles.png)
+
+## Impact
+
+Climate simulations across three cities — Kroo Bay (Freetown), Alogboshie-Achimota (Accra), and Kirkos (Addis Ababa) — point to **3–5°C reductions in peak indoor temperature**. That gap is the difference between sleeping and not sleeping, between a child being able to study and not being able to.
+
+Beyond thermal comfort: the interventions also address fire risk (covering exposed metal edges), pest control (mesh vents block rodents and insects), and create visible value in roof infrastructure that shifts community behaviour around maintenance.
+
+## Decision Labs' Role
+
+Our contribution sat at the intersection of geomatics and systems design. We ran climate baseline analysis across all three cities using local weather data, used Geobase to process satellite and aerial imagery of each settlement, and modelled thermal performance with EnergyPlus to stress-test the temperature reduction claims before they went into the submission.
+
+We also built the decision framework above — the logic that matches a household's structural capacity, tenure, and space type to the right intervention — and documented it as a reusable toolkit that any community organiser or architect can apply without us in the room.
+
+For a closer look at the Accra site — housing typologies, local materials markets, and what the structures actually look like on the ground — see [Field Notes: Accra](/blog/field-notes-accra).
