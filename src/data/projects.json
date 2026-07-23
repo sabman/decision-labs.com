@@ -1,5 +1,18 @@
 [
   {
+    "id": "5",
+    "title": "Decision Labs Edge",
+    "description": "On-device AI for field hardware: LiteRT time-series and perception weights that run on cameras, buoys, drones, and sensor nodes without a cloud round-trip.",
+    "image": "https://via.placeholder.com/800x400",
+    "link": "https://edge.decision-labs.com/",
+    "date": "2026-07-23",
+    "metadata": {
+      "category": "AI/ML",
+      "client": "Decision Labs",
+      "technologies": ["LiteRT", "TFLite", "ONNX", "Time series"]
+    }
+  },
+  {
     "id": "1",
     "title": "Geobase",
     "description": "Geobase is a Supabase fork with PostGIS, vector/raster tile servers, and STAC integration. It provides developers with cloud-native geospatial infrastructure to build scalable applications.",

@@ -9,6 +9,7 @@ import geobaseImage from '../images/geobase-hero.png'
 import earthgptImage from '../images/earthgpt-hero.jpg'
 import verisatImage from '../images/verisat-heropng.png'
 import geoaiImage from '../images/geoai-hero.png'
+import edgeImage from '../images/edge-hero.png'
 
 // Map project IDs to images
 const projectImages = {
@@ -16,6 +17,7 @@ const projectImages = {
   '2': earthgptImage,
   '3': verisatImage,
   '4': geoaiImage,
+  '5': edgeImage,
 }
 
 // Work Card Component
