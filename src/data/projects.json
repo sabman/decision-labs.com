@@ -6,6 +6,7 @@
     "image": "https://via.placeholder.com/800x400",
     "link": "https://edge.decision-labs.com/",
     "date": "2026-07-23",
+    "featured": true,
     "metadata": {
       "category": "AI/ML",
       "client": "Decision Labs",

@@ -41,13 +41,16 @@ const WorkCard = ({ project, projectImage }) => {
   
   return (
     <div 
-      className="card card-primary work-card"
+      className={`card card-primary work-card${project.featured ? ' work-card-featured' : ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="work-card-content">
         <div className="work-card-text">
           <div className="card-body work-card-body">
+            {project.featured && (
+              <span className="work-card-badge">New</span>
+            )}
             <h2 className="work-card-title">{project.title}</h2>
             <p className="work-card-description">{project.description}</p>
           </div>
@@ -97,7 +100,12 @@ const WorkCard = ({ project, projectImage }) => {
 
 const WorkPage = ({ location }) => {
   const pathname = location?.pathname || ''
-  const projects = projectsData.sort((a, b) => new Date(b.date) - new Date(a.date))
+  const projects = [...projectsData].sort((a, b) => {
+    if (Boolean(a.featured) !== Boolean(b.featured)) {
+      return a.featured ? -1 : 1
+    }
+    return new Date(b.date) - new Date(a.date)
+  })
   const [textColor, setTextColor] = React.useState('black')
   const headerRef = React.useRef(null)
 

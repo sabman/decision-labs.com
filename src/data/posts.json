@@ -1,5 +1,20 @@
 [
   {
+    "id": "announcing-decision-labs-edge",
+    "title": "Announcing Decision Labs Edge",
+    "description": "On-device AI for field hardware: LiteRT time-series and perception weights that run on cameras, buoys, drones, and sensor nodes without a cloud round-trip.",
+    "image": "/images/blog/edge-hero.png",
+    "link": "/blog/announcing-decision-labs-edge",
+    "date": "2026-07-23",
+    "author": "Decision Labs",
+    "featured": true,
+    "linkType": "internal",
+    "metadata": {
+      "category": "Blog",
+      "readTime": "3 min read"
+    }
+  },
+  {
     "id": "wp-blog-decision-labs-0-1773679236000",
     "title": "The Real Cost of Random I/O in Spatial Queries",
     "description": "Plan flips are normal in a cost-based optimizer, until they are not. The recent Clerk incident put attention back on a painful failure mode: a query crossing into a much worse plan after statistics/cost assumptions shift, causing a database",
@@ -22,7 +37,7 @@
     "link": "/blog/rethinking-roofs",
     "date": "2026-04-24",
     "author": "Decision Labs",
-    "featured": true,
+    "featured": false,
     "linkType": "internal",
     "metadata": {
       "category": "Project",
@@ -37,7 +52,7 @@
     "link": "https://www.youtube.com/watch?v=-_mwkTTOAco",
     "date": "2026-02-24",
     "author": "Decision Labs",
-    "featured": true,
+    "featured": false,
     "metadata": {
       "category": "Podcast",
       "readTime": "Watch · 20 min"
@@ -51,7 +66,7 @@
     "link": "https://www.youtube.com/watch?v=-Pd_yV738mg",
     "date": "2024-01-25",
     "author": "Decision Labs",
-    "featured": true,
+    "featured": false,
     "metadata": {
       "category": "Talk",
       "readTime": "Watch"
