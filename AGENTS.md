@@ -62,3 +62,7 @@ When writing or editing copy for this site (blog posts, page text, descriptions,
 - **No sleazy overclaims.** Do not promise outcomes you cannot support, exaggerate impact, or use urgency tricks ("don't miss out", "game-changing", etc.).
 
 Match the tone of existing posts in `src/blog/` unless the user asks for something different.
+
+## Kronstadt copy-move reviewer
+
+`static/blog/kronstadt/` is a vendored copy of https://github.com/decision-labs/blog-sift-geotiff-viewer (local checkout often `~/Downloads/sift-demo`). Keep it in sync with that repo when the reviewer, image, match JSON, or `og.png` changes. `index.html` corresponds to `copy-move-reviewer.html`. Do not add `src/blog/kronstadt.md`; a markdown post with that slug overwrites this static page at build time. Canonical URL is https://decision-labs.com/blog/kronstadt/ (trailing slash required so relative asset fetches work).
