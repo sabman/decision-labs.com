@@ -142,8 +142,12 @@
     #own { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
     [hidden] { display: none !important; }
     #comparison { position: absolute; inset: 0; display: grid; place-items: center; padding: 28px; box-sizing: border-box; background: #0c0c0c; touch-action: pan-x pan-y; }
-    .comparison-frame { position: relative; width: min(100%, 1120px); height: min(100%, 760px); overflow: hidden; border: 1px solid var(--border-strong); border-radius: 8px; background: #000; box-shadow: 0 16px 44px rgba(0, 0, 0, .28); }
-    .comparison-zoom { position: absolute; inset: 0; transform: scale(var(--comparison-zoom, 1)); transform-origin: center; pointer-events: none; }
+    .comparison-frame { position: relative; width: min(100%, 1120px); height: min(100%, 760px); overflow: hidden; border: 1px solid var(--border-strong); border-radius: 8px; background: #000; box-shadow: 0 16px 44px rgba(0, 0, 0, .28); touch-action: none; user-select: none; }
+    .comparison-frame.can-pan { cursor: grab; }
+    .comparison-frame.on-handle,
+    .comparison-frame.cutting { cursor: ew-resize; }
+    .comparison-frame.panning { cursor: grabbing; }
+    .comparison-zoom { position: absolute; inset: 0; transform: translate(var(--comparison-pan-x, 0px), var(--comparison-pan-y, 0px)) scale(var(--comparison-zoom, 1)); transform-origin: center; pointer-events: none; }
     .comparison-clip { position: absolute; inset: 0; overflow: hidden; clip-path: inset(0 calc(100% - var(--comparison-position, 50%)) 0 0); pointer-events: none; }
     .comparison-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
     .comparison-divider { position: absolute; top: 0; bottom: 0; left: var(--comparison-position, 50%); width: 2px; transform: translateX(-1px); background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, .35); pointer-events: none; }
@@ -151,7 +155,7 @@
     .comparison-caption { position: absolute; top: 12px; z-index: 1; padding: 5px 8px; border-radius: 4px; background: rgba(0, 0, 0, .72); color: #fff; font-size: 12px; font-weight: 650; letter-spacing: .02em; pointer-events: none; }
     .comparison-caption.test { left: 12px; }
     .comparison-caption.esri { right: 12px; }
-    #comparison-slider { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+    #comparison-slider { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none; }
     #comparison-help { position: absolute; bottom: 12px; left: 50%; z-index: 3; transform: translateX(-50%); padding: 5px 8px; border-radius: 4px; background: rgba(0, 0, 0, .72); color: #eee; font-size: 12px; pointer-events: none; white-space: nowrap; }
     .comparison-zoom-controls { position: absolute; z-index: 4; left: 12px; bottom: 12px; display: flex; gap: 4px; padding: 4px; border-radius: 8px; background: rgba(19, 19, 19, .92); border: 1px solid var(--border); }
     .comparison-zoom-controls button { min-width: 36px; padding: 5px 8px; font-size: 12px; font-variant-numeric: tabular-nums; line-height: 1.2; }
@@ -380,6 +384,8 @@
     const pointers = new Map();
     let pinch = null;
     const MIN_SCALE = 0.02, MAX_SCALE = 32;
+    const COMPARISON_HANDLE_PX = 18;
+    let comparisonZoomLevel = 1, comparisonPanX = 0, comparisonPanY = 0, comparisonDrag = null;
 
     let ownImage = null, ownReport = null;
     imageInput.addEventListener('change', () => {
@@ -412,6 +418,49 @@
     document.querySelector('#compare-imagery').addEventListener('change', event => setComparisonOpen(event.target.checked));
     comparisonSlider.addEventListener('input', () => {
       comparisonFrame.style.setProperty('--comparison-position', `${comparisonSlider.value}%`);
+    });
+    comparisonFrame.addEventListener('pointerdown', event => {
+      if (event.button !== 0 || event.target.closest('.comparison-zoom-controls')) return;
+      const onHandle = pointerOnComparisonHandle(event.clientX);
+      if (!onHandle && comparisonZoomLevel <= 1) return;
+      comparisonDrag = {
+        mode: onHandle ? 'cut' : 'pan',
+        pointerId: event.pointerId,
+        x: event.clientX,
+        y: event.clientY,
+        originX: comparisonPanX,
+        originY: comparisonPanY
+      };
+      comparisonFrame.classList.toggle('cutting', onHandle);
+      comparisonFrame.classList.toggle('panning', !onHandle);
+      comparisonFrame.classList.toggle('on-handle', onHandle);
+      try { comparisonFrame.setPointerCapture(event.pointerId); } catch (error) {}
+      if (onHandle) setComparisonCut(event.clientX);
+    });
+    comparisonFrame.addEventListener('pointermove', event => {
+      if (comparisonDrag && comparisonDrag.pointerId === event.pointerId) {
+        if (comparisonDrag.mode === 'cut') setComparisonCut(event.clientX);
+        else {
+          const next = clampComparisonPan(
+            comparisonDrag.originX + (event.clientX - comparisonDrag.x),
+            comparisonDrag.originY + (event.clientY - comparisonDrag.y)
+          );
+          comparisonPanX = next.x;
+          comparisonPanY = next.y;
+          applyComparisonView();
+        }
+        return;
+      }
+      if (event.target.closest('.comparison-zoom-controls')) {
+        comparisonFrame.classList.remove('on-handle');
+        return;
+      }
+      comparisonFrame.classList.toggle('on-handle', pointerOnComparisonHandle(event.clientX));
+    });
+    comparisonFrame.addEventListener('pointerup', endComparisonDrag);
+    comparisonFrame.addEventListener('pointercancel', endComparisonDrag);
+    comparisonFrame.addEventListener('pointerleave', () => {
+      if (!comparisonDrag) comparisonFrame.classList.remove('on-handle');
     });
     document.querySelector('.comparison-zoom-controls').addEventListener('click', event => {
       const button = event.target.closest('button[data-zoom]');
@@ -489,10 +538,60 @@
       else if (event.key === '0') { event.preventDefault(); fitView(); }
       else if (event.key === '1') { event.preventDefault(); zoomTo(1); }
     });
-    window.addEventListener('resize', () => { if (viewFitted) fitView({ resize: true }); });
+    window.addEventListener('resize', () => {
+      if (viewFitted) fitView({ resize: true });
+      const next = clampComparisonPan(comparisonPanX, comparisonPanY);
+      comparisonPanX = next.x;
+      comparisonPanY = next.y;
+      applyComparisonView();
+    });
 
+    function applyComparisonView() {
+      comparisonFrame.style.setProperty('--comparison-zoom', String(comparisonZoomLevel));
+      comparisonFrame.style.setProperty('--comparison-pan-x', `${comparisonPanX}px`);
+      comparisonFrame.style.setProperty('--comparison-pan-y', `${comparisonPanY}px`);
+      comparisonFrame.classList.toggle('can-pan', comparisonZoomLevel > 1);
+    }
+    function comparisonPanLimit() {
+      const overflow = (comparisonZoomLevel - 1) / 2;
+      return {
+        x: overflow * comparisonFrame.clientWidth,
+        y: overflow * comparisonFrame.clientHeight
+      };
+    }
+    function clampComparisonPan(x, y) {
+      const limit = comparisonPanLimit();
+      return {
+        x: Math.min(limit.x, Math.max(-limit.x, x)),
+        y: Math.min(limit.y, Math.max(-limit.y, y))
+      };
+    }
+    function dividerClientX() {
+      const rect = comparisonFrame.getBoundingClientRect();
+      return rect.left + comparisonFrame.clientLeft + (Number(comparisonSlider.value) / 100) * comparisonFrame.clientWidth;
+    }
+    function pointerOnComparisonHandle(clientX) {
+      return Math.abs(clientX - dividerClientX()) <= COMPARISON_HANDLE_PX;
+    }
+    function setComparisonCut(clientX) {
+      const width = comparisonFrame.clientWidth || 1;
+      const x = clientX - comparisonFrame.getBoundingClientRect().left - comparisonFrame.clientLeft;
+      const percent = Math.min(100, Math.max(0, (x / width) * 100));
+      comparisonSlider.value = String(percent);
+      comparisonFrame.style.setProperty('--comparison-position', `${comparisonSlider.value}%`);
+    }
+    function endComparisonDrag(event) {
+      if (!comparisonDrag || comparisonDrag.pointerId !== event.pointerId) return;
+      comparisonDrag = null;
+      comparisonFrame.classList.remove('panning', 'cutting');
+      comparisonFrame.classList.toggle('on-handle', pointerOnComparisonHandle(event.clientX));
+      try { comparisonFrame.releasePointerCapture(event.pointerId); } catch (error) {}
+    }
     function setComparisonZoom(level) {
-      comparisonFrame.style.setProperty('--comparison-zoom', String(level));
+      comparisonZoomLevel = level;
+      comparisonPanX = 0;
+      comparisonPanY = 0;
+      applyComparisonView();
       document.querySelectorAll('.comparison-zoom-controls button').forEach(button => {
         const active = Number(button.dataset.zoom) === level;
         button.classList.toggle('active', active);
