@@ -8,19 +8,19 @@
     Link-preview origin. og:url, og:image, and twitter:image use the canonical page.
     https://decision-labs.com/blog/kronstadt/
   -->
-  <meta name="description" content="Analysis of Deceptive Manipulation of Satellite Imagery. Yle reported on 17 Aug 2026 that Yandex Maps copied forest over a Russian missile battery near Kronstadt.">
+  <meta name="description" content="Yle reported on 17 August 2026 that Yandex Maps copied forest over a Russian missile battery near Kronstadt. We later tested their image with automated checks.">
   <meta property="og:title" content="Hiding military assets on Yandex maps">
-  <meta property="og:description" content="Analysis of Deceptive Manipulation of Satellite Imagery. Yle reported on 17 Aug 2026 that Yandex Maps copied forest over a Russian missile battery near Kronstadt.">
+  <meta property="og:description" content="Yle reported on 17 August 2026 that Yandex Maps copied forest over a Russian missile battery near Kronstadt. We later tested their image with automated checks.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://decision-labs.com/blog/kronstadt/">
   <meta property="og:image" content="https://decision-labs.com/blog/kronstadt/og.gif">
   <meta property="og:image:type" content="image/gif">
   <meta property="og:image:width" content="720">
   <meta property="og:image:height" content="405">
-  <meta property="og:image:alt" content="Hiding military assets on Yandex maps. Analysis of Deceptive Manipulation of Satellite Imagery.">
+  <meta property="og:image:alt" content="Hiding military assets on Yandex maps. Reported by Yle, 17 August 2026.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hiding military assets on Yandex maps">
-  <meta name="twitter:description" content="Analysis of Deceptive Manipulation of Satellite Imagery. Yle reported on 17 Aug 2026 that Yandex Maps copied forest over a Russian missile battery near Kronstadt.">
+  <meta name="twitter:description" content="Yle reported on 17 August 2026 that Yandex Maps copied forest over a Russian missile battery near Kronstadt. We later tested their image with automated checks.">
   <meta name="twitter:image" content="https://decision-labs.com/blog/kronstadt/og.gif">
   <style>
     :root {
@@ -165,7 +165,7 @@
     <div class="header-row">
       <div>
         <h1>Hiding military assets on Yandex maps</h1>
-        <p>Analysis of Deceptive Manipulation of Satellite Imagery</p>
+        <p>Reported by Yle, 17 August 2026</p>
       </div>
       <div class="header-links">
       <a class="about" href="https://decision-labs.com" target="_blank" rel="noopener noreferrer">Decision Labs</a>
@@ -189,8 +189,8 @@
     <aside>
       <section id="intro">
         <img src="https://img.img-cdn.yle.fi/crop_fill,w_767,h_461,dpr_2/f_auto/39-16911796a7ecf6a69849/1786695758" alt="Bal coastal-missile launcher on an eight-wheel truck at a parade in Kronstadt">
-        <h2>Kronstadt copy–move</h2>
-        <p>Yle reported that Yandex Maps hid a Russian missile battery near Kronstadt by copying forest over the site in a satellite image. The vehicle above is a Bal coastal-missile launcher, the kind of system kept at that battery. <a href="https://yle.fi/a/74-20240624" target="_blank" rel="noopener noreferrer">Read the Yle story</a>.</p>
+        <h2>Yle's report</h2>
+        <p>On 17 August 2026, Yle showed that Yandex Maps hid a Russian missile battery near Kronstadt by copying forest over the site in a satellite image. The vehicle above is a Bal coastal-missile launcher, the kind of system kept at that battery. <a href="https://yle.fi/a/74-20240624" target="_blank" rel="noopener noreferrer">Read the Yle story</a>.</p>
         <p class="credit">Photo: Anton Vaganov / Reuters, via Yle. Navy Day parade, Kronstadt, 30 July 2017.</p>
       </section>
       <section id="review" hidden>
@@ -241,7 +241,7 @@
               </svg>
         </a>
       <div id="empty">
-        <p>Load the example to see where forest was copied over the battery.</p>
+        <p>Load the example to see the copied forest Yle reported.</p>
         <p>The reviewer runs entirely in your browser.</p>
         <button id="load-example" type="button">Load example</button>
         <p id="example-error" hidden></p>
@@ -273,13 +273,10 @@
         <figure class="match-detail-card" id="match-detail-destination-card"><canvas id="match-detail-destination" width="220" height="220"></canvas><figcaption>Destination point</figcaption></figure>
       </section>
     </section>
-    <aside id="story" aria-label="About this analysis">
-      <h2>The reported edit</h2>
-      <p>Yle reported on 17 August 2026 that Yandex Maps covered a missile battery near Kronstadt by copying forest from elsewhere in the same satellite image. This analysis is based on that story. <a href="https://yle.fi/a/74-20240624" target="_blank" rel="noopener noreferrer">Read the Yle report</a>.</p>
-      <p>The same texture appears twice, shifted. Tie-point matching looks for repeated SIFT-style correspondences that share one translation. Those repeated patterns are drawn as candidate box pairs. A box pair is a candidate you can show or hide in the list.</p>
-
-      <h2>Detector output</h2>
-      <p>VeriSat’s AI detectors did not pick up this forgery. The edit does not come from a generative model. It is a simple hand-crafted manipulation: pixels copied from one place in the image to another.</p>
+    <aside id="story" aria-label="Yle's report">
+      <p>On 17 August 2026, <a href="https://yle.fi/a/74-20240624" target="_blank" rel="noopener noreferrer">Yle</a> reported that Yandex Maps covered a missile battery near Kronstadt by copying forest from elsewhere in the same satellite image. Their story showed the edit.</p>
+      <p>We took images from Yandex and ran automated checks on them. This interactive site shows how those checks work, and why checks built for AI manipulation do not catch this kind of edit.</p>
+      <p>Our fake-detection tools are built for deepfakes and other generative-AI manipulations. This was a different kind of forgery, a hand-copied patch, so those detectors did not flag it.</p>
       <figure>
         <a href="images/verisat-nfa-vit.jpeg" target="_blank" rel="noopener noreferrer">
           <img src="images/verisat-nfa-vit.jpeg" width="1126" height="512" alt="NFA ViT output. Satellite forest on the left, with a red mask over water at the upper left, beside a heatmap scaled from 0 to 1. The heatmap is hot over that same corner and cold blue across the forest.">
@@ -293,8 +290,7 @@
         <figcaption>FFT detector. A tiled overlay colors the same scene on a scale from real (blue, 0) to fake (red, 1). The tiles stay toward real. None of the forest is marked as a clear fake.</figcaption>
       </figure>
 
-      <h2>Tie-point boxes</h2>
-      <p>A tie-point algorithm was used instead, to see the repeated patterns. Tie points are correspondences that share one translation, and that shared shift is how the repeated forest patch was found. The interactive demo shows that result: the box overlay you can toggle on the main image.</p>
+      <p>Tie-point matching shows the repeat. It finds correspondences that share one translation: the same patch, shifted once. The box overlay in the demo is that result.</p>
       <figure>
         <a href="images/tiepoints-algo.png" target="_blank" rel="noopener noreferrer">
           <img src="images/tiepoints-algo.png" width="3582" height="1812" alt="Tie-point view of satellite forest. Orange circles mark matched spots, and lines join each source point to a destination point in the same direction. A close-up compares one source point with its destination point.">
@@ -302,8 +298,7 @@
         <figcaption>Tie points on the forest. Orange circles mark matched spots, and lines join each source point to its destination. The lines share one direction, the shift that repeats the patch. A close-up compares one source point with its destination.</figcaption>
       </figure>
 
-      <h2>Embeddings of similar features</h2>
-      <p><a href="https://geobase.app/blog/geoembeddings-private-beta" target="_blank" rel="noopener noreferrer">GeoEmbeddings</a> can also match similar features. In the map below, colored squares mark patches that match one another, drawn on the same forest. One of those patches is outlined in white.</p>
+      <p>Embeddings are the other automated method that shows it. In <a href="https://geobase.app/blog/geoembeddings-private-beta" target="_blank" rel="noopener noreferrer">GeoEmbeddings</a>, patches of this forest that resemble one another are marked on the same map, as colored squares, with one of them outlined in white.</p>
       <figure>
         <a href="images/embeddings-repeating.jpeg" target="_blank" rel="noopener noreferrer">
           <img src="images/embeddings-repeating.jpeg" width="3360" height="1969" alt="GeoEmbeddings screen. A satellite map of forest with green and yellow squares and one white outlined box, showing embeddings of repeating features.">
@@ -311,8 +306,7 @@
         <figcaption>Embeddings of repeating features. Green and yellow squares, and one white box, are plotted on the forest in GeoEmbeddings.</figcaption>
       </figure>
 
-      <h2>Decision Labs</h2>
-      <p><a href="https://decision-labs.com" target="_blank" rel="noopener noreferrer">Decision Labs</a> builds tooling in partnership with <a href="https://vertical52.org" target="_blank" rel="noopener noreferrer">Vertical52</a> for investigative teams. That work includes the ESA-funded <a href="https://verisat.ai" target="_blank" rel="noopener noreferrer">VeriSat</a> project.</p>
+      <p>The tools behind these checks were built at <a href="https://decision-labs.com" target="_blank" rel="noopener noreferrer">Decision Labs</a>, in partnership with <a href="https://vertical52.org" target="_blank" rel="noopener noreferrer">Vertical52</a>. The detectors in the first two figures are from the ESA-funded <a href="https://verisat.ai" target="_blank" rel="noopener noreferrer">VeriSat</a> project.</p>
     </aside>
   </main>
   <script>
