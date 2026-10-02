@@ -1,0 +1,40 @@
+# Decision Labs
+
+> Decision Labs is a consultancy and product studio in decision science, AI/ML, and geospatial infrastructure. We build Geobase, EarthGPT, Verisat.ai, and GeoAI.js, and work with enterprise and government clients worldwide.
+
+SpacialDB UG (Decision Labs) · Berlin, Germany · team@decision-labs.com · https://decision-labs.com
+
+## Pages
+
+- [Home](https://decision-labs.com/llm/index.md): Company overview, featured content, and key links
+- [About](https://decision-labs.com/llm/about.md): Mission and ML consulting process
+- [Work](https://decision-labs.com/llm/work.md): Geobase, EarthGPT, Verisat.ai, GeoAI.js, and other products
+- [Customers](https://decision-labs.com/llm/customers.md): Enterprise and government customers including Morgan Stanley, Hugging Face, ESA, Naver
+- [Contact](https://decision-labs.com/llm/contact.md): Email, booking link, and social channels
+- [Blog](https://decision-labs.com/llm/blog.md): Index of blog posts, talks, and external media
+- [Newsletter](https://decision-labs.com/llm/newsletter.md): Monthly newsletter signup and description
+- [Feed](https://decision-labs.com/llm/feed.md): Combined content feed and RSS pointer
+- [Impressum](https://decision-labs.com/llm/impressum.md): German legal imprint for SpacialDB UG
+- [Terms & Conditions](https://decision-labs.com/llm/terms.md): Terms and privacy summary with link to full legal text
+
+## Blog
+
+- [Blog index](https://decision-labs.com/llm/blog.md): All posts, talks, podcasts, and external links
+- [AI Agents for Earth Observation: Talk and BoF at BiDS 2025](https://decision-labs.com/llm/blog/ai-agents-for-earth-observation.md): Talk
+- [Announcing Decision Labs Edge](https://decision-labs.com/llm/blog/announcing-decision-labs-edge.md): Blog
+- [Field Notes: Accra](https://decision-labs.com/llm/blog/field-notes-accra.md): Field Notes
+- [Building GeoAgents: Workshop at GeoAI 2026](https://decision-labs.com/llm/blog/geoai-2026-geoagents-workshop.md): Talk
+- [Rethinking Roofs: Cooling Homes in Informal Settlements with What Already Exists](https://decision-labs.com/llm/blog/rethinking-roofs.md): Project
+
+## Optional
+
+- [Impressum](https://decision-labs.com/llm/impressum.md): German legal imprint (SpacialDB UG)
+- [Terms & privacy](https://decision-labs.com/llm/terms.md): Terms summary; full legal text on the website
+
+## Full export
+
+- [llms-full.txt](https://decision-labs.com/llms-full.txt): Complete markdown export of all LLM pages above
+
+## HTML sitemap
+
+- [sitemap.xml](https://decision-labs.com/sitemap.xml): Machine-readable sitemap including HTML and LLM URLs
