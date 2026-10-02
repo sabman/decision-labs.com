@@ -77,6 +77,16 @@
     #story figure { margin: 4px 0 18px; }
     #story figure img, #story figure video { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--border); background: #000; }
     #story figcaption { margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    #story .method-label { margin: 20px 0 4px; color: var(--muted); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+    #story #method { margin: 0 0 8px; }
+    #story #method summary { display: flex; align-items: center; gap: 8px; padding: 2px 0 8px; color: var(--faint); font-size: 13px; line-height: 1.45; cursor: pointer; list-style: none; }
+    #story #method summary::-webkit-details-marker { display: none; }
+    #story #method summary::marker { content: ""; }
+    #story #method summary::before { content: ""; width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 5px solid var(--green); flex: 0 0 auto; transform-origin: 40% 50%; transition: transform 160ms ease; }
+    #story #method[open] > summary::before { transform: rotate(90deg); }
+    #story #method summary:hover { color: var(--green-soft); }
+    #story #method summary:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 2px; }
+    #story #method .method-body { padding: 2px 0 4px 13px; border-left: 1px solid var(--border); }
     #intro, #review { overflow-x: hidden; overflow-y: auto; min-height: 0; min-width: 0; box-sizing: border-box; }
     #intro { flex: 1; }
     #review:not([hidden]) { flex: 1; }
@@ -131,10 +141,11 @@
     #add-toggle { width: 100%; margin-top: 16px; }
     #own { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
     [hidden] { display: none !important; }
-    #comparison { position: absolute; inset: 0; display: grid; place-items: center; padding: 28px; box-sizing: border-box; background: #0c0c0c; }
+    #comparison { position: absolute; inset: 0; display: grid; place-items: center; padding: 28px; box-sizing: border-box; background: #0c0c0c; touch-action: pan-x pan-y; }
     .comparison-frame { position: relative; width: min(100%, 1120px); height: min(100%, 760px); overflow: hidden; border: 1px solid var(--border-strong); border-radius: 8px; background: #000; box-shadow: 0 16px 44px rgba(0, 0, 0, .28); }
+    .comparison-zoom { position: absolute; inset: 0; transform: scale(var(--comparison-zoom, 1)); transform-origin: center; pointer-events: none; }
+    .comparison-clip { position: absolute; inset: 0; overflow: hidden; clip-path: inset(0 calc(100% - var(--comparison-position, 50%)) 0 0); pointer-events: none; }
     .comparison-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
-    #comparison-test { clip-path: inset(0 calc(100% - var(--comparison-position, 50%)) 0 0); }
     .comparison-divider { position: absolute; top: 0; bottom: 0; left: var(--comparison-position, 50%); width: 2px; transform: translateX(-1px); background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, .35); pointer-events: none; }
     .comparison-divider::after { content: "↔"; position: absolute; top: 50%; left: 50%; display: grid; place-items: center; width: 34px; height: 34px; transform: translate(-50%, -50%); border-radius: 50%; background: #fff; color: #111; font-size: 17px; font-weight: 700; box-shadow: 0 1px 5px rgba(0, 0, 0, .5); }
     .comparison-caption { position: absolute; top: 12px; z-index: 1; padding: 5px 8px; border-radius: 4px; background: rgba(0, 0, 0, .72); color: #fff; font-size: 12px; font-weight: 650; letter-spacing: .02em; pointer-events: none; }
@@ -142,6 +153,10 @@
     .comparison-caption.esri { right: 12px; }
     #comparison-slider { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
     #comparison-help { position: absolute; bottom: 12px; left: 50%; z-index: 3; transform: translateX(-50%); padding: 5px 8px; border-radius: 4px; background: rgba(0, 0, 0, .72); color: #eee; font-size: 12px; pointer-events: none; white-space: nowrap; }
+    .comparison-zoom-controls { position: absolute; z-index: 4; left: 12px; bottom: 12px; display: flex; gap: 4px; padding: 4px; border-radius: 8px; background: rgba(19, 19, 19, .92); border: 1px solid var(--border); }
+    .comparison-zoom-controls button { min-width: 36px; padding: 5px 8px; font-size: 12px; font-variant-numeric: tabular-nums; line-height: 1.2; }
+    .comparison-zoom-controls button.active,
+    .comparison-zoom-controls button.active:hover { background: var(--green-deep); border-color: var(--green-deep); color: #fff; }
     #match-detail { position: absolute; z-index: 3; top: 18px; left: 50%; display: flex; gap: 10px; transform: translateX(-50%); padding: 10px; border: 1px solid var(--border-strong); border-radius: 9px; background: rgba(19, 19, 19, .95); box-shadow: 0 12px 34px rgba(0, 0, 0, .42); }
     .match-detail-card { margin: 0; border: 2px solid var(--detail-color, var(--green)); border-radius: 4px; overflow: hidden; background: #000; }
     .match-detail-card canvas { position: static; display: block; width: 220px; height: 220px; transform: none; background: #000; image-rendering: pixelated; }
@@ -158,6 +173,11 @@
       .powered { top: 12px; bottom: auto; }
     }
     #stage:has(#comparison:not([hidden])) .powered { top: auto; bottom: 64px; }
+    @media (max-width: 1100px) {
+      #comparison { padding-bottom: 72px; }
+      #comparison-help { left: auto; right: 12px; transform: none; }
+      #stage:has(#comparison:not([hidden])) .powered { bottom: 14px; }
+    }
   </style>
 </head>
 <body>
@@ -251,13 +271,24 @@
       </div>
       <section id="comparison" hidden aria-label="Imagery comparison">
         <div class="comparison-frame" id="comparison-frame">
-          <img class="comparison-image" src="esri_z17.png" alt="Esri imagery at zoom level 17">
-          <img class="comparison-image" id="comparison-test" src="test.png" alt="Test imagery">
+          <div class="comparison-zoom">
+            <img class="comparison-image" src="esri_z17.png" alt="Esri imagery at zoom level 17">
+          </div>
+          <div class="comparison-clip" id="comparison-test">
+            <div class="comparison-zoom">
+              <img class="comparison-image" src="test.png" alt="Test imagery">
+            </div>
+          </div>
           <span class="comparison-caption test">Yandex Maps</span>
           <span class="comparison-caption esri">Esri Maps</span>
           <span class="comparison-divider" aria-hidden="true"></span>
           <input id="comparison-slider" type="range" min="0" max="100" value="50" aria-label="Reveal test image over Esri imagery">
           <span id="comparison-help" aria-hidden="true">Drag to compare</span>
+          <div class="comparison-zoom-controls" role="group" aria-label="Comparison zoom">
+            <button type="button" data-zoom="1" class="active" aria-pressed="true">1×</button>
+            <button type="button" data-zoom="2" aria-pressed="false">2×</button>
+            <button type="button" data-zoom="4" aria-pressed="false">4×</button>
+          </div>
         </div>
       </section>
       <div class="view-tools" id="view-tools">
@@ -306,7 +337,19 @@
         <figcaption>Embeddings of repeating features. Green and yellow squares, and one white box, are plotted on the forest in GeoEmbeddings.</figcaption>
       </figure>
 
-      <p>The tools behind these checks were built at <a href="https://decision-labs.com" target="_blank" rel="noopener noreferrer">Decision Labs</a>, in partnership with <a href="https://vertical52.org" target="_blank" rel="noopener noreferrer">Vertical52</a>. The detectors in the first two figures are from the ESA-funded <a href="https://verisat.ai" target="_blank" rel="noopener noreferrer">VeriSat</a> project.</p>
+      <p>The tools behind these checks were built at <a href="https://decision-labs.com" target="_blank" rel="noopener noreferrer">Decision Labs</a>, in partnership with <a href="https://vertical52.org" target="_blank" rel="noopener noreferrer">Vertical52</a>. The detectors in the first two figures are from the <a href="https://verisat.ai" target="_blank" rel="noopener noreferrer">VeriSat</a> project.</p>
+      <p class="method-label">Technical description</p>
+      <details id="method">
+        <summary>How we did this?</summary>
+        <div class="method-body">
+          <p>The clever part is not that two patches look alike. Forest and clouds do that all over a satellite image. A copy-move is a block lifted and pasted with one shift, so many matches share almost the same offset in x and y. The detector looks for that shared shift.</p>
+          <p>SIFT finds distinctive spots in the image, after a contrast boost so the forest is not one flat texture. Each spot is matched against the other spots in the same image. A match is kept only when the best one is clearly better than the second (Lowe’s ratio, 0.72), and the two spots are at least 80 pixels apart, so a feature is not paired with itself.</p>
+          <p>For every pair the shift is destination minus source. Pairs that share nearly the same shift are grouped. That grouping allows about 10 pixels of slack, and a group needs at least 7 matches.</p>
+          <p>A second grouping checks that those source points actually sit together, within about 110 pixels. Otherwise one shift could glue unrelated parts of the image into a single huge box.</p>
+          <p>Each of those groups is one candidate: one box pair. Box A is the min and max of the source points, box B is the min and max of the destination points, each padded by 20 pixels and clipped to the image. The label A or B is just the direction of the match. It does not decide which patch was copied from the other.</p>
+          <p>On this image that produces three candidates. The boxes in the demo are those padded rectangles.</p>
+        </div>
+      </details>
     </aside>
   </main>
   <script>
@@ -370,6 +413,14 @@
     comparisonSlider.addEventListener('input', () => {
       comparisonFrame.style.setProperty('--comparison-position', `${comparisonSlider.value}%`);
     });
+    document.querySelector('.comparison-zoom-controls').addEventListener('click', event => {
+      const button = event.target.closest('button[data-zoom]');
+      if (!button) return;
+      setComparisonZoom(Number(button.dataset.zoom));
+    });
+    comparison.addEventListener('wheel', event => {
+      if (!comparison.hidden) event.preventDefault();
+    }, { passive: false });
     document.querySelector('#add-toggle').onclick = () => {
       const own = document.querySelector('#own');
       own.hidden = !own.hidden;
@@ -424,7 +475,15 @@
         if (event.key === 'Escape') helpDialog.close();
         return;
       }
-      if (!viewReady() || event.target.closest('input, select, textarea')) return;
+      if (event.target.closest('input, select, textarea')) return;
+      if (!comparison.hidden) {
+        if (event.key === '1' || event.key === '2' || event.key === '4') {
+          event.preventDefault();
+          setComparisonZoom(Number(event.key));
+        }
+        return;
+      }
+      if (!viewReady()) return;
       if (event.key === '+' || event.key === '=') { event.preventDefault(); zoomBy(1.25); }
       else if (event.key === '-' || event.key === '_') { event.preventDefault(); zoomBy(1 / 1.25); }
       else if (event.key === '0') { event.preventDefault(); fitView(); }
@@ -432,9 +491,18 @@
     });
     window.addEventListener('resize', () => { if (viewFitted) fitView({ resize: true }); });
 
+    function setComparisonZoom(level) {
+      comparisonFrame.style.setProperty('--comparison-zoom', String(level));
+      document.querySelectorAll('.comparison-zoom-controls button').forEach(button => {
+        const active = Number(button.dataset.zoom) === level;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+    }
     function setComparisonOpen(open) {
       comparison.hidden = !open;
       if (open) {
+        setComparisonZoom(1);
         viewport.hidden = true;
         viewTools.classList.remove('visible');
         empty.style.display = 'none';
