@@ -9,6 +9,15 @@
 <meta property="og:description" content="On 23 January 2023, 49 ships arrived at the Brunsbüttel lock. This page plays the day: each ship is assigned a large chamber and a start time.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://decision-labs.com/blog/brunsbuettel/">
+<meta property="og:image" content="https://decision-labs.com/blog/brunsbuettel/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="One day at the Brunsbüttel lock. 23 January 2023, two chambers, 49 ships.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="One day at the Brunsbüttel lock">
+<meta name="twitter:description" content="On 23 January 2023, 49 ships arrived at the Brunsbüttel lock. This page plays the day: each ship is assigned a large chamber and a start time.">
+<meta name="twitter:image" content="https://decision-labs.com/blog/brunsbuettel/og.png">
 <style>
   :root {
     color-scheme: dark;
@@ -85,8 +94,8 @@
     font-variant-numeric: tabular-nums;
   }
   #graph {
-    display: block; width: 100%; height: 176px; background: #fff;
-    border: 1px solid #d0d7e2; border-radius: 6px;
+    display: block; width: 100%; max-width: 100%; height: 176px; box-sizing: border-box;
+    background: #fff; border: 1px solid #d0d7e2; border-radius: 6px;
   }
   #legend { margin: 6px 0 0; color: #4a596b; font-size: 12px; }
   .key {
@@ -122,21 +131,45 @@
   #story #method[open] > summary::before { transform: rotate(90deg); }
   #story #method summary:hover { color: var(--green-soft); }
   #story #method .method-body { padding: 2px 0 4px 13px; border-left: 1px solid var(--border); }
+  button { font: inherit; padding: 4px 14px; }
+  input[type="range"] { flex: 1; min-width: 0; }
+  #clock { min-width: 11rem; font-variant-numeric: tabular-nums; }
   @media (max-width: 1100px) {
     .header-row { flex-direction: column; }
-    main { grid-template-columns: 1fr; grid-template-rows: minmax(420px, 62vh) auto; overflow-x: hidden; overflow-y: auto; }
-    #stage { min-height: 420px; }
-    #workspace { flex-direction: column; }
+    .header-row > * { min-width: 0; max-width: 100%; }
+    h1, #headline, #about, #counts, #legend, #story, #story p {
+      overflow-wrap: break-word;
+    }
+    main {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: max-content max-content;
+      align-content: start;
+      overflow-x: hidden; overflow-y: auto; min-width: 0;
+    }
+    #stage { min-height: min-content; min-width: 0; height: auto; overflow: hidden; }
+    #workspace { flex: none; height: auto; flex-direction: column; min-width: 0; overflow: visible; }
+    #view { flex: 0 0 220px; min-height: 220px; height: 220px; }
     #panel {
-      order: -1; flex: 0 1 auto; width: auto; max-height: 46%;
+      order: -1; flex: 0 0 auto; width: 100%; max-width: 100%; min-width: 0; max-height: none;
+      overflow: visible; box-sizing: border-box;
       border-left: none; border-bottom: 1px solid #d0d7e2;
     }
-    #graph { height: 140px; }
-    #story { border-left: 0; border-top: 1px solid var(--border); overflow: visible; }
+    #graph { width: 100%; max-width: 100%; min-width: 0; height: 160px; }
+    #story {
+      border-left: 0; border-top: 1px solid var(--border);
+      overflow: visible; height: auto; max-height: none;
+      min-width: 0; min-height: min-content; padding-bottom: 88px;
+    }
+    #bar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
+      box-sizing: border-box; width: auto; max-width: 100%; min-width: 0;
+      gap: 8px; padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+      overflow: hidden;
+    }
+    #play { flex: 0 0 auto; }
+    #clock { min-width: 0; flex: 0 0 auto; font-size: 13px; }
+    #slider { flex: 1 1 0%; width: 0; min-width: 0; }
   }
-  button { font: inherit; padding: 4px 14px; }
-  input[type="range"] { flex: 1; }
-  #clock { min-width: 11rem; font-variant-numeric: tabular-nums; }
   #tip {
     position: fixed; z-index: 2; pointer-events: none; display: none;
     background: rgba(20, 28, 38, 0.92); color: #fff;
