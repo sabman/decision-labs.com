@@ -1,0 +1,228 @@
+{
+  "date": "2023-01-23",
+  "timezone": "UTC",
+  "lock": "Brunsbüttel",
+  "cell": {
+    "lat": 53.8933,
+    "lon": 9.1462,
+    "radius_m": 500.0
+  },
+  "chambers": [
+    {
+      "id": "144489145",
+      "osm_way": 144489145,
+      "maxlength": 330,
+      "maxwidth": 45,
+      "passage_min": 45,
+      "lat": 53.8936,
+      "lon": 9.1453
+    },
+    {
+      "id": "144489146",
+      "osm_way": 144489146,
+      "maxlength": 330,
+      "maxwidth": 45,
+      "passage_min": 45,
+      "lat": 53.894,
+      "lon": 9.1446
+    }
+  ],
+  "arrivals": [
+    {
+      "ship": "255752000",
+      "arrival_min": 70
+    },
+    {
+      "ship": "305301000",
+      "arrival_min": 79
+    },
+    {
+      "ship": "255806513",
+      "arrival_min": 85
+    },
+    {
+      "ship": "244780569",
+      "arrival_min": 132
+    },
+    {
+      "ship": "211265530",
+      "arrival_min": 189
+    },
+    {
+      "ship": "210340000",
+      "arrival_min": 200
+    },
+    {
+      "ship": "244058000",
+      "arrival_min": 365
+    },
+    {
+      "ship": "275510000",
+      "arrival_min": 369
+    },
+    {
+      "ship": "211238930",
+      "arrival_min": 380
+    },
+    {
+      "ship": "275514000",
+      "arrival_min": 467
+    },
+    {
+      "ship": "245046000",
+      "arrival_min": 533
+    },
+    {
+      "ship": "218098000",
+      "arrival_min": 572
+    },
+    {
+      "ship": "314189000",
+      "arrival_min": 615
+    },
+    {
+      "ship": "266464000",
+      "arrival_min": 636
+    },
+    {
+      "ship": "244017000",
+      "arrival_min": 639
+    },
+    {
+      "ship": "212949000",
+      "arrival_min": 645
+    },
+    {
+      "ship": "304667000",
+      "arrival_min": 645
+    },
+    {
+      "ship": "256295000",
+      "arrival_min": 647
+    },
+    {
+      "ship": "209515000",
+      "arrival_min": 711
+    },
+    {
+      "ship": "209151000",
+      "arrival_min": 725
+    },
+    {
+      "ship": "305741000",
+      "arrival_min": 731
+    },
+    {
+      "ship": "210552000",
+      "arrival_min": 732
+    },
+    {
+      "ship": "212746000",
+      "arrival_min": 744
+    },
+    {
+      "ship": "636020533",
+      "arrival_min": 787
+    },
+    {
+      "ship": "211421690",
+      "arrival_min": 793
+    },
+    {
+      "ship": "246553000",
+      "arrival_min": 843
+    },
+    {
+      "ship": "255806465",
+      "arrival_min": 849
+    },
+    {
+      "ship": "477858700",
+      "arrival_min": 886
+    },
+    {
+      "ship": "209452000",
+      "arrival_min": 899
+    },
+    {
+      "ship": "245258000",
+      "arrival_min": 905
+    },
+    {
+      "ship": "244850226",
+      "arrival_min": 909
+    },
+    {
+      "ship": "229344000",
+      "arrival_min": 922
+    },
+    {
+      "ship": "255802840",
+      "arrival_min": 982
+    },
+    {
+      "ship": "304914000",
+      "arrival_min": 985
+    },
+    {
+      "ship": "636092733",
+      "arrival_min": 1015
+    },
+    {
+      "ship": "244093000",
+      "arrival_min": 1088
+    },
+    {
+      "ship": "230015000",
+      "arrival_min": 1093
+    },
+    {
+      "ship": "304407000",
+      "arrival_min": 1100
+    },
+    {
+      "ship": "538003550",
+      "arrival_min": 1117
+    },
+    {
+      "ship": "229241000",
+      "arrival_min": 1137
+    },
+    {
+      "ship": "244765000",
+      "arrival_min": 1145
+    },
+    {
+      "ship": "211141000",
+      "arrival_min": 1206
+    },
+    {
+      "ship": "305661000",
+      "arrival_min": 1268
+    },
+    {
+      "ship": "210017000",
+      "arrival_min": 1271
+    },
+    {
+      "ship": "245281000",
+      "arrival_min": 1301
+    },
+    {
+      "ship": "564066000",
+      "arrival_min": 1303
+    },
+    {
+      "ship": "255805980",
+      "arrival_min": 1314
+    },
+    {
+      "ship": "210307000",
+      "arrival_min": 1374
+    },
+    {
+      "ship": "212748000",
+      "arrival_min": 1381
+    }
+  ]
+}
