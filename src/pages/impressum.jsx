@@ -66,4 +66,11 @@ const ImpressumPage = ({ location }) => {
 
 export default ImpressumPage
 
-export const Head = () => <title>Impressum - Decision Labs</title>
+export const Head = () => (
+  <>
+    <html lang="de" />
+    <title>Impressum - Decision Labs</title>
+    <meta name="description" content="Impressum der SpacialDB UG (Decision Labs), Berlin." />
+    <link rel="canonical" href="https://decision-labs.com/impressum/" />
+  </>
+)

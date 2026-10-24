@@ -169,4 +169,11 @@ const TermsPage = ({ location }) => {
 
 export default TermsPage
 
-export const Head = () => <title>Terms & Conditions - Decision Labs</title>
+export const Head = () => (
+  <>
+    <html lang="de" />
+    <title>AGB & Datenschutz - Decision Labs</title>
+    <meta name="description" content="Allgemeine Geschäftsbedingungen und Datenschutz der SpacialDB UG (Decision Labs)." />
+    <link rel="canonical" href="https://decision-labs.com/terms/" />
+  </>
+)

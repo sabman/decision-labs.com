@@ -102,11 +102,11 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
 
 **Goal:** Search engines and aggregators understand the bilingual structure.
 
-- [ ] **`hreflang` tags** on every localized page pair (`en`, `de`, `x-default` → English).
-- [ ] **Sitemap** — Extend build output (Gatsby sitemap plugin or `gatsby-node.js`) with both locale URLs and alternates.
-- [ ] **`robots.txt`** — No change needed; sitemap reference stays valid.
-- [ ] **Canonical URLs** — Each locale page canonicalizes to itself, not cross-locale.
-- [ ] **Structured data** — `Organization` JSON-LD with `availableLanguage: ["en", "de"]`.
+- [x] **`hreflang` tags** on every localized page pair (`en`, `de`, `x-default` → English).
+- [x] **Sitemap** — `scripts/generate-llm-files.js` lists each locale URL and its alternates.
+- [x] **`robots.txt`** — No change needed; sitemap reference stays valid.
+- [x] **Canonical URLs** — Each locale page canonicalizes to itself, not cross-locale.
+- [x] **Structured data** — `Organization` JSON-LD with `availableLanguage: ["en", "de"]`.
 - [ ] **RSS** — Keep primary feed English (`/rss.xml`); optionally add `/de/rss.xml` when German blog posts exist (Phase 4).
 
 **Exit criteria:** Google Search Console shows hreflang without errors; sitemap lists all `/de/*` routes.
@@ -117,10 +117,10 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
 
 **Goal:** Legal pages integrate cleanly with both locales without duplication.
 
-- [ ] **Impressum** — Remains at `/impressum` (German only). English nav label: “Legal notice (DE)”; German nav: “Impressum”.
-- [ ] **Terms** — Remains at `/terms` (German only). English nav: “Terms & Privacy (DE)”; German nav: “AGB & Datenschutz”.
+- [x] **Impressum** — Remains at `/impressum` (German only). English nav label: “Legal notice (DE)”; German nav: “Impressum”.
+- [x] **Terms** — Remains at `/terms` (German only). English nav: “Terms & Privacy (DE)”; German nav: “AGB & Datenschutz”.
 - [ ] **Cookie / consent** — If a banner is added later, translate it; not blocking for launch.
-- [ ] **Formspree contact** — If forms are added, use German field labels and validation messages on `/de/kontakt`.
+- [x] **Formspree contact** — There is no contact form. The newsletter form uses German labels and validation text on `/de/newsletter`.
 
 **Exit criteria:** Footer legal links are clear in both languages; no fake “English terms” page that duplicates German legal text.
 
