@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const { PAGES, PUBLISHED_LOCALES } = require('../src/i18n/routes')
 
 const SITE_URL = 'https://decision-labs.com'
 const ROOT = path.join(__dirname, '..')
@@ -371,19 +372,31 @@ ${blogLinks}
 `
 }
 
+function absolutePageUrl(urlPath) {
+  if (!urlPath || urlPath === '/') return `${SITE_URL}/`
+  return `${SITE_URL}${urlPath.endsWith('/') ? urlPath : `${urlPath}/`}`
+}
+
+function hreflangLinks(page) {
+  if (page.shared) return ''
+  const alternates = PUBLISHED_LOCALES
+    .filter((locale) => page.paths[locale])
+    .map((locale) => `    <xhtml:link rel="alternate" hreflang="${locale}" href="${absolutePageUrl(page.paths[locale])}"/>`)
+  alternates.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${absolutePageUrl(page.paths.en)}"/>`)
+  return `\n${alternates.join('\n')}`
+}
+
 function buildSitemapXml(urls) {
   const today = new Date().toISOString().slice(0, 10)
   const entries = urls
-    .map(
-      (url) => `  <url>
-    <loc>${url.loc}</loc>
+    .map((url) => `  <url>
+    <loc>${url.loc}</loc>${url.alternates || ''}
     <lastmod>${url.lastmod || today}</lastmod>
-  </url>`
-    )
+  </url>`)
     .join('\n')
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${entries}
 </urlset>
 `
@@ -512,9 +525,20 @@ async function generateLlmFiles() {
   const llmsFull = allMarkdown.join('\n\n---\n\n')
   fs.writeFileSync(path.join(PUBLIC_DIR, 'llms-full.txt'), llmsFull, 'utf8')
 
+  const localizedHtmlUrls = PAGES.filter((page) => !page.shared).flatMap((page) =>
+    PUBLISHED_LOCALES.filter((locale) => page.paths[locale]).map((locale) => ({
+      loc: absolutePageUrl(page.paths[locale]),
+      alternates: hreflangLinks(page),
+    }))
+  )
+
+  const sharedUrls = PAGES.filter((page) => page.shared).map((page) => ({
+    loc: absolutePageUrl(page.paths.en),
+  }))
+
   const sitemapUrls = [
-    { loc: `${SITE_URL}/` },
-    ...generatedPages.map((page) => ({ loc: `${SITE_URL}${page.htmlPath}/` })),
+    ...localizedHtmlUrls,
+    ...sharedUrls,
     ...generatedPages.map((page) => ({ loc: `${SITE_URL}${page.llmPath}` })),
     ...blogPages.map((post) => ({ loc: `${SITE_URL}/blog/${post.slug}/`, lastmod: post.date })),
     ...blogPages.map((post) => ({ loc: `${SITE_URL}/llm/blog/${post.slug}.md`, lastmod: post.date })),
