@@ -11,7 +11,7 @@ export const wrapPageElement = ({ element, props }) => {
   return (
     <>
       <ContourBackground />
-      <LocaleRoot location={props.location}>{element}</LocaleRoot>
+      <LocaleRoot location={props.location} pageContext={props.pageContext}>{element}</LocaleRoot>
     </>
   )
 }

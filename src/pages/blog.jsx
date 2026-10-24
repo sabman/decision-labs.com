@@ -1,12 +1,22 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
 import SiteLayout from '../components/SiteLayout'
-import { PageHead } from '../i18n/PageHead'
+import { PageHead, pageLocale } from '../i18n/PageHead'
+import { useI18n } from '../i18n/I18nProvider'
+import { categoryLabel, dateLocale } from '../i18n/content'
+import { localeHref } from '../i18n/routes'
 import { FileText, Mic, Handshake, BookOpen, Grid, Radio } from 'lucide-react'
 import '../styles/global.css'
 import postsData from '../data/posts.json'
 
 const BlogPage = ({ location, data }) => {
+  const { locale, t } = useI18n()
+  const nodes = data?.allMarkdownRemark?.nodes || []
+  const translatedSlugs = new Set(
+    nodes
+      .filter((node) => node.frontmatter.locale === locale && node.frontmatter.translationOf)
+      .map((node) => node.frontmatter.translationOf)
+  )
   
   // Architecture:
   // - Internal posts: Auto-detected from markdown files in src/blog/
@@ -24,6 +34,10 @@ const BlogPage = ({ location, data }) => {
       
       // Skip placeholder files
       if (slug === 'placeholder' || node.frontmatter.title === 'Placeholder') {
+        return null
+      }
+
+      if (node.frontmatter.locale && node.frontmatter.locale !== 'en') {
         return null
       }
       
@@ -178,8 +192,8 @@ const BlogPage = ({ location, data }) => {
         <div className="content-cards blog-cards">
           <div className="card card-primary blog-hero-card">
             <div className="blog-hero-header">
-              <h1 className="blog-page-title">Blog</h1>
-              <a href="/rss.xml" className="rss-link" aria-label="RSS Feed">
+              <h1 className="blog-page-title">{t('blog.title')}</h1>
+              <a href={locale === 'de' ? '/de/rss.xml' : '/rss.xml'} className="rss-link" aria-label={t('blog.rss')}>
                 RSS
               </a>
             </div>
@@ -189,7 +203,7 @@ const BlogPage = ({ location, data }) => {
                 onClick={() => setActiveFilter('all')}
               >
                 {getFilterIcon('all')}
-                <span>All</span>
+                <span>{t('blog.all')}</span>
               </button>
               {categories.map((category) => (
                 <button
@@ -198,7 +212,7 @@ const BlogPage = ({ location, data }) => {
                   onClick={() => setActiveFilter(category)}
                 >
                   {getFilterIcon(category)}
-                  <span>{category}</span>
+                  <span>{categoryLabel(locale, category)}</span>
                 </button>
               ))}
             </div>
@@ -207,17 +221,20 @@ const BlogPage = ({ location, data }) => {
         {posts.length > 0 ? (
           <div className="blog-posts-grid">
             {posts.map((post) => {
+              const hasTranslation = translatedSlugs.has(post.slug)
               const CardWrapper = post.isInternal ? Link : 'a'
-              const cardProps = post.isInternal 
-                ? { to: `/blog/${post.slug}` }
+              const cardProps = post.isInternal
+                ? { to: hasTranslation ? `${localeHref('blog', locale).replace(/\/$/, '')}/${post.slug}` : `/blog/${post.slug}` }
                 : { href: post.link, target: '_blank', rel: 'noopener noreferrer' }
+              const showEnglishBadge = locale !== 'en' && post.isInternal && !hasTranslation
+              const category = post.metadata?.category || 'Post'
               
               return (
                 <CardWrapper
                   key={post.id}
                   {...cardProps}
                   className={`card ${post.featured ? 'card-primary' : 'card-secondary'} blog-card ${post.isInternal ? 'blog-card-internal' : 'blog-card-external'}${post.image ? ' blog-card-has-image' : ''}`}
-                  aria-label={`View ${post.title}`}
+                  aria-label={t('blog.viewPost').replace('{title}', post.title)}
                 >
                   {post.image && !post.image.includes('via.placeholder.com') && (
                     <div className="blog-card-image-wrap">
@@ -228,15 +245,17 @@ const BlogPage = ({ location, data }) => {
                     <div className="card-header">
                       <span></span>
                       <span className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        {getCategoryIcon(post.metadata?.category || 'Post')}
-                        <span>{post.metadata?.category || 'Post'}</span>
+                        {getCategoryIcon(category)}
+                        <span>{categoryLabel(locale, category)}</span>
+                        {showEnglishBadge && <span className="blog-lang-badge">{t('blog.englishBadge')}</span>}
+                        {!post.isInternal && <span className="blog-lang-badge">{t('blog.external')}</span>}
                       </span>
                     </div>
                     <h2 className="blog-card-title">{post.title}</h2>
                     <p className="blog-card-description">{post.description}</p>
                     <div className="card-footer">
                       <span className="card-brand">
-                        {new Date(post.date).toLocaleDateString('en-US', {
+                        {new Date(post.date).toLocaleDateString(dateLocale(locale), {
                           year: 'numeric',
                           month: 'short',
                           day: 'numeric'
@@ -251,7 +270,7 @@ const BlogPage = ({ location, data }) => {
           </div>
         ) : (
           <div className="blog-empty">
-            <p className="mission-text">No posts yet. Check back soon!</p>
+            <p className="mission-text">{t('blog.empty')}</p>
           </div>
         )}
       </main>
@@ -281,15 +300,21 @@ export const query = graphql`
           link
           linkType
           slug
+          locale
+          translationOf
         }
       }
     }
   }
 `
 
-export const Head = (props) => (
-  <PageHead pageKey="blog" {...props}>
-    <link rel="alternate" type="application/rss+xml" title="Decision Labs RSS Feed" href="/rss.xml" />
-  </PageHead>
-)
+export const Head = (props) => {
+  const locale = pageLocale(props.pageContext, props.location)
+  const rss = locale === 'de' ? '/de/rss.xml' : '/rss.xml'
+  return (
+    <PageHead pageKey="blog" {...props}>
+      <link rel="alternate" type="application/rss+xml" title="Decision Labs RSS Feed" href={rss} />
+    </PageHead>
+  )
+}
 

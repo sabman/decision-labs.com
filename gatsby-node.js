@@ -19,6 +19,9 @@ exports.createPages = async ({ graphql, actions }) => {
             linkType
             link
             slug
+            title
+            locale
+            translationOf
           }
           fields {
             slug
@@ -34,11 +37,33 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
   const posts = result.data.allMarkdownRemark.nodes
+  const germanBySlug = new Map()
+  posts.forEach((post) => {
+    if (post.frontmatter.locale === 'de' && post.frontmatter.translationOf) {
+      germanBySlug.set(post.frontmatter.translationOf, post)
+    }
+  })
 
   posts.forEach((post) => {
     // Skip placeholder files
     const slug = post.frontmatter.slug || post.fields?.slug || post.id
     if (slug === 'placeholder' || post.frontmatter.title === 'Placeholder') {
+      return
+    }
+
+    if (post.frontmatter.locale === 'de' && post.frontmatter.translationOf) {
+      createPage({
+        path: `/de/blog/${post.frontmatter.translationOf}`,
+        component: blogPostTemplate,
+        context: {
+          id: post.id,
+          locale: 'de',
+          alternates: {
+            en: `/blog/${post.frontmatter.translationOf}`,
+            de: `/de/blog/${post.frontmatter.translationOf}`,
+          },
+        },
+      })
       return
     }
 
@@ -59,6 +84,12 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           id: post.id,
           locale: 'en',
+          alternates: germanBySlug.has(slug)
+            ? {
+              en: `/blog/${slug}`,
+              de: `/de/blog/${slug}`,
+            }
+            : { en: `/blog/${slug}` },
         },
       })
     }
@@ -96,6 +127,65 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
+function readFrontmatter(raw) {
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  const frontmatter = {}
+  if (!match) return frontmatter
+  match[1].split('\n').forEach((line) => {
+    const idx = line.indexOf(':')
+    if (idx === -1) return
+    let value = line.slice(idx + 1).trim()
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1)
+    }
+    frontmatter[line.slice(0, idx).trim()] = value
+  })
+  return frontmatter
+}
+
+function writeGermanRss(publicDir) {
+  const dir = path.join(__dirname, 'src', 'blog', 'de')
+  if (!fs.existsSync(dir)) return
+  const posts = fs.readdirSync(dir)
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => {
+      const frontmatter = readFrontmatter(fs.readFileSync(path.join(dir, file), 'utf8'))
+      const slug = frontmatter.translationOf || frontmatter.slug
+      if (!slug || !frontmatter.title) return null
+      return { ...frontmatter, slug }
+    })
+    .filter(Boolean)
+
+  if (posts.length === 0) return
+
+  const siteUrl = 'https://decision-labs.com'
+  const items = posts.map((post) => `    <item>
+      <title><![CDATA[${post.title}]]></title>
+      <link>${siteUrl}/de/blog/${post.slug}</link>
+      <guid isPermaLink="false">${siteUrl}/de/blog/${post.slug}</guid>
+      <pubDate>${new Date(post.date).toUTCString()}</pubDate>
+      <author>${post.author || 'Decision Labs'}</author>
+    </item>`).join('\n')
+
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Decision Labs Blog</title>
+    <link>${siteUrl}/de/blog</link>
+    <description>Beiträge von Decision Labs.</description>
+    <language>de</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="${siteUrl}/de/rss.xml" rel="self" type="application/rss+xml"/>
+${items}
+  </channel>
+</rss>`
+
+  const deDir = path.join(publicDir, 'de')
+  fs.mkdirSync(deDir, { recursive: true })
+  fs.writeFileSync(path.join(deDir, 'rss.xml'), rss, 'utf8')
+  console.log(`✅ German RSS feed generated with ${posts.length} posts`)
+}
+
 // Helper function to generate RSS feed from markdown files
 async function generateRSSFeed(graphql) {
   try {
@@ -116,6 +206,7 @@ async function generateRSSFeed(graphql) {
               link
               linkType
               slug
+              locale
             }
           }
         }
@@ -134,6 +225,7 @@ async function generateRSSFeed(graphql) {
         return false
       }
       const slug = post.frontmatter.slug || post.fields?.slug || post.id
+      if (post.frontmatter.locale && post.frontmatter.locale !== 'en') return false
       return slug !== 'placeholder' && post.frontmatter.title !== 'Placeholder'
     })
 
@@ -243,6 +335,7 @@ ${rssItems}
     const publicPath = path.join(publicDir, 'rss.xml')
     fs.writeFileSync(publicPath, rss, 'utf8')
     console.log(`✅ RSS feed generated successfully with ${validPosts.length + externalPosts.length} posts`)
+    writeGermanRss(publicDir)
   } catch (error) {
     console.error('❌ Error generating RSS feed:', error.message)
   }

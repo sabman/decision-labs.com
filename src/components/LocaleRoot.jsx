@@ -18,7 +18,13 @@ function resolveLocale(pathname, search, storedLocale) {
   return localeFromPath(pathname)
 }
 
-const LocaleRoot = ({ location, children }) => {
+const PageInfoContext = React.createContext({})
+
+export function usePageInfo() {
+  return React.useContext(PageInfoContext)
+}
+
+const LocaleRoot = ({ location, pageContext, children }) => {
   const pathname = location?.pathname || '/'
   const search = location?.search || ''
   const [storedLocale, setStoredLocale] = React.useState(null)
@@ -42,7 +48,11 @@ const LocaleRoot = ({ location, children }) => {
     document.documentElement.lang = locale
   }, [locale])
 
-  return <I18nProvider locale={locale}>{children}</I18nProvider>
+  return (
+    <PageInfoContext.Provider value={pageContext || {}}>
+      <I18nProvider locale={locale}>{children}</I18nProvider>
+    </PageInfoContext.Provider>
+  )
 }
 
 export default LocaleRoot

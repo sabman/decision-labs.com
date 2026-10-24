@@ -90,6 +90,7 @@ function loadInternalBlogPosts() {
       const raw = fs.readFileSync(path.join(blogDir, file), 'utf8')
       const { frontmatter, body } = parseFrontmatter(raw)
       const slug = frontmatter.slug || file.replace(/\.md$/, '')
+      if (frontmatter.locale && frontmatter.locale !== 'en') return null
 
       return {
         slug,
@@ -101,6 +102,7 @@ function loadInternalBlogPosts() {
         body: normalizeMarkdownBody(body),
       }
     })
+    .filter(Boolean)
 }
 
 function buildIndexPage(posts) {

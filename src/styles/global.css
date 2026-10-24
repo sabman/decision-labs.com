@@ -599,6 +599,16 @@ img {
   transform: translateY(0);
 }
 
+.blog-lang-badge {
+  margin-left: 0.35rem;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
 .rss-link {
   font-size: 0.875rem;
   opacity: 0.7;

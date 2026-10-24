@@ -1,4 +1,12 @@
 {
   "metaTitle": "Blog - Decision Labs",
-  "metaDescription": "Beiträge zu KI, maschinellem Lernen, Decision Science und Geodaten von Decision Labs."
+  "metaDescription": "Beiträge zu KI, maschinellem Lernen, Decision Science und Geodaten von Decision Labs.",
+  "title": "Blog",
+  "all": "Alle",
+  "empty": "Noch keine Beiträge. Schauen Sie später wieder vorbei.",
+  "back": "← Zurück zum Blog",
+  "rss": "RSS-Feed",
+  "englishBadge": "Englisch",
+  "viewPost": "{title} ansehen",
+  "external": "Externer Link"
 }

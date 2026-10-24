@@ -107,7 +107,7 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
 - [x] **`robots.txt`** — No change needed; sitemap reference stays valid.
 - [x] **Canonical URLs** — Each locale page canonicalizes to itself, not cross-locale.
 - [x] **Structured data** — `Organization` JSON-LD with `availableLanguage: ["en", "de"]`.
-- [ ] **RSS** — Keep primary feed English (`/rss.xml`); optionally add `/de/rss.xml` when German blog posts exist (Phase 4).
+- [x] **RSS** — Primary feed stays English (`/rss.xml`). `/de/rss.xml` lists posts that have a German version.
 
 **Exit criteria:** Google Search Console shows hreflang without errors; sitemap lists all `/de/*` routes.
 
@@ -148,9 +148,9 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
 
 - Third-party article titles, tweet embeds, podcast episodes — link out as-is.
 
-- [ ] Decide Tier A scope (start with 0–2 flagship posts, not the full archive).
-- [ ] German blog index at `/de/blog` with translated filter labels (Blog, Vortrag, Podcast, …).
-- [ ] Blog post template: locale-aware date formatting (`de-DE`), “Zurück zum Blog” back link.
+- [x] Decide Tier A scope (start with 0–2 flagship posts, not the full archive).
+- [x] German blog index at `/de/blog` with translated filter labels (Blog, Vortrag, Podcast, …).
+- [x] Blog post template: locale-aware date formatting (`de-DE`), “Zurück zum Blog” back link.
 
 **Exit criteria:** Documented content policy; at least the blog index works in German even if most posts remain English.
 
@@ -219,7 +219,7 @@ Record choices here as they are made:
 | # | Question | Options | Decision |
 |---|----------|---------|----------|
 | 1 | German URL slugs vs English slugs under `/de/` | Localized (`/de/ueber-uns`) vs `/de/about` | **Localized slugs** |
-| 2 | Blog post file strategy | Frontmatter fields vs `src/blog/de/` folder | **TBD** |
+| 2 | Blog post file strategy | Frontmatter fields vs `src/blog/de/` folder | **`src/blog/de/{slug}.md` with `translationOf`.** Untranslated posts stay on the German index with an English badge. |
 | 3 | i18n library | `gatsby-plugin-react-i18next` vs custom `gatsby-node` | **Custom `gatsby-node` + JSON catalogs** |
 | 4 | Default locale for unknown visitors | Always English vs `Accept-Language` hint | **English URLs. One-line hint on first visit, no redirect.** |
 | 5 | Translate `posts.json` featured content on home? | Yes / No / Top 3 only | **Featured posts only.** Optional `titleDe` / `descriptionDe`. Other posts stay in the original language. |

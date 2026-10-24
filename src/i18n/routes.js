@@ -57,7 +57,10 @@ function localizedPath(pageKey, locale) {
 
 function switchTarget(pathname, locale) {
   const page = findPage(pathname)
-  if (!page) return localizedPath('home', locale)
+  if (!page) {
+    if (/\/blog\/[^/]+$/.test(normalizePath(pathname))) return localizedPath('blog', locale)
+    return localizedPath('home', locale)
+  }
   if (page.shared) return `${normalizePath(pathname)}?lang=${locale}`
   return page.paths[locale] || page.paths[DEFAULT_LOCALE]
 }

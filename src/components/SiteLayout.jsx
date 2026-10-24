@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import Footer from './Footer'
 import useHeaderContrast from './useHeaderContrast'
 import { useI18n } from '../i18n/I18nProvider'
+import { usePageInfo } from './LocaleRoot'
 import {
   PAGES,
   PUBLISHED_LOCALES,
@@ -15,24 +16,28 @@ import { translate } from '../i18n/catalogs'
 
 const LocaleSwitcher = ({ pathname, locale }) => {
   const { t } = useI18n()
+  const pageInfo = usePageInfo()
 
   return (
     <nav className="locale-switcher" aria-label={t('common.switcherLabel')}>
-      {PUBLISHED_LOCALES.map((code, index) => (
-        <React.Fragment key={code}>
-          {index > 0 && <span className="locale-switcher-sep" aria-hidden="true">·</span>}
-          <Link
-            to={switchTarget(pathname, code)}
-            hrefLang={code}
-            lang={code}
-            className={code === locale ? 'active' : ''}
-            aria-current={code === locale ? 'true' : undefined}
-            onClick={() => storeLocale(code)}
-          >
-            {code.toUpperCase()}
-          </Link>
-        </React.Fragment>
-      ))}
+      {PUBLISHED_LOCALES.map((code, index) => {
+        const to = pageInfo.alternates?.[code] || switchTarget(pathname, code)
+        return (
+          <React.Fragment key={code}>
+            {index > 0 && <span className="locale-switcher-sep" aria-hidden="true">·</span>}
+            <Link
+              to={to}
+              hrefLang={code}
+              lang={code}
+              className={code === locale ? 'active' : ''}
+              aria-current={code === locale ? 'true' : undefined}
+              onClick={() => storeLocale(code)}
+            >
+              {code.toUpperCase()}
+            </Link>
+          </React.Fragment>
+        )
+      })}
     </nav>
   )
 }

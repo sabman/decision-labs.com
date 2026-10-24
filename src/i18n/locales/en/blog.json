@@ -1,4 +1,12 @@
 {
   "metaTitle": "Blog - Decision Labs",
-  "metaDescription": "Insights on AI, machine learning, decision science, and geospatial technology from Decision Labs."
+  "metaDescription": "Insights on AI, machine learning, decision science, and geospatial technology from Decision Labs.",
+  "title": "Blog",
+  "all": "All",
+  "empty": "No posts yet. Check back soon!",
+  "back": "← Back to Blog",
+  "rss": "RSS Feed",
+  "englishBadge": "English",
+  "viewPost": "View {title}",
+  "external": "External link"
 }
