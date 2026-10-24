@@ -160,9 +160,9 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
 
 **Goal:** Generated artifacts stay in sync with locales.
 
-- [ ] **`scripts/generate-llm-files.js`** — Emit `/llm/de/*.md` mirrors for localized pages; update `llms.txt` index with language annotations.
-- [ ] **`gatsby-config.js` `siteMetadata`** — Locale-aware defaults or per-page overrides.
-- [ ] **CI check** — Script that fails build if a `de` JSON key is missing where `en` has one (optional, lightweight key parity test).
+- [x] **`scripts/generate-llm-files.js`** — Emit `/llm/de/*.md` mirrors for localized pages; update `llms.txt` index with language annotations.
+- [x] **`gatsby-config.js` `siteMetadata`** — Locale-aware defaults or per-page overrides.
+- [x] **CI check** — Script that fails build if a `de` JSON key is missing where `en` has one (optional, lightweight key parity test).
 
 **Exit criteria:** `npm run generate:llm` produces German LLM markdown for all Phase 1 pages.
 

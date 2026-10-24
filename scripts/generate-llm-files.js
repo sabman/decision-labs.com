@@ -1,6 +1,9 @@
 const fs = require('fs')
 const path = require('path')
-const { PAGES, PUBLISHED_LOCALES } = require('../src/i18n/routes')
+const { PAGES, PUBLISHED_LOCALES, localizedPath } = require('../src/i18n/routes')
+const { translate } = require('../src/i18n/catalogs')
+const { localizedField } = require('../src/i18n/content')
+const checkLocaleParity = require('./check-locale-parity')
 
 const SITE_URL = 'https://decision-labs.com'
 const ROOT = path.join(__dirname, '..')
@@ -332,7 +335,7 @@ ${post.body}
 `
 }
 
-function buildLlmsTxt(pages, blogPosts) {
+function buildLlmsTxt(pages, blogPosts, localePages = []) {
   const pageLinks = pages
     .map((page) => `- [${page.title}](${SITE_URL}${page.llmPath}): ${page.summary}`)
     .join('\n')
@@ -344,11 +347,17 @@ function buildLlmsTxt(pages, blogPosts) {
     )
     .join('\n')
 
+  const localeLinks = localePages
+    .map((page) => `- [${page.title}](${SITE_URL}${page.llmPath}) (${page.locale}): ${page.summary}`)
+    .join('\n')
+
   return `# Decision Labs
 
 > Decision Labs is a consultancy and product studio in decision science, AI/ML, and geospatial infrastructure. We build Geobase, EarthGPT, Verisat.ai, and GeoAI.js, and work with enterprise and government clients worldwide.
 
 SpacialDB UG (Decision Labs) · Berlin, Germany · team@decision-labs.com · ${SITE_URL}
+
+Languages: en, de
 
 ## Pages
 
@@ -358,6 +367,10 @@ ${pageLinks}
 
 - [Blog index](${SITE_URL}/llm/blog.md): All posts, talks, podcasts, and external links
 ${blogLinks}
+
+## German pages
+
+${localeLinks || '- No German pages yet.'}
 
 ## Optional
 
@@ -404,7 +417,94 @@ ${entries}
 `
 }
 
+function llmPathFor(htmlPath, locale) {
+  let rest = String(htmlPath || '/').replace(/\/$/, '')
+  rest = rest.replace(new RegExp(`^/${locale}`), '')
+  if (!rest) return `/llm/${locale}/index.md`
+  return `/llm/${locale}${rest}.md`
+}
+
+function germanPage(key, summary, body) {
+  const htmlPath = localizedPath(key, 'de')
+  const llmPath = llmPathFor(htmlPath, 'de')
+  const title = translate('de', `${key}.metaTitle`)
+  const description = translate('de', `${key}.metaDescription`)
+  return {
+    locale: 'de',
+    key,
+    title,
+    summary,
+    htmlPath,
+    llmPath,
+    file: llmPath.replace(/^\/llm\//, ''),
+    content: `# ${title}
+
+> ${description}
+
+- Language: de
+- HTML: ${absolutePageUrl(htmlPath)}
+- LLM: ${SITE_URL}${llmPath}
+
+${body}
+`,
+  }
+}
+
+function buildGermanLlmPages(projects, customers, postsJson) {
+  const featured = postsJson
+    .filter((post) => post.featured)
+    .map((post) => `- **${localizedField(post, 'title', 'de')}**: ${localizedField(post, 'description', 'de')}`)
+    .join('\n')
+  const steps = translate('de', 'about.steps')
+    .map((step, index) => `### ${index + 1}. ${step.title}\n\n${step.description}`)
+    .join('\n\n')
+  const projectList = projects
+    .map((project) => `### ${localizedField(project, 'title', 'de')}\n\n${localizedField(project, 'description', 'de')}\n\n- URL: ${project.link}`)
+    .join('\n\n')
+  const customerList = customers
+    .map((customer) => `- **${customer.name}**: ${localizedField(customer, 'category', 'de')}`)
+    .join('\n')
+
+  return [
+    germanPage('home', 'Überblick und aktuelle Beiträge', `${translate('de', 'home.mission')}\n\n## Aktuell\n\n${featured}`),
+    germanPage('about', 'Auftrag und Vorgehen', `${translate('de', 'about.mission')}\n\n## ${translate('de', 'about.processTitle')}\n\n${steps}`),
+    germanPage('work', 'Produkte', projectList),
+    germanPage('customers', 'Kunden und Branchen', `${translate('de', 'customers.intro')}\n\n${customerList}\n\n${translate('de', 'customers.migration')}`),
+    germanPage('contact', 'Kontaktwege', translate('de', 'contact.intro')),
+    germanPage('newsletter', 'Newsletter', translate('de', 'newsletter.lede')),
+    germanPage('feed', 'Feed', translate('de', 'feed.metaDescription')),
+    germanPage('blog', 'Blog-Index', 'Der deutsche Blog-Index zeigt übersetzte Beiträge und markiert englische Beiträge.'),
+  ]
+}
+
+function loadGermanBlogPosts() {
+  const dir = path.join(ROOT, 'src', 'blog', 'de')
+  if (!fs.existsSync(dir)) return []
+  return fs.readdirSync(dir).filter((file) => file.endsWith('.md')).map((file) => {
+    const raw = fs.readFileSync(path.join(dir, file), 'utf8')
+    const { frontmatter, body } = parseFrontmatter(raw)
+    const slug = frontmatter.translationOf || frontmatter.slug || file.replace(/\.md$/, '')
+    return {
+      slug,
+      title: frontmatter.title || slug,
+      description: frontmatter.description || '',
+      date: frontmatter.date || '',
+      file: path.join('de', 'blog', `${slug}.md`),
+      content: `# ${frontmatter.title || slug}
+
+> Language: de
+
+- HTML: ${SITE_URL}/de/blog/${slug}
+- LLM: ${SITE_URL}/llm/de/blog/${slug}.md
+
+${normalizeMarkdownBody(body)}
+`,
+    }
+  })
+}
+
 async function generateLlmFiles() {
+  checkLocaleParity()
   const customers = readJson('src/data/customers.json')
   const projects = readJson('src/data/projects.json')
   const postsJson = readJson('src/data/posts.json')
@@ -520,7 +620,29 @@ async function generateLlmFiles() {
     allMarkdown.push(post.content)
   }
 
-  const llmsTxt = buildLlmsTxt(generatedPages, internalPosts)
+  const germanPages = buildGermanLlmPages(projects, customers, postsJson)
+  const germanPosts = loadGermanBlogPosts()
+
+  for (const page of germanPages) {
+    const outputPath = path.join(LLM_DIR, page.file)
+    ensureDir(path.dirname(outputPath))
+    fs.writeFileSync(outputPath, page.content, 'utf8')
+    allMarkdown.push(page.content)
+  }
+
+  for (const post of germanPosts) {
+    const outputPath = path.join(LLM_DIR, post.file)
+    ensureDir(path.dirname(outputPath))
+    fs.writeFileSync(outputPath, post.content, 'utf8')
+    allMarkdown.push(post.content)
+  }
+
+  const llmsTxt = buildLlmsTxt(generatedPages, internalPosts, [...germanPages, ...germanPosts.map((post) => ({
+    title: post.title,
+    llmPath: `/llm/${post.file}`,
+    locale: 'de',
+    summary: post.description || 'German blog post',
+  }))])
   fs.writeFileSync(path.join(PUBLIC_DIR, 'llms.txt'), llmsTxt, 'utf8')
   fs.writeFileSync(path.join(PUBLIC_DIR, 'llm.txt'), llmsTxt, 'utf8')
 
@@ -541,6 +663,8 @@ async function generateLlmFiles() {
   const sitemapUrls = [
     ...localizedHtmlUrls,
     ...sharedUrls,
+    ...germanPages.map((page) => ({ loc: `${SITE_URL}${page.llmPath}` })),
+    ...germanPosts.map((post) => ({ loc: `${SITE_URL}/llm/de/blog/${post.slug}.md`, lastmod: post.date })),
     ...generatedPages.map((page) => ({ loc: `${SITE_URL}${page.llmPath}` })),
     ...blogPages.map((post) => ({ loc: `${SITE_URL}/blog/${post.slug}/`, lastmod: post.date })),
     ...blogPages.map((post) => ({ loc: `${SITE_URL}/llm/blog/${post.slug}.md`, lastmod: post.date })),

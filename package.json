@@ -11,6 +11,7 @@
     "clean": "gatsby clean",
     "fetch-twitter": "node scripts/fetch-twitter-posts.js",
     "generate:llm": "node scripts/generate-llm-files.js",
+    "check:i18n": "node scripts/check-locale-parity.js",
     "optimize:logos": "node scripts/optimize-customer-logos.js"
   },
   "dependencies": {
