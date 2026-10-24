@@ -43,13 +43,13 @@ const LocaleSwitcher = ({ pathname, locale }) => {
   )
 }
 
-const LocaleHint = ({ pathname, onDismiss }) => {
-  const copy = translate('de', 'common')
+const LocaleHint = ({ pathname, hintLocale, onDismiss }) => {
+  const copy = translate(hintLocale, 'common')
 
   return (
     <p className="locale-hint">
       <span>{copy.hint}</span>{' '}
-      <Link to={switchTarget(pathname, 'de')} hrefLang="de" onClick={() => storeLocale('de')}>
+      <Link to={switchTarget(pathname, hintLocale)} hrefLang={hintLocale} onClick={() => storeLocale(hintLocale)}>
         {copy.hintAction}
       </Link>
       <button type="button" onClick={onDismiss}>{copy.hintDismiss}</button>
@@ -62,13 +62,17 @@ const SiteHeader = ({ location, locale }) => {
   const textColor = useHeaderContrast(headerRef)
   const { t } = useI18n()
   const pathname = location?.pathname || ''
-  const [showHint, setShowHint] = React.useState(false)
+  const [hintLocale, setHintLocale] = React.useState(null)
   const navPages = PAGES.filter((page) => page.nav)
 
   React.useEffect(() => {
-    if (locale !== 'en' || readStoredLocale()) return
+    if (locale !== 'en' || readStoredLocale()) {
+      setHintLocale(null)
+      return
+    }
     const language = (navigator.languages && navigator.languages[0]) || navigator.language || ''
-    if (language.toLowerCase().startsWith('de')) setShowHint(true)
+    const match = PUBLISHED_LOCALES.find((code) => code !== 'en' && language.toLowerCase().startsWith(code))
+    setHintLocale(match || null)
   }, [locale, pathname])
 
   return (
@@ -78,12 +82,13 @@ const SiteHeader = ({ location, locale }) => {
       </Link>
       <div className="header-actions" style={{ color: textColor }}>
         <LocaleSwitcher pathname={pathname} locale={locale} />
-        {showHint && (
+        {hintLocale && (
           <LocaleHint
             pathname={pathname}
+            hintLocale={hintLocale}
             onDismiss={() => {
               storeLocale('en')
-              setShowHint(false)
+              setHintLocale(null)
             }}
           />
         )}

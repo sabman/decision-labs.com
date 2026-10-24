@@ -193,7 +193,7 @@ const BlogPage = ({ location, data }) => {
           <div className="card card-primary blog-hero-card">
             <div className="blog-hero-header">
               <h1 className="blog-page-title">{t('blog.title')}</h1>
-              <a href={locale === 'de' ? '/de/rss.xml' : '/rss.xml'} className="rss-link" aria-label={t('blog.rss')}>
+              <a href={locale === 'en' ? '/rss.xml' : `/${locale}/rss.xml`} className="rss-link" aria-label={t('blog.rss')}>
                 RSS
               </a>
             </div>
@@ -313,7 +313,7 @@ export const query = graphql`
 
 export const Head = (props) => {
   const locale = pageLocale(props.pageContext, props.location)
-  const rss = locale === 'de' ? '/de/rss.xml' : '/rss.xml'
+  const rss = locale === 'en' ? '/rss.xml' : `/${locale}/rss.xml`
   return (
     <PageHead pageKey="blog" {...props}>
       <link rel="alternate" type="application/rss+xml" title="Decision Labs RSS Feed" href={rss} />

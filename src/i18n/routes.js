@@ -1,8 +1,7 @@
-const PUBLISHED_LOCALES = ['en', 'de']
+const PUBLISHED_LOCALES = ['en', 'de', 'fr']
 const DEFAULT_LOCALE = 'en'
 const LOCALE_STORAGE_KEY = 'dl-locale'
 
-// French paths are reserved. Pages are created only for PUBLISHED_LOCALES.
 const PAGES = [
   { key: 'home', paths: { en: '/', de: '/de/', fr: '/fr/' } },
   { key: 'about', paths: { en: '/about', de: '/de/ueber-uns', fr: '/fr/a-propos' }, nav: true },

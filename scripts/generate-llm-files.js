@@ -357,7 +357,7 @@ function buildLlmsTxt(pages, blogPosts, localePages = []) {
 
 SpacialDB UG (Decision Labs) · Berlin, Germany · team@decision-labs.com · ${SITE_URL}
 
-Languages: en, de
+Languages: ${PUBLISHED_LOCALES.join(', ')}
 
 ## Pages
 
@@ -368,9 +368,9 @@ ${pageLinks}
 - [Blog index](${SITE_URL}/llm/blog.md): All posts, talks, podcasts, and external links
 ${blogLinks}
 
-## German pages
+## Other languages
 
-${localeLinks || '- No German pages yet.'}
+${localeLinks || '- No translated pages yet.'}
 
 ## Optional
 
@@ -424,13 +424,13 @@ function llmPathFor(htmlPath, locale) {
   return `/llm/${locale}${rest}.md`
 }
 
-function germanPage(key, summary, body) {
-  const htmlPath = localizedPath(key, 'de')
-  const llmPath = llmPathFor(htmlPath, 'de')
-  const title = translate('de', `${key}.metaTitle`)
-  const description = translate('de', `${key}.metaDescription`)
+function localePage(locale, key, summary, body) {
+  const htmlPath = localizedPath(key, locale)
+  const llmPath = llmPathFor(htmlPath, locale)
+  const title = translate(locale, `${key}.metaTitle`)
+  const description = translate(locale, `${key}.metaDescription`)
   return {
-    locale: 'de',
+    locale,
     key,
     title,
     summary,
@@ -441,7 +441,7 @@ function germanPage(key, summary, body) {
 
 > ${description}
 
-- Language: de
+- Language: ${locale}
 - HTML: ${absolutePageUrl(htmlPath)}
 - LLM: ${SITE_URL}${llmPath}
 
@@ -450,52 +450,53 @@ ${body}
   }
 }
 
-function buildGermanLlmPages(projects, customers, postsJson) {
+function buildLocaleLlmPages(locale, projects, customers, postsJson) {
   const featured = postsJson
     .filter((post) => post.featured)
-    .map((post) => `- **${localizedField(post, 'title', 'de')}**: ${localizedField(post, 'description', 'de')}`)
+    .map((post) => `- **${localizedField(post, 'title', locale)}**: ${localizedField(post, 'description', locale)}`)
     .join('\n')
-  const steps = translate('de', 'about.steps')
+  const steps = translate(locale, 'about.steps')
     .map((step, index) => `### ${index + 1}. ${step.title}\n\n${step.description}`)
     .join('\n\n')
   const projectList = projects
-    .map((project) => `### ${localizedField(project, 'title', 'de')}\n\n${localizedField(project, 'description', 'de')}\n\n- URL: ${project.link}`)
+    .map((project) => `### ${localizedField(project, 'title', locale)}\n\n${localizedField(project, 'description', locale)}\n\n- URL: ${project.link}`)
     .join('\n\n')
   const customerList = customers
-    .map((customer) => `- **${customer.name}**: ${localizedField(customer, 'category', 'de')}`)
+    .map((customer) => `- **${customer.name}**: ${localizedField(customer, 'category', locale)}`)
     .join('\n')
 
   return [
-    germanPage('home', 'Überblick und aktuelle Beiträge', `${translate('de', 'home.mission')}\n\n## Aktuell\n\n${featured}`),
-    germanPage('about', 'Auftrag und Vorgehen', `${translate('de', 'about.mission')}\n\n## ${translate('de', 'about.processTitle')}\n\n${steps}`),
-    germanPage('work', 'Produkte', projectList),
-    germanPage('customers', 'Kunden und Branchen', `${translate('de', 'customers.intro')}\n\n${customerList}\n\n${translate('de', 'customers.migration')}`),
-    germanPage('contact', 'Kontaktwege', translate('de', 'contact.intro')),
-    germanPage('newsletter', 'Newsletter', translate('de', 'newsletter.lede')),
-    germanPage('feed', 'Feed', translate('de', 'feed.metaDescription')),
-    germanPage('blog', 'Blog-Index', 'Der deutsche Blog-Index zeigt übersetzte Beiträge und markiert englische Beiträge.'),
+    localePage(locale, 'home', translate(locale, 'home.metaDescription'), `${translate(locale, 'home.mission')}\n\n## ${translate(locale, 'home.featured')}\n\n${featured}`),
+    localePage(locale, 'about', translate(locale, 'about.metaDescription'), `${translate(locale, 'about.mission')}\n\n## ${translate(locale, 'about.processTitle')}\n\n${steps}`),
+    localePage(locale, 'work', translate(locale, 'work.metaDescription'), projectList),
+    localePage(locale, 'customers', translate(locale, 'customers.metaDescription'), `${translate(locale, 'customers.intro')}\n\n${customerList}\n\n${translate(locale, 'customers.migration')}`),
+    localePage(locale, 'contact', translate(locale, 'contact.metaDescription'), translate(locale, 'contact.intro')),
+    localePage(locale, 'newsletter', translate(locale, 'newsletter.metaDescription'), translate(locale, 'newsletter.lede')),
+    localePage(locale, 'feed', translate(locale, 'feed.metaDescription'), translate(locale, 'feed.metaDescription')),
+    localePage(locale, 'blog', translate(locale, 'blog.metaDescription'), translate(locale, 'blog.metaDescription')),
   ]
 }
 
-function loadGermanBlogPosts() {
-  const dir = path.join(ROOT, 'src', 'blog', 'de')
+function loadLocaleBlogPosts(locale) {
+  const dir = path.join(ROOT, 'src', 'blog', locale)
   if (!fs.existsSync(dir)) return []
   return fs.readdirSync(dir).filter((file) => file.endsWith('.md')).map((file) => {
     const raw = fs.readFileSync(path.join(dir, file), 'utf8')
     const { frontmatter, body } = parseFrontmatter(raw)
     const slug = frontmatter.translationOf || frontmatter.slug || file.replace(/\.md$/, '')
     return {
+      locale,
       slug,
       title: frontmatter.title || slug,
       description: frontmatter.description || '',
       date: frontmatter.date || '',
-      file: path.join('de', 'blog', `${slug}.md`),
+      file: path.join(locale, 'blog', `${slug}.md`),
       content: `# ${frontmatter.title || slug}
 
-> Language: de
+> Language: ${locale}
 
-- HTML: ${SITE_URL}/de/blog/${slug}
-- LLM: ${SITE_URL}/llm/de/blog/${slug}.md
+- HTML: ${SITE_URL}/${locale}/blog/${slug}
+- LLM: ${SITE_URL}/llm/${locale}/blog/${slug}.md
 
 ${normalizeMarkdownBody(body)}
 `,
@@ -620,28 +621,32 @@ async function generateLlmFiles() {
     allMarkdown.push(post.content)
   }
 
-  const germanPages = buildGermanLlmPages(projects, customers, postsJson)
-  const germanPosts = loadGermanBlogPosts()
+  const localePages = PUBLISHED_LOCALES
+    .filter((locale) => locale !== 'en')
+    .flatMap((locale) => buildLocaleLlmPages(locale, projects, customers, postsJson))
+  const localePosts = PUBLISHED_LOCALES
+    .filter((locale) => locale !== 'en')
+    .flatMap((locale) => loadLocaleBlogPosts(locale))
 
-  for (const page of germanPages) {
+  for (const page of localePages) {
     const outputPath = path.join(LLM_DIR, page.file)
     ensureDir(path.dirname(outputPath))
     fs.writeFileSync(outputPath, page.content, 'utf8')
     allMarkdown.push(page.content)
   }
 
-  for (const post of germanPosts) {
+  for (const post of localePosts) {
     const outputPath = path.join(LLM_DIR, post.file)
     ensureDir(path.dirname(outputPath))
     fs.writeFileSync(outputPath, post.content, 'utf8')
     allMarkdown.push(post.content)
   }
 
-  const llmsTxt = buildLlmsTxt(generatedPages, internalPosts, [...germanPages, ...germanPosts.map((post) => ({
+  const llmsTxt = buildLlmsTxt(generatedPages, internalPosts, [...localePages, ...localePosts.map((post) => ({
     title: post.title,
     llmPath: `/llm/${post.file}`,
-    locale: 'de',
-    summary: post.description || 'German blog post',
+    locale: post.locale,
+    summary: post.description || `${post.locale} blog post`,
   }))])
   fs.writeFileSync(path.join(PUBLIC_DIR, 'llms.txt'), llmsTxt, 'utf8')
   fs.writeFileSync(path.join(PUBLIC_DIR, 'llm.txt'), llmsTxt, 'utf8')
@@ -663,8 +668,8 @@ async function generateLlmFiles() {
   const sitemapUrls = [
     ...localizedHtmlUrls,
     ...sharedUrls,
-    ...germanPages.map((page) => ({ loc: `${SITE_URL}${page.llmPath}` })),
-    ...germanPosts.map((post) => ({ loc: `${SITE_URL}/llm/de/blog/${post.slug}.md`, lastmod: post.date })),
+    ...localePages.map((page) => ({ loc: `${SITE_URL}${page.llmPath}` })),
+    ...localePosts.map((post) => ({ loc: `${SITE_URL}/llm/${post.locale}/blog/${post.slug}.md`, lastmod: post.date })),
     ...generatedPages.map((page) => ({ loc: `${SITE_URL}${page.llmPath}` })),
     ...blogPages.map((post) => ({ loc: `${SITE_URL}/blog/${post.slug}/`, lastmod: post.date })),
     ...blogPages.map((post) => ({ loc: `${SITE_URL}/llm/blog/${post.slug}.md`, lastmod: post.date })),

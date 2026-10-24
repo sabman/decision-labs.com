@@ -6,7 +6,7 @@ module.exports = {
     title: `Decision Labs`,
     siteUrl: `https://decision-labs.com`,
     description: `Decision Labs is a consultancy specializing in Decision Science. We build AI-driven products, train custom models, and create intelligent systems.`,
-    languages: [`en`, `de`],
+    languages: [`en`, `de`, `fr`],
   },
   plugins: [
     {

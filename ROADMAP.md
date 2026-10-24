@@ -230,11 +230,11 @@ Record choices here as they are made:
 
 French is a language to add on the same system as German.
 
-- [ ] French pages under `/fr/`, with readable French slugs where that helps.
-- [ ] Language switcher reads **EN · DE · FR** and links to the matching page.
-- [ ] Formal **vous** on the consulting pages. Keep product names as they are (Geobase, EarthGPT, Hugging Face).
+- [x] French pages under `/fr/`, with readable French slugs where that helps.
+- [x] Language switcher reads **EN · DE · FR** and links to the matching page.
+- [x] Formal **vous** on the consulting pages. Keep product names as they are (Geobase, EarthGPT, Hugging Face).
 - [ ] A person reviews the French copy before it goes live.
-- [ ] Add `fr` to the locale list, `hreflang`, and the sitemap once the German plumbing from Phase 0 exists.
+- [x] Add `fr` to the locale list, `hreflang`, and the sitemap once the German plumbing from Phase 0 exists.
 
 ## Future (backlog)
 

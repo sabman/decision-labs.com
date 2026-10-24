@@ -1,0 +1,25 @@
+{
+  "metaTitle": "À propos - Decision Labs",
+  "metaDescription": "Conseil en transformation numérique, analytique et science des données.",
+  "title": "À propos",
+  "mission": "Nous aidons nos clients à gagner en efficacité par la transformation numérique et à développer leurs capacités en analytique et en science des données.",
+  "processTitle": "Notre démarche",
+  "steps": [
+    {
+      "title": "Cadrage et architecture",
+      "description": "Nous commençons par comprendre votre problème. Lorsqu'un modèle d'apprentissage automatique est adapté, nous préparons ensemble une feuille de route, passons en revue la littérature scientifique et fixons les exigences."
+    },
+    {
+      "title": "Collecte et exploration des données",
+      "description": "L'apprentissage automatique a besoin de données. Si vous en avez pour entraîner les modèles, nous menons une analyse exploratoire pour trouver des motifs et des corrélations. Sinon, nous collectons les données à partir de sources en ligne lorsque c'est possible."
+    },
+    {
+      "title": "Développement du modèle",
+      "description": "Nous lançons des milliers d'expériences en parallèle pour construire un modèle. Le modèle est le cœur du système : entraîné sur des données historiques, il estime des tendances ou interprète le sens d'un texte."
+    },
+    {
+      "title": "Application complète",
+      "description": "Nous intégrons le modèle à une API REST ou à une application, avec les fonctions nécessaires pour l'utiliser simplement. L'ensemble est prévu pour monter en charge et suit les pratiques de sécurité actuelles."
+    }
+  ]
+}

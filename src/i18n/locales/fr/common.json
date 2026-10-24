@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "about": "À propos",
+    "blog": "Blog",
+    "contact": "Contact",
+    "customers": "Clients",
+    "work": "Projets"
+  },
+  "footer": {
+    "legal": "Mentions légales",
+    "impressum": "Mentions légales (DE)",
+    "terms": "CGV et confidentialité (DE)",
+    "rights": "Tous droits réservés.",
+    "contact": "Contact",
+    "book": "Prendre rendez-vous",
+    "newsletter": "Newsletter",
+    "follow": "Suivre",
+    "feed": "Fil"
+  },
+  "switcherLabel": "Langue",
+  "hint": "Ce site est aussi disponible en français.",
+  "hintAction": "Lire en français",
+  "hintDismiss": "Rester en anglais",
+  "categories": {
+    "Blog": "Blog",
+    "Talk": "Conférence",
+    "Podcast": "Podcast",
+    "Partnership": "Partenariat",
+    "Project": "Projet",
+    "Field Notes": "Notes de terrain",
+    "Post": "Article"
+  }
+}

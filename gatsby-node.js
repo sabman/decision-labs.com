@@ -37,31 +37,42 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const blogPostTemplate = path.resolve(`./src/templates/blog-post.jsx`)
   const posts = result.data.allMarkdownRemark.nodes
-  const germanBySlug = new Map()
+  const translations = new Map()
   posts.forEach((post) => {
-    if (post.frontmatter.locale === 'de' && post.frontmatter.translationOf) {
-      germanBySlug.set(post.frontmatter.translationOf, post)
-    }
+    const locale = post.frontmatter.locale
+    const sourceSlug = post.frontmatter.translationOf
+    if (!locale || locale === 'en' || !sourceSlug || !PUBLISHED_LOCALES.includes(locale)) return
+    if (!translations.has(locale)) translations.set(locale, new Map())
+    translations.get(locale).set(sourceSlug, post)
   })
 
+  const alternatesFor = (slug) => {
+    const alternates = { en: `/blog/${slug}` }
+    PUBLISHED_LOCALES.forEach((locale) => {
+      if (locale !== 'en' && translations.get(locale)?.has(slug)) {
+        alternates[locale] = `/${locale}/blog/${slug}`
+      }
+    })
+    return alternates
+  }
+
   posts.forEach((post) => {
-    // Skip placeholder files
     const slug = post.frontmatter.slug || post.fields?.slug || post.id
     if (slug === 'placeholder' || post.frontmatter.title === 'Placeholder') {
       return
     }
 
-    if (post.frontmatter.locale === 'de' && post.frontmatter.translationOf) {
+    const locale = post.frontmatter.locale
+    const sourceSlug = post.frontmatter.translationOf
+    if (locale && locale !== 'en' && sourceSlug) {
+      if (!PUBLISHED_LOCALES.includes(locale)) return
       createPage({
-        path: `/de/blog/${post.frontmatter.translationOf}`,
+        path: `/${locale}/blog/${sourceSlug}`,
         component: blogPostTemplate,
         context: {
           id: post.id,
-          locale: 'de',
-          alternates: {
-            en: `/blog/${post.frontmatter.translationOf}`,
-            de: `/de/blog/${post.frontmatter.translationOf}`,
-          },
+          locale,
+          alternates: alternatesFor(sourceSlug),
         },
       })
       return
@@ -84,12 +95,7 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           id: post.id,
           locale: 'en',
-          alternates: germanBySlug.has(slug)
-            ? {
-              en: `/blog/${slug}`,
-              de: `/de/blog/${slug}`,
-            }
-            : { en: `/blog/${slug}` },
+          alternates: alternatesFor(slug),
         },
       })
     }
@@ -143,8 +149,12 @@ function readFrontmatter(raw) {
   return frontmatter
 }
 
-function writeGermanRss(publicDir) {
-  const dir = path.join(__dirname, 'src', 'blog', 'de')
+function writeLocaleRss(publicDir, locale) {
+  const descriptions = {
+    de: 'Beiträge von Decision Labs.',
+    fr: 'Articles de Decision Labs.',
+  }
+  const dir = path.join(__dirname, 'src', 'blog', locale)
   if (!fs.existsSync(dir)) return
   const posts = fs.readdirSync(dir)
     .filter((file) => file.endsWith('.md'))
@@ -161,8 +171,8 @@ function writeGermanRss(publicDir) {
   const siteUrl = 'https://decision-labs.com'
   const items = posts.map((post) => `    <item>
       <title><![CDATA[${post.title}]]></title>
-      <link>${siteUrl}/de/blog/${post.slug}</link>
-      <guid isPermaLink="false">${siteUrl}/de/blog/${post.slug}</guid>
+      <link>${siteUrl}/${locale}/blog/${post.slug}</link>
+      <guid isPermaLink="false">${siteUrl}/${locale}/blog/${post.slug}</guid>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <author>${post.author || 'Decision Labs'}</author>
     </item>`).join('\n')
@@ -171,19 +181,19 @@ function writeGermanRss(publicDir) {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Decision Labs Blog</title>
-    <link>${siteUrl}/de/blog</link>
-    <description>Beiträge von Decision Labs.</description>
-    <language>de</language>
+    <link>${siteUrl}/${locale}/blog</link>
+    <description>${descriptions[locale] || 'Decision Labs'}</description>
+    <language>${locale}</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="${siteUrl}/de/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="${siteUrl}/${locale}/rss.xml" rel="self" type="application/rss+xml"/>
 ${items}
   </channel>
 </rss>`
 
-  const deDir = path.join(publicDir, 'de')
-  fs.mkdirSync(deDir, { recursive: true })
-  fs.writeFileSync(path.join(deDir, 'rss.xml'), rss, 'utf8')
-  console.log(`✅ German RSS feed generated with ${posts.length} posts`)
+  const localeDir = path.join(publicDir, locale)
+  fs.mkdirSync(localeDir, { recursive: true })
+  fs.writeFileSync(path.join(localeDir, 'rss.xml'), rss, 'utf8')
+  console.log(`✅ ${locale} RSS feed generated with ${posts.length} posts`)
 }
 
 // Helper function to generate RSS feed from markdown files
@@ -335,7 +345,7 @@ ${rssItems}
     const publicPath = path.join(publicDir, 'rss.xml')
     fs.writeFileSync(publicPath, rss, 'utf8')
     console.log(`✅ RSS feed generated successfully with ${validPosts.length + externalPosts.length} posts`)
-    writeGermanRss(publicDir)
+    PUBLISHED_LOCALES.filter((locale) => locale !== 'en').forEach((locale) => writeLocaleRss(publicDir, locale))
   } catch (error) {
     console.error('❌ Error generating RSS feed:', error.message)
   }

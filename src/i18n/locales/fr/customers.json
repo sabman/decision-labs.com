@@ -1,0 +1,7 @@
+{
+  "metaTitle": "Clients - Decision Labs",
+  "metaDescription": "Organisations qui travaillent avec Decision Labs sur l'IA, l'infrastructure géospatiale et l'analytique.",
+  "title": "Clients",
+  "intro": "Nous travaillons avec des organisations de la finance, du secteur public, du spatial et de la technologie, des produits d'IA sur mesure à l'infrastructure géospatiale sur Geobase.",
+  "migration": "Plusieurs équipes sont passées de CartoDB à Geobase pour une infrastructure géospatiale dans Postgres : un coût plus bas, des données qui restent chez le client, et des workflows d'IA actuels."
+}

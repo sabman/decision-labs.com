@@ -18,6 +18,16 @@ const enFeed = require('./locales/en/feed.json')
 const deFeed = require('./locales/de/feed.json')
 const enBlog = require('./locales/en/blog.json')
 const deBlog = require('./locales/de/blog.json')
+const frCommon = require('./locales/fr/common.json')
+const frHome = require('./locales/fr/home.json')
+const frAbout = require('./locales/fr/about.json')
+const frWork = require('./locales/fr/work.json')
+const frCustomers = require('./locales/fr/customers.json')
+const frContact = require('./locales/fr/contact.json')
+const frNewsletter = require('./locales/fr/newsletter.json')
+const frNotFound = require('./locales/fr/notFound.json')
+const frFeed = require('./locales/fr/feed.json')
+const frBlog = require('./locales/fr/blog.json')
 
 const catalogs = {
   en: {
@@ -43,6 +53,18 @@ const catalogs = {
     notFound: deNotFound,
     feed: deFeed,
     blog: deBlog,
+  },
+  fr: {
+    common: frCommon,
+    home: frHome,
+    about: frAbout,
+    work: frWork,
+    customers: frCustomers,
+    contact: frContact,
+    newsletter: frNewsletter,
+    notFound: frNotFound,
+    feed: frFeed,
+    blog: frBlog,
   },
 }
 
