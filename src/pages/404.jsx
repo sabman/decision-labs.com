@@ -1,21 +1,19 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import '../styles/global.css'
-import Footer from '../components/Footer'
+import SiteLayout from '../components/SiteLayout'
 
-const NotFoundPage = () => {
+const NotFoundPage = ({ location }) => {
   return (
-    <div className="page-container">
+    <SiteLayout location={location}>
       <main className="main-content">
         <h1>Page not found</h1>
         <Link to="/">Go home</Link>
       </main>
-      <Footer />
-    </div>
+    </SiteLayout>
   )
 }
 
 export default NotFoundPage
 
 export const Head = () => <title>Not Found</title>
-

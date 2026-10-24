@@ -1,12 +1,11 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
+import SiteLayout from '../components/SiteLayout'
 import { FileText, Mic, Handshake, BookOpen, Grid, Radio } from 'lucide-react'
 import '../styles/global.css'
-import Footer from '../components/Footer'
 import postsData from '../data/posts.json'
 
 const BlogPage = ({ location, data }) => {
-  const pathname = location?.pathname || ''
   
   // Architecture:
   // - Internal posts: Auto-detected from markdown files in src/blog/
@@ -87,8 +86,6 @@ const BlogPage = ({ location, data }) => {
     .sort((a, b) => new Date(b.date) - new Date(a.date))
   
   const [activeFilter, setActiveFilter] = React.useState('all')
-  const [textColor, setTextColor] = React.useState('black')
-  const headerRef = React.useRef(null)
   
   // Get unique categories from all posts
   const categories = React.useMemo(() => {
@@ -113,72 +110,6 @@ const BlogPage = ({ location, data }) => {
     })
   }, [allPosts, activeFilter])
 
-  // Detect background color behind header (throttled for performance)
-  React.useEffect(() => {
-    const header = headerRef.current
-    if (!header) return
-
-    let ticking = false
-    const checkBackground = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const headerRect = header.getBoundingClientRect()
-          const headerCenterY = headerRect.top + headerRect.height / 2
-          const headerCenterX = window.innerWidth / 2
-
-          const elementBelow = document.elementFromPoint(headerCenterX, headerCenterY)
-          
-          if (!elementBelow) {
-            setTextColor('black')
-            ticking = false
-            return
-          }
-
-          let currentElement = elementBelow
-          while (currentElement && currentElement !== document.body) {
-            if (currentElement.classList && currentElement.classList.contains('card-primary')) {
-              setTextColor('white')
-              ticking = false
-              return
-            }
-            if (currentElement.classList && (
-              currentElement.classList.contains('card-secondary') ||
-              currentElement.classList.contains('page-container')
-            )) {
-              setTextColor('black')
-              ticking = false
-              return
-            }
-            currentElement = currentElement.parentElement
-          }
-
-          const bgColor = window.getComputedStyle(elementBelow).backgroundColor
-          if (bgColor) {
-            const rgb = bgColor.match(/\d+/g)
-            if (rgb && rgb.length >= 3) {
-              const brightness = (parseInt(rgb[0]) + parseInt(rgb[1]) + parseInt(rgb[2])) / 3
-              setTextColor(brightness < 128 ? 'white' : 'black')
-            } else {
-              setTextColor('black')
-            }
-          } else {
-            setTextColor('black')
-          }
-          ticking = false
-        })
-        ticking = true
-      }
-    }
-
-    checkBackground()
-    window.addEventListener('scroll', checkBackground, { passive: true })
-    window.addEventListener('resize', checkBackground, { passive: true })
-
-    return () => {
-      window.removeEventListener('scroll', checkBackground)
-      window.removeEventListener('resize', checkBackground)
-    }
-  }, [])
 
   // Load-in effects for filter buttons
   React.useEffect(() => {
@@ -240,17 +171,7 @@ const BlogPage = ({ location, data }) => {
   }
 
   return (
-    <div className="page-container">
-      <header className="header" ref={headerRef}>
-        <Link to="/" className="logo" style={{ color: textColor }}>Decision Labs</Link>
-        <nav className="nav">
-          <Link to="/about" className={pathname === '/about' || pathname === '/about/' ? 'active' : ''}>About</Link>
-          <Link to="/blog" className={pathname === '/blog' || pathname === '/blog/' ? 'active' : ''}>Blog</Link>
-          <Link to="/contact" className={pathname === '/contact' || pathname === '/contact/' ? 'active' : ''}>Contact</Link>
-          <Link to="/customers" className={pathname === '/customers' || pathname === '/customers/' ? 'active' : ''}>Customers</Link>
-          <Link to="/work" className={pathname === '/work' || pathname === '/work/' ? 'active' : ''}>Work</Link>
-        </nav>
-      </header>
+    <SiteLayout location={location}>
 
       <main className="main-content blog-content">
         <div className="content-cards blog-cards">
@@ -333,8 +254,7 @@ const BlogPage = ({ location, data }) => {
           </div>
         )}
       </main>
-      <Footer />
-    </div>
+    </SiteLayout>
   )
 }
 

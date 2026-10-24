@@ -3,26 +3,21 @@ import { Link } from 'gatsby'
 import { FileText, Mic, Handshake, BookOpen, Radio } from 'lucide-react'
 import '../styles/global.css'
 import postsData from '../data/posts.json'
-import Footer from '../components/Footer'
+import SiteLayout from '../components/SiteLayout'
 
 const IndexPage = ({ location }) => {
-  const pathname = location?.pathname || ''
   const [activeIndex, setActiveIndex] = React.useState(0)
-  const [textColor, setTextColor] = React.useState('black')
-  const headerRef = React.useRef(null)
-  
-  // Get featured posts, or if none, get recent posts
+
   const featuredPosts = postsData.filter(post => post.featured === true)
-  const postsToShow = featuredPosts.length > 0 
+  const postsToShow = featuredPosts.length > 0
     ? featuredPosts.sort((a, b) => new Date(b.date) - new Date(a.date))
     : postsData.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3)
-  
+
   const currentPost = postsToShow[activeIndex]
   const currentPostImage = currentPost?.image && !currentPost.image.includes('via.placeholder.com')
     ? currentPost.image
     : null
 
-  // Get icon component for category
   const getCategoryIcon = (category) => {
     const iconProps = { size: 16, style: { display: 'inline-block', verticalAlign: 'middle' } }
     switch (category) {
@@ -41,94 +36,16 @@ const IndexPage = ({ location }) => {
 
   React.useEffect(() => {
     if (postsToShow.length <= 1) return
-    
+
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % postsToShow.length)
-    }, 5000) // Change every 5 seconds
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [postsToShow.length])
 
-  // Detect background color behind header (throttled for performance)
-  React.useEffect(() => {
-    const header = headerRef.current
-    if (!header) return
-
-    let ticking = false
-    const checkBackground = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const headerRect = header.getBoundingClientRect()
-          const headerCenterY = headerRect.top + headerRect.height / 2
-          const headerCenterX = window.innerWidth / 2
-
-          const elementBelow = document.elementFromPoint(headerCenterX, headerCenterY)
-          
-          if (!elementBelow) {
-            setTextColor('black')
-            ticking = false
-            return
-          }
-
-          let currentElement = elementBelow
-          while (currentElement && currentElement !== document.body) {
-            if (currentElement.classList && currentElement.classList.contains('card-primary')) {
-              setTextColor('white')
-              ticking = false
-              return
-            }
-            if (currentElement.classList && (
-              currentElement.classList.contains('card-secondary') ||
-              currentElement.classList.contains('page-container')
-            )) {
-              setTextColor('black')
-              ticking = false
-              return
-            }
-            currentElement = currentElement.parentElement
-          }
-
-          const bgColor = window.getComputedStyle(elementBelow).backgroundColor
-          if (bgColor) {
-            const rgb = bgColor.match(/\d+/g)
-            if (rgb && rgb.length >= 3) {
-              const brightness = (parseInt(rgb[0]) + parseInt(rgb[1]) + parseInt(rgb[2])) / 3
-              setTextColor(brightness < 128 ? 'white' : 'black')
-            } else {
-              setTextColor('black')
-            }
-          } else {
-            setTextColor('black')
-          }
-          ticking = false
-        })
-        ticking = true
-      }
-    }
-
-    checkBackground()
-    window.addEventListener('scroll', checkBackground, { passive: true })
-    window.addEventListener('resize', checkBackground, { passive: true })
-
-    return () => {
-      window.removeEventListener('scroll', checkBackground)
-      window.removeEventListener('resize', checkBackground)
-    }
-  }, [])
-
   return (
-    <div className="page-container landing-page">
-      <header className="header" ref={headerRef}>
-        <Link to="/" className="logo" style={{ color: textColor }}>Decision Labs</Link>
-        <nav className="nav">
-          <Link to="/about" className={pathname === '/about' || pathname === '/about/' ? 'active' : ''}>About</Link>
-          <Link to="/blog" className={pathname === '/blog' || pathname === '/blog/' ? 'active' : ''}>Blog</Link>
-          <Link to="/contact" className={pathname === '/contact' || pathname === '/contact/' ? 'active' : ''}>Contact</Link>
-          <Link to="/customers" className={pathname === '/customers' || pathname === '/customers/' ? 'active' : ''}>Customers</Link>
-          <Link to="/work" className={pathname === '/work' || pathname === '/work/' ? 'active' : ''}>Work</Link>
-        </nav>
-      </header>
-
+    <SiteLayout location={location} className="landing-page">
       <main className="main-content">
         <div className="content-cards">
           <div className="card card-primary">
@@ -235,9 +152,8 @@ const IndexPage = ({ location }) => {
             </div>
           </div>
         </div>
-    </main>
-    <Footer />
-    </div>
+      </main>
+    </SiteLayout>
   )
 }
 

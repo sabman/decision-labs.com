@@ -49,7 +49,7 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
 
 **Goal:** One shared layout and i18n plumbing before translating copy.
 
-- [ ] **Extract `SiteLayout`** — Move duplicated header, nav, background-color logic, and `Footer` from every page into `src/components/SiteLayout.jsx`. Pages become content-only.
+- [x] **Extract `SiteLayout`** — Move duplicated header, nav, background-color logic, and `Footer` from every page into `src/components/SiteLayout.jsx`. Pages become content-only.
 - [ ] **Add i18n stack** — `i18next`, `react-i18next`, and `gatsby-plugin-react-i18next` (or equivalent locale-aware page generation in `gatsby-node.js` if we want zero plugin dependency).
 - [ ] **Translation file structure**
   ```
