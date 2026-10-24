@@ -12,10 +12,10 @@ import postsData from '../data/posts.json'
 const BlogPage = ({ location, data }) => {
   const { locale, t } = useI18n()
   const nodes = data?.allMarkdownRemark?.nodes || []
-  const translatedSlugs = new Set(
+  const translationsBySlug = new Map(
     nodes
       .filter((node) => node.frontmatter.locale === locale && node.frontmatter.translationOf)
-      .map((node) => node.frontmatter.translationOf)
+      .map((node) => [node.frontmatter.translationOf, node])
   )
   
   // Architecture:
@@ -221,12 +221,15 @@ const BlogPage = ({ location, data }) => {
         {posts.length > 0 ? (
           <div className="blog-posts-grid">
             {posts.map((post) => {
-              const hasTranslation = translatedSlugs.has(post.slug)
+              const translation = translationsBySlug.get(post.slug)
+              const title = translation?.frontmatter.title || post.title
+              const description = translation?.excerpt || post.description
+              const readTime = translation?.frontmatter.readTime || post.metadata?.readTime
               const CardWrapper = post.isInternal ? Link : 'a'
               const cardProps = post.isInternal
-                ? { to: hasTranslation ? `${localeHref('blog', locale).replace(/\/$/, '')}/${post.slug}` : `/blog/${post.slug}` }
+                ? { to: translation ? `${localeHref('blog', locale).replace(/\/$/, '')}/${post.slug}` : `/blog/${post.slug}` }
                 : { href: post.link, target: '_blank', rel: 'noopener noreferrer' }
-              const showEnglishBadge = locale !== 'en' && post.isInternal && !hasTranslation
+              const showEnglishBadge = locale !== 'en' && post.isInternal && !translation
               const category = post.metadata?.category || 'Post'
               
               return (
@@ -234,7 +237,7 @@ const BlogPage = ({ location, data }) => {
                   key={post.id}
                   {...cardProps}
                   className={`card ${post.featured ? 'card-primary' : 'card-secondary'} blog-card ${post.isInternal ? 'blog-card-internal' : 'blog-card-external'}${post.image ? ' blog-card-has-image' : ''}`}
-                  aria-label={t('blog.viewPost').replace('{title}', post.title)}
+                  aria-label={t('blog.viewPost').replace('{title}', title)}
                 >
                   {post.image && !post.image.includes('via.placeholder.com') && (
                     <div className="blog-card-image-wrap">
@@ -251,8 +254,8 @@ const BlogPage = ({ location, data }) => {
                         {!post.isInternal && <span className="blog-lang-badge">{t('blog.external')}</span>}
                       </span>
                     </div>
-                    <h2 className="blog-card-title">{post.title}</h2>
-                    <p className="blog-card-description">{post.description}</p>
+                    <h2 className="blog-card-title">{title}</h2>
+                    <p className="blog-card-description">{description}</p>
                     <div className="card-footer">
                       <span className="card-brand">
                         {new Date(post.date).toLocaleDateString(dateLocale(locale), {
@@ -260,7 +263,7 @@ const BlogPage = ({ location, data }) => {
                           month: 'short',
                           day: 'numeric'
                         })}
-                        {post.metadata?.readTime && ` • ${post.metadata.readTime}`}
+                        {readTime && ` • ${readTime}`}
                       </span>
                     </div>
                   </div>

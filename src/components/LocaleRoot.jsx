@@ -46,7 +46,15 @@ const LocaleRoot = ({ location, pageContext, children }) => {
 
   React.useEffect(() => {
     document.documentElement.lang = locale
-  }, [locale])
+    document.documentElement.dataset.locale = locale
+    const props = { locale }
+    if (typeof window.gtag === 'function') {
+      window.gtag('set', 'user_properties', props)
+    }
+    if (typeof window.plausible === 'function') {
+      window.plausible('pageview', { props })
+    }
+  }, [locale, pathname])
 
   return (
     <PageInfoContext.Provider value={pageContext || {}}>

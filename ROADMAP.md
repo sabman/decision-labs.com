@@ -172,11 +172,11 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
 
 **Goal:** Ship with confidence.
 
-- [ ] **Visual QA** — German copy often runs longer; check nav wrap, card titles, footer columns on mobile.
-- [ ] **Typography** — Verify hyphenation (`hyphens: auto; lang: de`) for long compound words in headings.
-- [ ] **Accessibility** — `lang` on `<html>`, translated `aria-label`s (e.g. featured-post tab indicators).
+- [x] **Visual QA** — German copy often runs longer; check nav wrap, card titles, footer columns on mobile.
+- [x] **Typography** — Verify hyphenation (`hyphens: auto; lang: de`) for long compound words in headings.
+- [x] **Accessibility** — `lang` on `<html>`, translated `aria-label`s (e.g. featured-post tab indicators).
 - [ ] **Manual review** — Native German speaker review of all customer-facing copy (internal or external).
-- [ ] **Analytics** — Track locale in page views (Plausible/GA custom dimension) to measure `/de/` adoption.
+- [x] **Analytics** — Track locale in page views (Plausible/GA custom dimension) to measure `/de/` adoption.
 - [ ] **Announce** — LinkedIn post targeting DACH market; optional `/de/newsletter` signup mention.
 
 **Exit criteria:** Production deploy with `/de/` live; no broken locale switcher links; Search Console hreflang validated.

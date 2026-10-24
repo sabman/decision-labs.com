@@ -9,6 +9,7 @@ import {
   PUBLISHED_LOCALES,
   localeHref,
   normalizePath,
+  readStoredLocale,
   storeLocale,
   switchTarget,
 } from '../i18n/routes'
