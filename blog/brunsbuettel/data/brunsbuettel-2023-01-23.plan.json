@@ -1,0 +1,256 @@
+{
+  "date": "2023-01-23",
+  "status": "OPTIMAL",
+  "best_wait": 2430,
+  "bound": 2430,
+  "horizon_capped": true,
+  "uncapped_bound": 2427,
+  "uncapped_wait": 2430,
+  "plan": [
+    {
+      "ship": "255752000",
+      "chamber": "144489145",
+      "start_min": 70
+    },
+    {
+      "ship": "305301000",
+      "chamber": "144489146",
+      "start_min": 79
+    },
+    {
+      "ship": "255806513",
+      "chamber": "144489145",
+      "start_min": 115
+    },
+    {
+      "ship": "244780569",
+      "chamber": "144489146",
+      "start_min": 132
+    },
+    {
+      "ship": "211265530",
+      "chamber": "144489146",
+      "start_min": 189
+    },
+    {
+      "ship": "210340000",
+      "chamber": "144489145",
+      "start_min": 200
+    },
+    {
+      "ship": "244058000",
+      "chamber": "144489146",
+      "start_min": 365
+    },
+    {
+      "ship": "275510000",
+      "chamber": "144489145",
+      "start_min": 369
+    },
+    {
+      "ship": "211238930",
+      "chamber": "144489146",
+      "start_min": 410
+    },
+    {
+      "ship": "275514000",
+      "chamber": "144489145",
+      "start_min": 467
+    },
+    {
+      "ship": "245046000",
+      "chamber": "144489146",
+      "start_min": 533
+    },
+    {
+      "ship": "218098000",
+      "chamber": "144489145",
+      "start_min": 572
+    },
+    {
+      "ship": "314189000",
+      "chamber": "144489146",
+      "start_min": 615
+    },
+    {
+      "ship": "266464000",
+      "chamber": "144489145",
+      "start_min": 636
+    },
+    {
+      "ship": "244017000",
+      "chamber": "144489146",
+      "start_min": 660
+    },
+    {
+      "ship": "212949000",
+      "chamber": "144489145",
+      "start_min": 681
+    },
+    {
+      "ship": "304667000",
+      "chamber": "144489146",
+      "start_min": 705
+    },
+    {
+      "ship": "256295000",
+      "chamber": "144489145",
+      "start_min": 726
+    },
+    {
+      "ship": "209515000",
+      "chamber": "144489146",
+      "start_min": 750
+    },
+    {
+      "ship": "209151000",
+      "chamber": "144489145",
+      "start_min": 771
+    },
+    {
+      "ship": "305741000",
+      "chamber": "144489146",
+      "start_min": 795
+    },
+    {
+      "ship": "210552000",
+      "chamber": "144489145",
+      "start_min": 816
+    },
+    {
+      "ship": "212746000",
+      "chamber": "144489146",
+      "start_min": 840
+    },
+    {
+      "ship": "636020533",
+      "chamber": "144489145",
+      "start_min": 861
+    },
+    {
+      "ship": "211421690",
+      "chamber": "144489146",
+      "start_min": 885
+    },
+    {
+      "ship": "246553000",
+      "chamber": "144489145",
+      "start_min": 906
+    },
+    {
+      "ship": "255806465",
+      "chamber": "144489146",
+      "start_min": 930
+    },
+    {
+      "ship": "477858700",
+      "chamber": "144489145",
+      "start_min": 951
+    },
+    {
+      "ship": "209452000",
+      "chamber": "144489146",
+      "start_min": 975
+    },
+    {
+      "ship": "245258000",
+      "chamber": "144489145",
+      "start_min": 996
+    },
+    {
+      "ship": "244850226",
+      "chamber": "144489146",
+      "start_min": 1020
+    },
+    {
+      "ship": "229344000",
+      "chamber": "144489145",
+      "start_min": 1041
+    },
+    {
+      "ship": "255802840",
+      "chamber": "144489146",
+      "start_min": 1065
+    },
+    {
+      "ship": "304914000",
+      "chamber": "144489145",
+      "start_min": 1086
+    },
+    {
+      "ship": "636092733",
+      "chamber": "144489146",
+      "start_min": 1110
+    },
+    {
+      "ship": "244093000",
+      "chamber": "144489145",
+      "start_min": 1131
+    },
+    {
+      "ship": "230015000",
+      "chamber": "144489146",
+      "start_min": 1155
+    },
+    {
+      "ship": "304407000",
+      "chamber": "144489145",
+      "start_min": 1176
+    },
+    {
+      "ship": "538003550",
+      "chamber": "144489146",
+      "start_min": 1200
+    },
+    {
+      "ship": "229241000",
+      "chamber": "144489145",
+      "start_min": 1221
+    },
+    {
+      "ship": "244765000",
+      "chamber": "144489146",
+      "start_min": 1245
+    },
+    {
+      "ship": "211141000",
+      "chamber": "144489145",
+      "start_min": 1266
+    },
+    {
+      "ship": "305661000",
+      "chamber": "144489146",
+      "start_min": 1290
+    },
+    {
+      "ship": "210017000",
+      "chamber": "144489145",
+      "start_min": 1311
+    },
+    {
+      "ship": "245281000",
+      "chamber": "144489146",
+      "start_min": 1335
+    },
+    {
+      "ship": "564066000",
+      "chamber": "144489145",
+      "start_min": 1356
+    },
+    {
+      "ship": "255805980",
+      "chamber": "144489146",
+      "start_min": 1380
+    },
+    {
+      "ship": "210307000",
+      "chamber": "144489145",
+      "start_min": 1401
+    },
+    {
+      "ship": "212748000",
+      "chamber": "144489146",
+      "start_min": 1425
+    }
+  ]
+}

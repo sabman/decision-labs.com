@@ -1,0 +1,63 @@
+# Decision Labs
+
+> Decision Labs is a consultancy and product studio in decision science, AI/ML, and geospatial infrastructure. We build Geobase, EarthGPT, Verisat.ai, and GeoAI.js, and work with enterprise and government clients worldwide.
+
+SpacialDB UG (Decision Labs) · Berlin, Germany · team@decision-labs.com · https://decision-labs.com
+
+Languages: en, de, fr
+
+## Pages
+
+- [Home](https://decision-labs.com/llm/index.md): Company overview, featured content, and key links
+- [About](https://decision-labs.com/llm/about.md): Mission and ML consulting process
+- [Work](https://decision-labs.com/llm/work.md): Geobase, EarthGPT, Verisat.ai, GeoAI.js, and other products
+- [Customers](https://decision-labs.com/llm/customers.md): Enterprise and government customers including Morgan Stanley, Hugging Face, ESA, Naver
+- [Contact](https://decision-labs.com/llm/contact.md): Email, booking link, and social channels
+- [Blog](https://decision-labs.com/llm/blog.md): Index of blog posts, talks, and external media
+- [Newsletter](https://decision-labs.com/llm/newsletter.md): Monthly newsletter signup and description
+- [Feed](https://decision-labs.com/llm/feed.md): Combined content feed and RSS pointer
+- [Impressum](https://decision-labs.com/llm/impressum.md): German legal imprint for SpacialDB UG
+- [Terms & Conditions](https://decision-labs.com/llm/terms.md): Terms and privacy summary with link to full legal text
+
+## Blog
+
+- [Blog index](https://decision-labs.com/llm/blog.md): All posts, talks, podcasts, and external links
+- [AI Agents for Earth Observation: Talk and BoF at BiDS 2025](https://decision-labs.com/llm/blog/ai-agents-for-earth-observation.md): Talk
+- [Announcing Decision Labs Edge](https://decision-labs.com/llm/blog/announcing-decision-labs-edge.md): Blog
+- [Field Notes: Accra](https://decision-labs.com/llm/blog/field-notes-accra.md): Field Notes
+- [Building GeoAgents: Workshop at GeoAI 2026](https://decision-labs.com/llm/blog/geoai-2026-geoagents-workshop.md): Talk
+- [Rethinking Roofs: Cooling Homes in Informal Settlements with What Already Exists](https://decision-labs.com/llm/blog/rethinking-roofs.md): Project
+
+## Other languages
+
+- [Decision Labs](https://decision-labs.com/llm/de/index.md) (de): Decision Labs ist eine Beratung für Decision Science. Wir entwickeln KI-Produkte, trainieren eigene Modelle und bauen Systeme, die aus Daten Entscheidungen machen.
+- [Über uns - Decision Labs](https://decision-labs.com/llm/de/ueber-uns.md) (de): Beratung zu Digitalisierung, Analytics und Data Science.
+- [Projekte - Decision Labs](https://decision-labs.com/llm/de/projekte.md) (de): Produkte von Decision Labs, darunter Geobase, EarthGPT, Verisat.ai, GeoAI.js und Decision Labs Edge.
+- [Kunden - Decision Labs](https://decision-labs.com/llm/de/kunden.md) (de): Organisationen, die mit Decision Labs an KI, Geodaten-Infrastruktur und Analytics arbeiten.
+- [Kontakt - Decision Labs](https://decision-labs.com/llm/de/kontakt.md) (de): Schreiben Sie Decision Labs zu einem Vorhaben: per E-Mail, in einem Gespräch von 30 Minuten oder über den Newsletter.
+- [Newsletter - Decision Labs](https://decision-labs.com/llm/de/newsletter.md) (de): Monatliche Notizen zu Geodatenprodukten, KI-Workflows und Projektarbeit.
+- [Feed - Decision Labs](https://decision-labs.com/llm/de/feed.md) (de): Gesammelte Beiträge und Neuigkeiten von Decision Labs.
+- [Blog - Decision Labs](https://decision-labs.com/llm/de/blog.md) (de): Beiträge zu KI, maschinellem Lernen, Decision Science und Geodaten von Decision Labs.
+- [Decision Labs](https://decision-labs.com/llm/fr/index.md) (fr): Decision Labs est un cabinet de conseil en science de la décision. Nous concevons des produits d'IA, entraînons des modèles et construisons des systèmes.
+- [À propos - Decision Labs](https://decision-labs.com/llm/fr/a-propos.md) (fr): Conseil en transformation numérique, analytique et science des données.
+- [Projets - Decision Labs](https://decision-labs.com/llm/fr/projets.md) (fr): Produits de Decision Labs : Geobase, EarthGPT, Verisat.ai, GeoAI.js et Decision Labs Edge.
+- [Clients - Decision Labs](https://decision-labs.com/llm/fr/clients.md) (fr): Organisations qui travaillent avec Decision Labs sur l'IA, l'infrastructure géospatiale et l'analytique.
+- [Contact - Decision Labs](https://decision-labs.com/llm/fr/contact.md) (fr): Écrire à Decision Labs pour un projet, par e-mail, un appel de 30 minutes ou la newsletter.
+- [Newsletter - Decision Labs](https://decision-labs.com/llm/fr/newsletter.md) (fr): Notes mensuelles sur les produits de données géospatiales, les workflows d'IA et le travail avec les clients.
+- [Fil - Decision Labs](https://decision-labs.com/llm/fr/fil.md) (fr): Fil combiné des articles et des mises à jour de Decision Labs.
+- [Blog - Decision Labs](https://decision-labs.com/llm/fr/blog.md) (fr): Notes sur l'IA, l'apprentissage automatique, la science de la décision et le géospatial, par Decision Labs.
+- [Decision Labs Edge ist da](https://decision-labs.com/llm/de/blog/announcing-decision-labs-edge.md) (de): de blog post
+- [Decision Labs Edge est disponible](https://decision-labs.com/llm/fr/blog/announcing-decision-labs-edge.md) (fr): fr blog post
+
+## Optional
+
+- [Impressum](https://decision-labs.com/llm/impressum.md): German legal imprint (SpacialDB UG)
+- [Terms & privacy](https://decision-labs.com/llm/terms.md): Terms summary; full legal text on the website
+
+## Full export
+
+- [llms-full.txt](https://decision-labs.com/llms-full.txt): Complete markdown export of all LLM pages above
+
+## HTML sitemap
+
+- [sitemap.xml](https://decision-labs.com/sitemap.xml): Machine-readable sitemap including HTML and LLM URLs

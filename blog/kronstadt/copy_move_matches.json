@@ -1,0 +1,2322 @@
+{
+  "input": "test.png",
+  "image_size_pixels": {
+    "width": 1734,
+    "height": 1484
+  },
+  "candidates": [
+    {
+      "candidate": 1,
+      "matches": 78,
+      "median_pixel_correlation": 0.9983,
+      "translation_pixels": {
+        "x": -294.0,
+        "y": -54.01
+      },
+      "source_box_pixels": [
+        925,
+        620,
+        1172,
+        880
+      ],
+      "destination_box_pixels": [
+        631,
+        566,
+        878,
+        826
+      ],
+      "correspondences_pixels": [
+        {
+          "source": [
+            1151.88,
+            770.83
+          ],
+          "destination": [
+            857.81,
+            716.82
+          ],
+          "pixel_correlation": 0.9416
+        },
+        {
+          "source": [
+            1151.88,
+            770.83
+          ],
+          "destination": [
+            857.81,
+            716.82
+          ],
+          "pixel_correlation": 0.9416
+        },
+        {
+          "source": [
+            1147.24,
+            760.7
+          ],
+          "destination": [
+            853.16,
+            706.66
+          ],
+          "pixel_correlation": 0.9039
+        },
+        {
+          "source": [
+            1147.1,
+            775.46
+          ],
+          "destination": [
+            853.11,
+            721.44
+          ],
+          "pixel_correlation": 0.9967
+        },
+        {
+          "source": [
+            1132.27,
+            752.79
+          ],
+          "destination": [
+            838.29,
+            698.76
+          ],
+          "pixel_correlation": 0.9185
+        },
+        {
+          "source": [
+            1125.2,
+            805.98
+          ],
+          "destination": [
+            831.21,
+            752.0
+          ],
+          "pixel_correlation": 0.9987
+        },
+        {
+          "source": [
+            1121.34,
+            757.15
+          ],
+          "destination": [
+            827.28,
+            703.19
+          ],
+          "pixel_correlation": 0.9904
+        },
+        {
+          "source": [
+            1109.47,
+            804.03
+          ],
+          "destination": [
+            815.47,
+            750.04
+          ],
+          "pixel_correlation": 0.9987
+        },
+        {
+          "source": [
+            1103.35,
+            812.4
+          ],
+          "destination": [
+            809.41,
+            758.25
+          ],
+          "pixel_correlation": 0.9987
+        },
+        {
+          "source": [
+            1103.35,
+            812.4
+          ],
+          "destination": [
+            809.41,
+            758.25
+          ],
+          "pixel_correlation": 0.9987
+        },
+        {
+          "source": [
+            1101.29,
+            765.15
+          ],
+          "destination": [
+            807.26,
+            711.19
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1096.74,
+            850.44
+          ],
+          "destination": [
+            802.72,
+            796.46
+          ],
+          "pixel_correlation": 0.9562
+        },
+        {
+          "source": [
+            1092.59,
+            851.82
+          ],
+          "destination": [
+            798.57,
+            797.76
+          ],
+          "pixel_correlation": 0.9573
+        },
+        {
+          "source": [
+            1086.9,
+            741.7
+          ],
+          "destination": [
+            792.94,
+            687.7
+          ],
+          "pixel_correlation": 0.9992
+        },
+        {
+          "source": [
+            1086.9,
+            759.47
+          ],
+          "destination": [
+            792.95,
+            705.54
+          ],
+          "pixel_correlation": 0.9126
+        },
+        {
+          "source": [
+            1079.12,
+            859.48
+          ],
+          "destination": [
+            785.12,
+            805.47
+          ],
+          "pixel_correlation": 0.9913
+        },
+        {
+          "source": [
+            1079.02,
+            749.66
+          ],
+          "destination": [
+            785.03,
+            695.67
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1079.02,
+            749.66
+          ],
+          "destination": [
+            785.03,
+            695.67
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1077.59,
+            797.87
+          ],
+          "destination": [
+            783.53,
+            743.82
+          ],
+          "pixel_correlation": 0.9982
+        },
+        {
+          "source": [
+            1075.61,
+            849.28
+          ],
+          "destination": [
+            781.54,
+            795.24
+          ],
+          "pixel_correlation": 0.9983
+        },
+        {
+          "source": [
+            1075.07,
+            855.89
+          ],
+          "destination": [
+            781.0,
+            801.83
+          ],
+          "pixel_correlation": 0.9976
+        },
+        {
+          "source": [
+            1073.45,
+            797.33
+          ],
+          "destination": [
+            779.49,
+            743.38
+          ],
+          "pixel_correlation": 0.9982
+        },
+        {
+          "source": [
+            1071.24,
+            751.16
+          ],
+          "destination": [
+            777.21,
+            697.15
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1069.8,
+            805.09
+          ],
+          "destination": [
+            775.83,
+            751.11
+          ],
+          "pixel_correlation": 0.9983
+        },
+        {
+          "source": [
+            1069.48,
+            824.35
+          ],
+          "destination": [
+            775.49,
+            770.37
+          ],
+          "pixel_correlation": 0.9984
+        },
+        {
+          "source": [
+            1069.48,
+            824.35
+          ],
+          "destination": [
+            775.49,
+            770.37
+          ],
+          "pixel_correlation": 0.9984
+        },
+        {
+          "source": [
+            1069.22,
+            820.39
+          ],
+          "destination": [
+            775.2,
+            766.4
+          ],
+          "pixel_correlation": 0.9982
+        },
+        {
+          "source": [
+            1067.83,
+            742.04
+          ],
+          "destination": [
+            773.8,
+            688.03
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1066.64,
+            858.73
+          ],
+          "destination": [
+            772.66,
+            804.73
+          ],
+          "pixel_correlation": 0.9976
+        },
+        {
+          "source": [
+            1057.53,
+            815.23
+          ],
+          "destination": [
+            763.61,
+            761.16
+          ],
+          "pixel_correlation": 0.9983
+        },
+        {
+          "source": [
+            1057.2,
+            709.72
+          ],
+          "destination": [
+            763.13,
+            655.65
+          ],
+          "pixel_correlation": 0.9714
+        },
+        {
+          "source": [
+            1052.0,
+            763.81
+          ],
+          "destination": [
+            757.99,
+            709.8
+          ],
+          "pixel_correlation": 0.9982
+        },
+        {
+          "source": [
+            1051.96,
+            756.93
+          ],
+          "destination": [
+            757.97,
+            702.95
+          ],
+          "pixel_correlation": 0.9987
+        },
+        {
+          "source": [
+            1051.19,
+            737.28
+          ],
+          "destination": [
+            757.2,
+            683.21
+          ],
+          "pixel_correlation": 0.9991
+        },
+        {
+          "source": [
+            1044.0,
+            728.93
+          ],
+          "destination": [
+            750.03,
+            674.9
+          ],
+          "pixel_correlation": 0.9992
+        },
+        {
+          "source": [
+            1041.9,
+            754.85
+          ],
+          "destination": [
+            747.86,
+            700.83
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1039.38,
+            723.73
+          ],
+          "destination": [
+            745.33,
+            669.72
+          ],
+          "pixel_correlation": 0.9992
+        },
+        {
+          "source": [
+            1036.7,
+            746.43
+          ],
+          "destination": [
+            742.69,
+            692.43
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1036.11,
+            823.9
+          ],
+          "destination": [
+            742.02,
+            769.86
+          ],
+          "pixel_correlation": 0.9984
+        },
+        {
+          "source": [
+            1036.11,
+            823.9
+          ],
+          "destination": [
+            742.02,
+            769.86
+          ],
+          "pixel_correlation": 0.9984
+        },
+        {
+          "source": [
+            1035.52,
+            799.29
+          ],
+          "destination": [
+            741.55,
+            745.28
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1035.52,
+            799.29
+          ],
+          "destination": [
+            741.55,
+            745.28
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1031.81,
+            794.01
+          ],
+          "destination": [
+            737.82,
+            740.03
+          ],
+          "pixel_correlation": 0.9988
+        },
+        {
+          "source": [
+            1028.78,
+            706.49
+          ],
+          "destination": [
+            734.83,
+            652.55
+          ],
+          "pixel_correlation": 0.9446
+        },
+        {
+          "source": [
+            1028.47,
+            763.31
+          ],
+          "destination": [
+            734.5,
+            709.33
+          ],
+          "pixel_correlation": 0.9925
+        },
+        {
+          "source": [
+            1027.51,
+            754.99
+          ],
+          "destination": [
+            733.51,
+            701.01
+          ],
+          "pixel_correlation": 0.983
+        },
+        {
+          "source": [
+            1027.51,
+            754.99
+          ],
+          "destination": [
+            733.51,
+            701.01
+          ],
+          "pixel_correlation": 0.983
+        },
+        {
+          "source": [
+            1026.32,
+            810.67
+          ],
+          "destination": [
+            732.29,
+            756.65
+          ],
+          "pixel_correlation": 0.9989
+        },
+        {
+          "source": [
+            1025.17,
+            717.37
+          ],
+          "destination": [
+            731.16,
+            663.34
+          ],
+          "pixel_correlation": 0.9967
+        },
+        {
+          "source": [
+            1018.74,
+            804.54
+          ],
+          "destination": [
+            724.71,
+            750.53
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1018.74,
+            804.54
+          ],
+          "destination": [
+            724.71,
+            750.53
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1008.86,
+            837.64
+          ],
+          "destination": [
+            714.88,
+            783.66
+          ],
+          "pixel_correlation": 0.9989
+        },
+        {
+          "source": [
+            1005.22,
+            845.91
+          ],
+          "destination": [
+            711.31,
+            791.89
+          ],
+          "pixel_correlation": 0.998
+        },
+        {
+          "source": [
+            999.04,
+            701.38
+          ],
+          "destination": [
+            705.04,
+            647.36
+          ],
+          "pixel_correlation": 0.9835
+        },
+        {
+          "source": [
+            999.04,
+            701.38
+          ],
+          "destination": [
+            705.04,
+            647.36
+          ],
+          "pixel_correlation": 0.9835
+        },
+        {
+          "source": [
+            993.09,
+            810.08
+          ],
+          "destination": [
+            699.08,
+            756.05
+          ],
+          "pixel_correlation": 0.9993
+        },
+        {
+          "source": [
+            973.93,
+            844.73
+          ],
+          "destination": [
+            679.92,
+            790.68
+          ],
+          "pixel_correlation": 0.9978
+        },
+        {
+          "source": [
+            972.59,
+            799.92
+          ],
+          "destination": [
+            678.68,
+            745.91
+          ],
+          "pixel_correlation": 0.9934
+        },
+        {
+          "source": [
+            963.43,
+            648.43
+          ],
+          "destination": [
+            669.45,
+            594.35
+          ],
+          "pixel_correlation": 0.9318
+        },
+        {
+          "source": [
+            963.43,
+            648.43
+          ],
+          "destination": [
+            669.45,
+            594.35
+          ],
+          "pixel_correlation": 0.9318
+        },
+        {
+          "source": [
+            963.11,
+            684.81
+          ],
+          "destination": [
+            669.11,
+            630.79
+          ],
+          "pixel_correlation": 0.9688
+        },
+        {
+          "source": [
+            963.11,
+            684.81
+          ],
+          "destination": [
+            669.11,
+            630.79
+          ],
+          "pixel_correlation": 0.9688
+        },
+        {
+          "source": [
+            956.02,
+            663.0
+          ],
+          "destination": [
+            662.02,
+            608.99
+          ],
+          "pixel_correlation": 0.9991
+        },
+        {
+          "source": [
+            945.14,
+            640.65
+          ],
+          "destination": [
+            651.15,
+            586.7
+          ],
+          "pixel_correlation": 0.9361
+        },
+        {
+          "source": [
+            971.07,
+            791.81
+          ],
+          "destination": [
+            677.16,
+            737.9
+          ],
+          "pixel_correlation": 0.969
+        },
+        {
+          "source": [
+            971.32,
+            803.89
+          ],
+          "destination": [
+            677.29,
+            749.85
+          ],
+          "pixel_correlation": 0.9956
+        },
+        {
+          "source": [
+            1106.15,
+            821.93
+          ],
+          "destination": [
+            812.12,
+            767.91
+          ],
+          "pixel_correlation": 0.9989
+        },
+        {
+          "source": [
+            1008.02,
+            695.56
+          ],
+          "destination": [
+            714.03,
+            641.61
+          ],
+          "pixel_correlation": 0.9989
+        },
+        {
+          "source": [
+            1018.17,
+            695.48
+          ],
+          "destination": [
+            724.15,
+            641.46
+          ],
+          "pixel_correlation": 0.9978
+        },
+        {
+          "source": [
+            1037.16,
+            787.2
+          ],
+          "destination": [
+            743.16,
+            733.13
+          ],
+          "pixel_correlation": 0.9987
+        },
+        {
+          "source": [
+            1037.16,
+            787.2
+          ],
+          "destination": [
+            743.16,
+            733.13
+          ],
+          "pixel_correlation": 0.9987
+        },
+        {
+          "source": [
+            1135.43,
+            756.84
+          ],
+          "destination": [
+            841.42,
+            702.82
+          ],
+          "pixel_correlation": 0.9451
+        },
+        {
+          "source": [
+            1135.43,
+            756.84
+          ],
+          "destination": [
+            841.42,
+            702.82
+          ],
+          "pixel_correlation": 0.9451
+        },
+        {
+          "source": [
+            1127.93,
+            796.7
+          ],
+          "destination": [
+            834.06,
+            742.74
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1127.93,
+            796.7
+          ],
+          "destination": [
+            834.06,
+            742.74
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1057.11,
+            744.38
+          ],
+          "destination": [
+            763.12,
+            690.34
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            973.0,
+            837.17
+          ],
+          "destination": [
+            678.99,
+            783.17
+          ],
+          "pixel_correlation": 0.9993
+        },
+        {
+          "source": [
+            1075.43,
+            821.14
+          ],
+          "destination": [
+            781.43,
+            767.11
+          ],
+          "pixel_correlation": 0.9984
+        }
+      ]
+    },
+    {
+      "candidate": 2,
+      "matches": 75,
+      "median_pixel_correlation": 0.9986,
+      "translation_pixels": {
+        "x": -332.0,
+        "y": -236.01
+      },
+      "source_box_pixels": [
+        1221,
+        727,
+        1527,
+        950
+      ],
+      "destination_box_pixels": [
+        889,
+        491,
+        1195,
+        714
+      ],
+      "correspondences_pixels": [
+        {
+          "source": [
+            1506.64,
+            863.04
+          ],
+          "destination": [
+            1174.58,
+            627.05
+          ],
+          "pixel_correlation": 0.9976
+        },
+        {
+          "source": [
+            1498.54,
+            859.08
+          ],
+          "destination": [
+            1166.6,
+            623.13
+          ],
+          "pixel_correlation": 0.996
+        },
+        {
+          "source": [
+            1490.76,
+            850.53
+          ],
+          "destination": [
+            1158.71,
+            614.55
+          ],
+          "pixel_correlation": 0.9955
+        },
+        {
+          "source": [
+            1484.05,
+            847.69
+          ],
+          "destination": [
+            1152.1,
+            611.69
+          ],
+          "pixel_correlation": 0.9954
+        },
+        {
+          "source": [
+            1481.73,
+            855.28
+          ],
+          "destination": [
+            1149.82,
+            619.28
+          ],
+          "pixel_correlation": 0.9955
+        },
+        {
+          "source": [
+            1478.77,
+            900.35
+          ],
+          "destination": [
+            1146.75,
+            664.32
+          ],
+          "pixel_correlation": 0.9961
+        },
+        {
+          "source": [
+            1476.98,
+            826.4
+          ],
+          "destination": [
+            1144.98,
+            590.35
+          ],
+          "pixel_correlation": 0.9951
+        },
+        {
+          "source": [
+            1476.31,
+            849.27
+          ],
+          "destination": [
+            1144.37,
+            613.31
+          ],
+          "pixel_correlation": 0.9954
+        },
+        {
+          "source": [
+            1472.59,
+            839.92
+          ],
+          "destination": [
+            1140.63,
+            603.98
+          ],
+          "pixel_correlation": 0.9978
+        },
+        {
+          "source": [
+            1456.95,
+            854.97
+          ],
+          "destination": [
+            1124.95,
+            619.0
+          ],
+          "pixel_correlation": 0.9978
+        },
+        {
+          "source": [
+            1448.88,
+            805.96
+          ],
+          "destination": [
+            1116.88,
+            569.96
+          ],
+          "pixel_correlation": 0.9945
+        },
+        {
+          "source": [
+            1446.71,
+            929.53
+          ],
+          "destination": [
+            1114.74,
+            693.5
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1444.23,
+            821.71
+          ],
+          "destination": [
+            1112.2,
+            585.69
+          ],
+          "pixel_correlation": 0.9992
+        },
+        {
+          "source": [
+            1438.55,
+            809.37
+          ],
+          "destination": [
+            1106.63,
+            573.32
+          ],
+          "pixel_correlation": 0.9994
+        },
+        {
+          "source": [
+            1438.55,
+            809.37
+          ],
+          "destination": [
+            1106.63,
+            573.32
+          ],
+          "pixel_correlation": 0.9994
+        },
+        {
+          "source": [
+            1437.69,
+            799.58
+          ],
+          "destination": [
+            1105.73,
+            563.75
+          ],
+          "pixel_correlation": 0.9887
+        },
+        {
+          "source": [
+            1437.69,
+            799.58
+          ],
+          "destination": [
+            1105.73,
+            563.75
+          ],
+          "pixel_correlation": 0.9887
+        },
+        {
+          "source": [
+            1436.94,
+            919.79
+          ],
+          "destination": [
+            1104.88,
+            683.78
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1433.48,
+            861.43
+          ],
+          "destination": [
+            1101.49,
+            625.4
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1420.09,
+            863.61
+          ],
+          "destination": [
+            1088.07,
+            627.61
+          ],
+          "pixel_correlation": 0.9989
+        },
+        {
+          "source": [
+            1414.69,
+            830.29
+          ],
+          "destination": [
+            1082.7,
+            594.36
+          ],
+          "pixel_correlation": 0.9992
+        },
+        {
+          "source": [
+            1413.73,
+            898.16
+          ],
+          "destination": [
+            1081.71,
+            662.17
+          ],
+          "pixel_correlation": 0.9993
+        },
+        {
+          "source": [
+            1411.59,
+            858.16
+          ],
+          "destination": [
+            1079.58,
+            622.14
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1404.04,
+            799.38
+          ],
+          "destination": [
+            1072.0,
+            563.34
+          ],
+          "pixel_correlation": 0.9991
+        },
+        {
+          "source": [
+            1404.04,
+            799.38
+          ],
+          "destination": [
+            1072.0,
+            563.34
+          ],
+          "pixel_correlation": 0.9991
+        },
+        {
+          "source": [
+            1401.77,
+            780.74
+          ],
+          "destination": [
+            1069.73,
+            544.72
+          ],
+          "pixel_correlation": 0.9952
+        },
+        {
+          "source": [
+            1395.16,
+            794.13
+          ],
+          "destination": [
+            1063.12,
+            558.14
+          ],
+          "pixel_correlation": 0.9989
+        },
+        {
+          "source": [
+            1391.54,
+            829.02
+          ],
+          "destination": [
+            1059.55,
+            593.1
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1390.62,
+            796.82
+          ],
+          "destination": [
+            1058.63,
+            560.79
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1390.62,
+            796.82
+          ],
+          "destination": [
+            1058.63,
+            560.79
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1386.5,
+            815.87
+          ],
+          "destination": [
+            1054.54,
+            579.94
+          ],
+          "pixel_correlation": 0.9392
+        },
+        {
+          "source": [
+            1386.24,
+            793.61
+          ],
+          "destination": [
+            1054.2,
+            557.61
+          ],
+          "pixel_correlation": 0.9989
+        },
+        {
+          "source": [
+            1383.1,
+            847.08
+          ],
+          "destination": [
+            1051.13,
+            611.06
+          ],
+          "pixel_correlation": 0.9982
+        },
+        {
+          "source": [
+            1383.1,
+            847.08
+          ],
+          "destination": [
+            1051.13,
+            611.06
+          ],
+          "pixel_correlation": 0.9982
+        },
+        {
+          "source": [
+            1380.77,
+            855.92
+          ],
+          "destination": [
+            1048.8,
+            619.91
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1380.77,
+            855.92
+          ],
+          "destination": [
+            1048.8,
+            619.91
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1379.17,
+            788.39
+          ],
+          "destination": [
+            1047.1,
+            552.36
+          ],
+          "pixel_correlation": 0.9987
+        },
+        {
+          "source": [
+            1369.41,
+            788.53
+          ],
+          "destination": [
+            1037.38,
+            552.51
+          ],
+          "pixel_correlation": 0.9987
+        },
+        {
+          "source": [
+            1364.1,
+            798.05
+          ],
+          "destination": [
+            1032.04,
+            562.01
+          ],
+          "pixel_correlation": 0.9989
+        },
+        {
+          "source": [
+            1364.1,
+            798.05
+          ],
+          "destination": [
+            1032.04,
+            562.01
+          ],
+          "pixel_correlation": 0.9989
+        },
+        {
+          "source": [
+            1361.11,
+            760.95
+          ],
+          "destination": [
+            1029.11,
+            524.98
+          ],
+          "pixel_correlation": 0.9991
+        },
+        {
+          "source": [
+            1359.51,
+            753.84
+          ],
+          "destination": [
+            1027.54,
+            517.98
+          ],
+          "pixel_correlation": 0.9914
+        },
+        {
+          "source": [
+            1356.23,
+            867.26
+          ],
+          "destination": [
+            1024.18,
+            631.36
+          ],
+          "pixel_correlation": 0.9984
+        },
+        {
+          "source": [
+            1347.25,
+            747.16
+          ],
+          "destination": [
+            1015.23,
+            511.14
+          ],
+          "pixel_correlation": 0.995
+        },
+        {
+          "source": [
+            1345.88,
+            789.18
+          ],
+          "destination": [
+            1013.92,
+            553.23
+          ],
+          "pixel_correlation": 0.9988
+        },
+        {
+          "source": [
+            1342.3,
+            782.49
+          ],
+          "destination": [
+            1010.31,
+            546.46
+          ],
+          "pixel_correlation": 0.9988
+        },
+        {
+          "source": [
+            1342.3,
+            782.49
+          ],
+          "destination": [
+            1010.31,
+            546.46
+          ],
+          "pixel_correlation": 0.9988
+        },
+        {
+          "source": [
+            1341.63,
+            789.96
+          ],
+          "destination": [
+            1009.66,
+            553.94
+          ],
+          "pixel_correlation": 0.9988
+        },
+        {
+          "source": [
+            1336.11,
+            779.97
+          ],
+          "destination": [
+            1004.18,
+            543.97
+          ],
+          "pixel_correlation": 0.9988
+        },
+        {
+          "source": [
+            1331.73,
+            772.38
+          ],
+          "destination": [
+            999.75,
+            536.34
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1331.73,
+            772.38
+          ],
+          "destination": [
+            999.75,
+            536.34
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1325.65,
+            759.11
+          ],
+          "destination": [
+            993.56,
+            523.09
+          ],
+          "pixel_correlation": 0.9883
+        },
+        {
+          "source": [
+            1322.9,
+            772.4
+          ],
+          "destination": [
+            990.92,
+            536.34
+          ],
+          "pixel_correlation": 0.9985
+        },
+        {
+          "source": [
+            1306.23,
+            772.31
+          ],
+          "destination": [
+            974.11,
+            536.42
+          ],
+          "pixel_correlation": 0.9554
+        },
+        {
+          "source": [
+            1297.07,
+            802.52
+          ],
+          "destination": [
+            965.07,
+            566.51
+          ],
+          "pixel_correlation": 0.9989
+        },
+        {
+          "source": [
+            1241.91,
+            824.02
+          ],
+          "destination": [
+            909.89,
+            588.07
+          ],
+          "pixel_correlation": 0.9216
+        },
+        {
+          "source": [
+            1296.67,
+            793.25
+          ],
+          "destination": [
+            964.75,
+            557.23
+          ],
+          "pixel_correlation": 0.9991
+        },
+        {
+          "source": [
+            1330.17,
+            793.21
+          ],
+          "destination": [
+            998.17,
+            557.21
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1330.17,
+            793.21
+          ],
+          "destination": [
+            998.17,
+            557.21
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1333.91,
+            789.01
+          ],
+          "destination": [
+            1001.9,
+            553.05
+          ],
+          "pixel_correlation": 0.9988
+        },
+        {
+          "source": [
+            1386.86,
+            781.34
+          ],
+          "destination": [
+            1054.84,
+            545.31
+          ],
+          "pixel_correlation": 0.999
+        },
+        {
+          "source": [
+            1388.08,
+            806.32
+          ],
+          "destination": [
+            1056.13,
+            570.33
+          ],
+          "pixel_correlation": 0.9991
+        },
+        {
+          "source": [
+            1399.79,
+            836.5
+          ],
+          "destination": [
+            1067.89,
+            600.52
+          ],
+          "pixel_correlation": 0.934
+        },
+        {
+          "source": [
+            1399.79,
+            836.5
+          ],
+          "destination": [
+            1067.89,
+            600.52
+          ],
+          "pixel_correlation": 0.934
+        },
+        {
+          "source": [
+            1355.59,
+            886.78
+          ],
+          "destination": [
+            1023.56,
+            650.76
+          ],
+          "pixel_correlation": 0.9177
+        },
+        {
+          "source": [
+            1348.68,
+            782.04
+          ],
+          "destination": [
+            1016.73,
+            546.02
+          ],
+          "pixel_correlation": 0.9989
+        },
+        {
+          "source": [
+            1344.51,
+            786.63
+          ],
+          "destination": [
+            1012.53,
+            550.7
+          ],
+          "pixel_correlation": 0.9988
+        },
+        {
+          "source": [
+            1295.17,
+            820.86
+          ],
+          "destination": [
+            963.15,
+            584.9
+          ],
+          "pixel_correlation": 0.9988
+        },
+        {
+          "source": [
+            1437.93,
+            907.53
+          ],
+          "destination": [
+            1105.97,
+            671.54
+          ],
+          "pixel_correlation": 0.9986
+        },
+        {
+          "source": [
+            1313.95,
+            767.24
+          ],
+          "destination": [
+            981.95,
+            531.21
+          ],
+          "pixel_correlation": 0.9859
+        },
+        {
+          "source": [
+            1414.29,
+            893.45
+          ],
+          "destination": [
+            1082.28,
+            657.44
+          ],
+          "pixel_correlation": 0.9993
+        },
+        {
+          "source": [
+            1414.29,
+            893.45
+          ],
+          "destination": [
+            1082.28,
+            657.44
+          ],
+          "pixel_correlation": 0.9993
+        },
+        {
+          "source": [
+            1330.01,
+            810.42
+          ],
+          "destination": [
+            998.04,
+            574.39
+          ],
+          "pixel_correlation": 0.9988
+        },
+        {
+          "source": [
+            1361.27,
+            837.3
+          ],
+          "destination": [
+            1029.21,
+            601.41
+          ],
+          "pixel_correlation": 0.9991
+        },
+        {
+          "source": [
+            1361.27,
+            837.3
+          ],
+          "destination": [
+            1029.21,
+            601.41
+          ],
+          "pixel_correlation": 0.9991
+        }
+      ]
+    },
+    {
+      "candidate": 3,
+      "matches": 51,
+      "median_pixel_correlation": 0.9934,
+      "translation_pixels": {
+        "x": -367.02,
+        "y": 83.97
+      },
+      "source_box_pixels": [
+        773,
+        465,
+        1212,
+        650
+      ],
+      "destination_box_pixels": [
+        406,
+        549,
+        845,
+        734
+      ],
+      "correspondences_pixels": [
+        {
+          "source": [
+            1154.09,
+            625.39
+          ],
+          "destination": [
+            787.22,
+            709.45
+          ],
+          "pixel_correlation": 0.9931
+        },
+        {
+          "source": [
+            1144.98,
+            590.35
+          ],
+          "destination": [
+            777.89,
+            674.36
+          ],
+          "pixel_correlation": 0.9841
+        },
+        {
+          "source": [
+            1131.4,
+            611.98
+          ],
+          "destination": [
+            764.33,
+            695.9
+          ],
+          "pixel_correlation": 0.9933
+        },
+        {
+          "source": [
+            1114.79,
+            616.77
+          ],
+          "destination": [
+            747.86,
+            700.83
+          ],
+          "pixel_correlation": 0.9949
+        },
+        {
+          "source": [
+            1104.17,
+            610.09
+          ],
+          "destination": [
+            737.15,
+            694.08
+          ],
+          "pixel_correlation": 0.9952
+        },
+        {
+          "source": [
+            1103.59,
+            600.17
+          ],
+          "destination": [
+            736.64,
+            684.12
+          ],
+          "pixel_correlation": 0.9957
+        },
+        {
+          "source": [
+            1084.39,
+            584.99
+          ],
+          "destination": [
+            717.32,
+            668.88
+          ],
+          "pixel_correlation": 0.9961
+        },
+        {
+          "source": [
+            1070.4,
+            580.3
+          ],
+          "destination": [
+            703.35,
+            664.25
+          ],
+          "pixel_correlation": 0.9961
+        },
+        {
+          "source": [
+            1061.69,
+            587.11
+          ],
+          "destination": [
+            694.6,
+            671.05
+          ],
+          "pixel_correlation": 0.9936
+        },
+        {
+          "source": [
+            1051.71,
+            589.67
+          ],
+          "destination": [
+            684.69,
+            673.68
+          ],
+          "pixel_correlation": 0.9934
+        },
+        {
+          "source": [
+            1048.59,
+            537.64
+          ],
+          "destination": [
+            681.66,
+            621.59
+          ],
+          "pixel_correlation": 0.9956
+        },
+        {
+          "source": [
+            1021.8,
+            550.01
+          ],
+          "destination": [
+            654.82,
+            633.92
+          ],
+          "pixel_correlation": 0.9914
+        },
+        {
+          "source": [
+            1004.18,
+            543.97
+          ],
+          "destination": [
+            637.1,
+            627.96
+          ],
+          "pixel_correlation": 0.9917
+        },
+        {
+          "source": [
+            1002.86,
+            593.14
+          ],
+          "destination": [
+            635.94,
+            677.19
+          ],
+          "pixel_correlation": 0.9932
+        },
+        {
+          "source": [
+            999.0,
+            565.18
+          ],
+          "destination": [
+            631.91,
+            649.15
+          ],
+          "pixel_correlation": 0.9917
+        },
+        {
+          "source": [
+            980.85,
+            497.0
+          ],
+          "destination": [
+            613.9,
+            580.98
+          ],
+          "pixel_correlation": 0.9464
+        },
+        {
+          "source": [
+            979.55,
+            517.42
+          ],
+          "destination": [
+            612.4,
+            601.43
+          ],
+          "pixel_correlation": 0.9545
+        },
+        {
+          "source": [
+            979.2,
+            524.69
+          ],
+          "destination": [
+            612.12,
+            608.62
+          ],
+          "pixel_correlation": 0.9961
+        },
+        {
+          "source": [
+            966.42,
+            496.96
+          ],
+          "destination": [
+            599.3,
+            580.98
+          ],
+          "pixel_correlation": 0.9641
+        },
+        {
+          "source": [
+            963.76,
+            527.73
+          ],
+          "destination": [
+            596.64,
+            611.63
+          ],
+          "pixel_correlation": 0.9962
+        },
+        {
+          "source": [
+            963.35,
+            503.43
+          ],
+          "destination": [
+            596.23,
+            587.4
+          ],
+          "pixel_correlation": 0.9962
+        },
+        {
+          "source": [
+            948.06,
+            587.92
+          ],
+          "destination": [
+            580.94,
+            672.01
+          ],
+          "pixel_correlation": 0.995
+        },
+        {
+          "source": [
+            941.12,
+            532.98
+          ],
+          "destination": [
+            573.86,
+            616.95
+          ],
+          "pixel_correlation": 0.9966
+        },
+        {
+          "source": [
+            939.65,
+            513.22
+          ],
+          "destination": [
+            572.59,
+            597.25
+          ],
+          "pixel_correlation": 0.9959
+        },
+        {
+          "source": [
+            925.83,
+            528.14
+          ],
+          "destination": [
+            558.78,
+            612.03
+          ],
+          "pixel_correlation": 0.9964
+        },
+        {
+          "source": [
+            923.81,
+            504.59
+          ],
+          "destination": [
+            556.93,
+            588.63
+          ],
+          "pixel_correlation": 0.9934
+        },
+        {
+          "source": [
+            918.72,
+            529.78
+          ],
+          "destination": [
+            551.74,
+            613.79
+          ],
+          "pixel_correlation": 0.9942
+        },
+        {
+          "source": [
+            915.94,
+            521.88
+          ],
+          "destination": [
+            548.94,
+            605.85
+          ],
+          "pixel_correlation": 0.9951
+        },
+        {
+          "source": [
+            913.77,
+            500.3
+          ],
+          "destination": [
+            546.77,
+            584.28
+          ],
+          "pixel_correlation": 0.9934
+        },
+        {
+          "source": [
+            913.77,
+            500.3
+          ],
+          "destination": [
+            546.77,
+            584.28
+          ],
+          "pixel_correlation": 0.9934
+        },
+        {
+          "source": [
+            900.14,
+            492.08
+          ],
+          "destination": [
+            533.18,
+            575.98
+          ],
+          "pixel_correlation": 0.9893
+        },
+        {
+          "source": [
+            876.96,
+            496.61
+          ],
+          "destination": [
+            509.94,
+            580.58
+          ],
+          "pixel_correlation": 0.9939
+        },
+        {
+          "source": [
+            876.96,
+            496.61
+          ],
+          "destination": [
+            509.94,
+            580.58
+          ],
+          "pixel_correlation": 0.9939
+        },
+        {
+          "source": [
+            871.86,
+            486.21
+          ],
+          "destination": [
+            504.91,
+            570.18
+          ],
+          "pixel_correlation": 0.9847
+        },
+        {
+          "source": [
+            866.53,
+            504.05
+          ],
+          "destination": [
+            499.44,
+            587.99
+          ],
+          "pixel_correlation": 0.9314
+        },
+        {
+          "source": [
+            866.53,
+            504.05
+          ],
+          "destination": [
+            499.44,
+            587.99
+          ],
+          "pixel_correlation": 0.9314
+        },
+        {
+          "source": [
+            860.13,
+            485.9
+          ],
+          "destination": [
+            493.08,
+            569.94
+          ],
+          "pixel_correlation": 0.9958
+        },
+        {
+          "source": [
+            854.27,
+            489.28
+          ],
+          "destination": [
+            487.25,
+            573.21
+          ],
+          "pixel_correlation": 0.9954
+        },
+        {
+          "source": [
+            829.31,
+            529.29
+          ],
+          "destination": [
+            462.3,
+            613.33
+          ],
+          "pixel_correlation": 0.987
+        },
+        {
+          "source": [
+            829.16,
+            574.2
+          ],
+          "destination": [
+            462.16,
+            658.04
+          ],
+          "pixel_correlation": 0.9956
+        },
+        {
+          "source": [
+            827.03,
+            493.18
+          ],
+          "destination": [
+            459.88,
+            577.11
+          ],
+          "pixel_correlation": 0.9948
+        },
+        {
+          "source": [
+            826.02,
+            506.55
+          ],
+          "destination": [
+            458.99,
+            590.55
+          ],
+          "pixel_correlation": 0.9926
+        },
+        {
+          "source": [
+            811.78,
+            531.61
+          ],
+          "destination": [
+            444.93,
+            615.53
+          ],
+          "pixel_correlation": 0.9901
+        },
+        {
+          "source": [
+            811.78,
+            531.61
+          ],
+          "destination": [
+            444.93,
+            615.53
+          ],
+          "pixel_correlation": 0.9901
+        },
+        {
+          "source": [
+            802.38,
+            576.03
+          ],
+          "destination": [
+            435.32,
+            660.01
+          ],
+          "pixel_correlation": 0.9464
+        },
+        {
+          "source": [
+            940.39,
+            506.8
+          ],
+          "destination": [
+            573.18,
+            590.69
+          ],
+          "pixel_correlation": 0.9945
+        },
+        {
+          "source": [
+            927.23,
+            509.11
+          ],
+          "destination": [
+            560.24,
+            593.14
+          ],
+          "pixel_correlation": 0.9942
+        },
+        {
+          "source": [
+            859.29,
+            506.62
+          ],
+          "destination": [
+            492.45,
+            590.58
+          ],
+          "pixel_correlation": 0.9924
+        },
+        {
+          "source": [
+            793.4,
+            572.28
+          ],
+          "destination": [
+            426.32,
+            656.35
+          ],
+          "pixel_correlation": 0.978
+        },
+        {
+          "source": [
+            1149.12,
+            614.73
+          ],
+          "destination": [
+            782.19,
+            698.72
+          ],
+          "pixel_correlation": 0.9924
+        },
+        {
+          "source": [
+            1191.24,
+            629.29
+          ],
+          "destination": [
+            824.29,
+            713.23
+          ],
+          "pixel_correlation": 0.9954
+        }
+      ]
+    }
+  ]
+}

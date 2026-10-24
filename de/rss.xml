@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Decision Labs Blog</title>
+    <link>https://decision-labs.com/de/blog</link>
+    <description>Beiträge von Decision Labs.</description>
+    <language>de</language>
+    <lastBuildDate>Sat, 24 Oct 2026 13:27:00 GMT</lastBuildDate>
+    <atom:link href="https://decision-labs.com/de/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Decision Labs Edge ist da]]></title>
+      <link>https://decision-labs.com/de/blog/announcing-decision-labs-edge</link>
+      <guid isPermaLink="false">https://decision-labs.com/de/blog/announcing-decision-labs-edge</guid>
+      <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
+      <author>Decision Labs</author>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One day at the Brunsbüttel lock</title>
+<meta name="description" content="On 23 January 2023, 49 ships arrived at the Brunsbüttel lock. This page plays the day: each ship is assigned a large chamber and a start time.">
+<meta property="og:title" content="One day at the Brunsbüttel lock">
+<meta property="og:description" content="On 23 January 2023, 49 ships arrived at the Brunsbüttel lock. This page plays the day: each ship is assigned a large chamber and a start time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://decision-labs.com/blog/brunsbuettel/">
+<meta property="og:image" content="https://decision-labs.com/blog/brunsbuettel/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="One day at the Brunsbüttel lock. 23 January 2023, two chambers, 49 ships.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="One day at the Brunsbüttel lock">
+<meta name="twitter:description" content="On 23 January 2023, 49 ships arrived at the Brunsbüttel lock. This page plays the day: each ship is assigned a large chamber and a start time.">
+<meta name="twitter:image" content="https://decision-labs.com/blog/brunsbuettel/og.png">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #131313;
+    --surface: #202020;
+    --border: #353535;
+    --text: #f2f2f2;
+    --muted: #9a9a9a;
+    --faint: #ccc;
+    --green-soft: #86e0b7;
+  }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex; flex-direction: column; height: 100vh; overflow: hidden;
+    font: 15px/1.45 ui-sans-serif, system-ui, sans-serif;
+    color: var(--text); background: var(--bg);
+  }
+  header { padding: 16px 20px; border-bottom: 1px solid var(--border); background: var(--surface); flex: 0 0 auto; }
+  .header-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  h1 { margin: 0 0 4px; font-size: 18px; font-weight: 650; letter-spacing: -0.02em; }
+  #headline { margin: 0; color: var(--muted); font-size: 13px; }
+  .header-links { flex: 0 0 auto; margin-top: 2px; }
+  .site-link { color: var(--muted); font-size: 13px; text-decoration: none; }
+  .site-link:hover { color: var(--green-soft); }
+  main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+    flex: 1; min-height: 0; min-width: 0;
+  }
+  #stage {
+    min-width: 0; min-height: 0; display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+    background: #d5e0ea; color: #1c2430;
+  }
+  #workspace {
+    flex: 1 1 auto; min-height: 0; min-width: 0;
+    display: flex; flex-direction: row; overflow: hidden; position: relative;
+  }
+  #loading {
+    position: absolute; inset: 0; z-index: 4;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 14px; padding: 24px; text-align: center;
+    background: rgba(244, 247, 251, 0.96); color: #1c2430;
+  }
+  #loading p { margin: 0; max-width: 28rem; }
+  #loading .spin {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 3px solid #d0d7e2; border-top-color: #1d5f86;
+    animation: spin 0.8s linear infinite;
+  }
+  #loading .track {
+    width: 180px; height: 4px; border-radius: 2px; overflow: hidden; background: #d0d7e2;
+  }
+  #loading .bar {
+    width: 40%; height: 100%; border-radius: 2px; background: #1d5f86;
+    animation: slide 1.1s ease-in-out infinite;
+  }
+  #loading.is-error .spin, #loading.is-error .track { display: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes slide {
+    0% { transform: translateX(-120%); }
+    100% { transform: translateX(320%); }
+  }
+  #view { flex: 1 1 auto; min-width: 0; min-height: 0; position: relative; overflow: hidden; }
+  #view canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+  #panel {
+    box-sizing: border-box; flex: 0 0 332px; width: 332px; min-height: 0;
+    overflow: auto; padding: 12px 14px 10px; background: #f4f7fb;
+    border-left: 1px solid #d0d7e2;
+  }
+  #about { margin: 0 0 10px; font-size: 13.5px; line-height: 1.45; }
+  #counts {
+    margin: 0 0 8px; font-size: 13px; font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  #graph {
+    display: block; width: 100%; max-width: 100%; height: 176px; box-sizing: border-box;
+    background: #fff; border: 1px solid #d0d7e2; border-radius: 6px;
+  }
+  #legend { margin: 6px 0 0; color: #4a596b; font-size: 12px; }
+  .key {
+    display: inline-block; width: 14px; height: 3px; margin: 0 4px 0 10px;
+    vertical-align: middle; border-radius: 1px;
+  }
+  .key:first-child { margin-left: 0; }
+  .key.wait { background: #c47b12; }
+  .key.lock { background: #1d5f86; }
+  .key.now { width: 2px; height: 11px; background: #b4332a; }
+  #bar {
+    flex: 0 0 auto; position: sticky; bottom: 0; z-index: 3;
+    display: flex; gap: 12px; align-items: center;
+    padding: 8px 16px; background: #f4f7fb; border-top: 1px solid #d0d7e2;
+  }
+  #story {
+    display: block; min-width: 0; min-height: 0;
+    padding: 22px 20px 40px; overflow-x: hidden; overflow-y: auto;
+    overscroll-behavior: contain; scrollbar-gutter: stable;
+    border-left: 1px solid var(--border); background: var(--surface);
+  }
+  #story h2 { margin: 28px 0 8px; font-size: 16px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.3; }
+  #story h2:first-child { margin-top: 0; }
+  #story p { margin: 0 0 12px; color: var(--faint); font-size: 13px; line-height: 1.55; }
+  #story a { color: var(--green-soft); text-underline-offset: 3px; }
+  #story a:hover { color: var(--text); }
+  #story .method-label { margin: 20px 0 4px; color: var(--muted); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+  #story #method { margin: 0 0 8px; }
+  #story #method summary { display: flex; align-items: center; gap: 8px; padding: 2px 0 8px; color: var(--faint); font-size: 13px; line-height: 1.45; cursor: pointer; list-style: none; }
+  #story #method summary::-webkit-details-marker { display: none; }
+  #story #method summary::marker { content: ""; }
+  #story #method summary::before { content: ""; width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 5px solid #62c37d; flex: 0 0 auto; transform-origin: 40% 50%; transition: transform 160ms ease; }
+  #story #method[open] > summary::before { transform: rotate(90deg); }
+  #story #method summary:hover { color: var(--green-soft); }
+  #story #method .method-body { padding: 2px 0 4px 13px; border-left: 1px solid var(--border); }
+  button { font: inherit; padding: 4px 14px; }
+  input[type="range"] { flex: 1; min-width: 0; }
+  #clock { min-width: 11rem; font-variant-numeric: tabular-nums; }
+  @media (max-width: 1100px) {
+    .header-row { flex-direction: column; }
+    .header-row > * { min-width: 0; max-width: 100%; }
+    h1, #headline, #about, #counts, #legend, #story, #story p {
+      overflow-wrap: break-word;
+    }
+    main {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: max-content max-content;
+      align-content: start;
+      overflow-x: hidden; overflow-y: auto; min-width: 0;
+    }
+    #stage { min-height: min-content; min-width: 0; height: auto; overflow: hidden; }
+    #workspace { flex: none; height: auto; flex-direction: column; min-width: 0; overflow: visible; }
+    #view { flex: 0 0 220px; min-height: 220px; height: 220px; }
+    #panel {
+      order: -1; flex: 0 0 auto; width: 100%; max-width: 100%; min-width: 0; max-height: none;
+      overflow: visible; box-sizing: border-box;
+      border-left: none; border-bottom: 1px solid #d0d7e2;
+    }
+    #graph { width: 100%; max-width: 100%; min-width: 0; height: 160px; }
+    #story {
+      border-left: 0; border-top: 1px solid var(--border);
+      overflow: visible; height: auto; max-height: none;
+      min-width: 0; min-height: min-content; padding-bottom: 88px;
+    }
+    #bar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
+      box-sizing: border-box; width: auto; max-width: 100%; min-width: 0;
+      gap: 8px; padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+      overflow: hidden;
+    }
+    #play { flex: 0 0 auto; }
+    #clock { min-width: 0; flex: 0 0 auto; font-size: 13px; }
+    #slider { flex: 1 1 0%; width: 0; min-width: 0; }
+  }
+  #tip {
+    position: fixed; z-index: 2; pointer-events: none; display: none;
+    background: rgba(20, 28, 38, 0.92); color: #fff;
+    padding: 4px 8px; border-radius: 4px; font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-row">
+    <div>
+      <h1>One day at the Brunsbüttel lock</h1>
+      <p id="headline">Loading the Brunsbüttel schedule…</p>
+    </div>
+    <div class="header-links">
+      <a class="site-link" href="https://decision-labs.com">Decision Labs</a>
+    </div>
+  </div>
+</header>
+<main>
+<section id="stage">
+  <div id="workspace">
+  <div id="view"></div>
+  <aside id="panel">
+    <p id="about">Ships arrive from AIS, and each is assigned one of the two large chambers. Forty-five minutes is one trip through a large chamber, from the Elbe gate to the canal gate or the other way. It is not the voyage to Kiel.</p>
+    <p id="counts">— waiting · — in lock · — through</p>
+    <canvas id="graph" width="600" height="352" aria-label="Ships waiting and ships inside a chamber across 23 January 2023"></canvas>
+    <p id="legend"><span class="key wait"></span>Waiting <span class="key lock"></span>In a chamber <span class="key now"></span>Now</p>
+  </aside>
+  </div>
+  <div id="loading" role="status" aria-live="polite">
+    <div class="spin"></div>
+    <div class="track" aria-hidden="true"><div class="bar"></div></div>
+    <p>Loading the lock schedule…</p>
+  </div>
+<div id="bar">
+  <button id="play" type="button">Play</button>
+  <input id="slider" type="range" min="0" max="1440" value="0" step="1">
+  <span id="clock">00:00 UTC</span>
+</div>
+</section>
+<aside id="story" aria-label="One day at the lock">
+  <p>On 23 January 2023, 49 ships arrived at the Brunsbüttel lock on the Kiel Canal. Brunsbüttel is the western end of the canal. Ships come in from the Elbe, or they leave the canal and go out onto the river.</p>
+  <p>The lock has two large chambers. Each is 330 metres long and 45 metres wide, and both stay open all day. A ship that uses one of them is inside for 45 minutes. The 45 minutes is the time to pass through one large chamber at Brunsbüttel, from the gate on the Elbe side to the gate on the canal side, or in the other direction. It is not the trip along the canal to Kiel-Holtenau, which takes about 8 hours and is not in this model.</p>
+  <p>Two smaller chambers sit beside the large ones. Each is 125 metres by 22 metres, and a passage through one of them takes 30 minutes. This first version leaves them unused.</p>
+  <h2>The ships</h2>
+  <p>The arrivals come from an archive of AIS tracks on the Kiel Canal, published by Fraunhofer through the mFUND project on Mobilithek. A track is the path of one ship: a series of positions, each with a time. An arrival is the first position within 500 metres of the lock. That gives the 49 ships on this day.</p>
+  <p>These are records of where the ships sailed. They are not the lock's own log, so they do not say which chamber a ship was sent to.</p>
+  <h2>The schedule</h2>
+  <p>Each ship needs a chamber, one of the two large ones, and a start time. A legal plan starts each ship at or after it arrives, keeps it in that chamber for 45 minutes, and never puts two ships in the same chamber at once. Waiting for a ship is how long it sits before it enters, and the cost is the sum of those waits; for this day that sum is 2430 minutes. CP-SAT, from OR-Tools, tries the legal combinations of chamber and start time, and it does not stop at the first plan that works. It keeps going until it can prove no legal plan has a smaller total wait. The page plays that proven plan, and it does not run the search in the browser.</p>
+  <h2>The animation</h2>
+  <p>You can see the animation of that day. Ships approach, enter a chamber, and leave. The lock and the canal are drawn from OpenStreetMap. The water outside the western mouth is the Elbe. The North Sea and the Baltic are not in this map. The canal line in the data stops well short of Holtenau.</p>
+</aside>
+</main>
+<div id="tip"></div>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
+const LAT0 = 53.8933, LON0 = 9.1462;
+const M_LAT = 111320;
+const M_LON = 111320 * Math.cos(LAT0 * Math.PI / 180);
+const DAY0 = Date.parse("2023-01-23T00:00:00Z");
+const PASSAGE_FALLBACK = 45;
+const PLAY_MIN_PER_SEC = 30;
+const NEAR_M = 1500;
+const WATER_M = 2000;
+const LEAVE_M = 2400;
+const EXIT_M_PER_MIN = 90;
+const SLIDE_MIN = 12;
+const CLIP_M = 1800;
+const Y_GROUND = 0;
+const Y_LAND = 2;
+const Y_ROAD = 4;
+const Y_WATER = 7;
+const Y_BASIN_TOP = 9;
+const Y_SHIP_BOTTOM = 11;
+
+const headline = document.getElementById("headline");
+const about = document.getElementById("about");
+const counts = document.getElementById("counts");
+const graph = document.getElementById("graph");
+const view = document.getElementById("view");
+const playBtn = document.getElementById("play");
+const slider = document.getElementById("slider");
+const clock = document.getElementById("clock");
+const tip = document.getElementById("tip");
+
+function toLocal(lon, lat) {
+  return { x: (lon - LON0) * M_LON, z: -((lat - LAT0) * M_LAT) };
+}
+
+const LAND_COLOR = {
+  residential: 0xe6d5c4,
+  commercial: 0xefd0c6,
+  retail: 0xf0d0c8,
+  industrial: 0xcfc9bf,
+  railway: 0xc8c3b8,
+  harbour: 0xc5d0d4,
+  farmland: 0xe4d27a,
+  farmyard: 0xe7d6a4,
+  forest: 0x5e9858,
+  wood: 0x5e9858,
+  grass: 0xa5d48c,
+  meadow: 0xb6dc8e,
+  grassland: 0xb4d48c,
+  village_green: 0x9dce86,
+  recreation_ground: 0x9dce86,
+  park: 0x8fc97c,
+  garden: 0xa8d48e,
+  pitch: 0x74b56e,
+  golf_course: 0x86c072,
+  playground: 0xb7d98a,
+  allotments: 0xc6de84,
+  cemetery: 0xb5c9a6,
+  military: 0xd0c6ac,
+  brownfield: 0xcbb890,
+  construction: 0xd5cec0,
+  garages: 0xd2cdc4,
+  scrub: 0x8aaa64,
+  heath: 0xc4c27c,
+  wetland: 0x9bb8a2,
+  beach: 0xe7d8a6,
+  sand: 0xe6d4a2,
+  orchard: 0xa8cb6c,
+  vineyard: 0xb5c66c,
+  quarry: 0xc9c3b6,
+  education: 0xe7d8cc,
+  religious: 0xe4d6c8
+};
+
+const ROAD = {
+  motorway: [14, 0xe38b4a],
+  trunk: [12, 0xe39a45],
+  primary: [9, 0xf0d15c],
+  secondary: [7.5, 0xf3e39a],
+  tertiary: [6, 0xf7f3e4],
+  unclassified: [5, 0xf4f1ea],
+  residential: [5, 0xf7f5f0],
+  living_street: [4.2, 0xeee8e0],
+  service: [3.2, 0xe3dfd6],
+  pedestrian: [3.6, 0xddd4c8],
+  track: [2.4, 0xc8b48a]
+};
+
+function shapeFromRings(rings) {
+  const toV = (ring) => {
+    const pts = [];
+    for (const pair of ring) {
+      const p = toLocal(pair[0], pair[1]);
+      const v = new THREE.Vector2(p.x, -p.z);
+      const last = pts[pts.length - 1];
+      if (last && last.distanceToSquared(v) < 0.16) continue;
+      pts.push(v);
+    }
+    if (pts.length > 2 && pts[0].distanceToSquared(pts[pts.length - 1]) < 0.16) pts.pop();
+    return pts;
+  };
+  if (!rings || !rings.length) return null;
+  const outer = toV(rings[0]);
+  if (outer.length < 3) return null;
+  const shape = new THREE.Shape(outer);
+  for (let i = 1; i < rings.length; i++) {
+    const hole = toV(rings[i]);
+    if (hole.length >= 3) shape.holes.push(new THREE.Path(hole));
+  }
+  return shape;
+}
+
+function polygonsOf(feature) {
+  const g = feature.geometry;
+  if (!g) return [];
+  if (g.type === "Polygon") return [g.coordinates];
+  if (g.type === "MultiPolygon") return g.coordinates;
+  return [];
+}
+
+function addMergedMeshes(scene, geoms, material, y, renderOrder) {
+  for (let i = 0; i < geoms.length; i += 400) {
+    const chunk = geoms.slice(i, i + 400);
+    let merged = null;
+    try { merged = mergeGeometries(chunk, false); } catch (err) { merged = null; }
+    if (merged) {
+      const mesh = new THREE.Mesh(merged, material);
+      mesh.position.y = y;
+      mesh.renderOrder = renderOrder;
+      scene.add(mesh);
+      for (const g of chunk) g.dispose();
+    } else {
+      for (const g of chunk) {
+        const mesh = new THREE.Mesh(g, material);
+        mesh.position.y = y;
+        mesh.renderOrder = renderOrder;
+        scene.add(mesh);
+      }
+    }
+  }
+}
+
+function addFlatLayer(scene, collection, y, colorOf, renderOrder) {
+  const buckets = new Map();
+  for (const feature of collection.features) {
+    const color = colorOf(feature);
+    let list = buckets.get(color);
+    if (!list) buckets.set(color, list = []);
+    for (const rings of polygonsOf(feature)) {
+      const shape = shapeFromRings(rings);
+      if (!shape) continue;
+      try {
+        const geom = new THREE.ShapeGeometry(shape);
+        geom.rotateX(-Math.PI / 2);
+        list.push(geom);
+      } catch (err) {
+        console.warn("skipped polygon", err);
+      }
+    }
+  }
+  for (const [color, geoms] of buckets) {
+    const material = new THREE.MeshLambertMaterial({
+      color,
+      depthWrite: true,
+      depthTest: true
+    });
+    addMergedMeshes(scene, geoms, material, y, renderOrder);
+  }
+}
+
+function addBuildings(scene, collection) {
+  const material = new THREE.MeshLambertMaterial({ color: 0xddd4c6 });
+  const geoms = [];
+  for (const feature of collection.features) {
+    const height = Math.max(2.5, Math.min(80, Number(feature.properties && feature.properties.height) || 7));
+    for (const rings of polygonsOf(feature)) {
+      const shape = shapeFromRings(rings);
+      if (!shape) continue;
+      try {
+        const geom = new THREE.ExtrudeGeometry(shape, { depth: height, bevelEnabled: false });
+        geom.rotateX(-Math.PI / 2);
+        geoms.push(geom);
+      } catch (err) {
+        console.warn("skipped building", err);
+      }
+    }
+  }
+  addMergedMeshes(scene, geoms, material, Y_LAND, 4);
+}
+
+function addRoads(scene, collection) {
+  const buckets = new Map();
+  const y = Y_ROAD;
+  for (const feature of collection.features) {
+    const hw = String((feature.properties && feature.properties.highway) || "").replace(/_link$/, "");
+    const style = ROAD[hw] || [4, 0xe8e4dc];
+    const width = style[0];
+    const color = style[1];
+    let bucket = buckets.get(color);
+    if (!bucket) buckets.set(color, bucket = []);
+    const g = feature.geometry;
+    const lines = !g ? [] : g.type === "LineString" ? [g.coordinates] : g.type === "MultiLineString" ? g.coordinates : [];
+    for (const line of lines) {
+      const pts = [];
+      for (const pair of line) {
+        const p = toLocal(pair[0], pair[1]);
+        const last = pts[pts.length - 1];
+        if (last && Math.hypot(last.x - p.x, last.z - p.z) < 0.4) continue;
+        pts.push(p);
+      }
+      for (let i = 0; i < pts.length - 1; i++) {
+        const a = pts[i], c = pts[i + 1];
+        const dx = c.x - a.x, dz = c.z - a.z;
+        const len = Math.hypot(dx, dz);
+        if (len < 0.3) continue;
+        const nx = -dz / len * width * 0.5;
+        const nz = dx / len * width * 0.5;
+        bucket.push(
+          a.x + nx, y, a.z + nz,
+          a.x - nx, y, a.z - nz,
+          c.x - nx, y, c.z - nz,
+          a.x + nx, y, a.z + nz,
+          c.x - nx, y, c.z - nz,
+          c.x + nx, y, c.z + nz
+        );
+      }
+    }
+  }
+  for (const [color, positions] of buckets) {
+    if (!positions.length) continue;
+    const geom = new THREE.BufferGeometry();
+    geom.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+    geom.computeVertexNormals();
+    const mesh = new THREE.Mesh(geom, new THREE.MeshLambertMaterial({ color, depthWrite: true }));
+    mesh.renderOrder = 2;
+    scene.add(mesh);
+  }
+}
+
+function drawBackdrop(scene, land, water, roads, buildings) {
+  addFlatLayer(scene, land, Y_LAND, (f) => LAND_COLOR[(f.properties && f.properties.kind) || ""] || 0xd4cfc2, 1);
+  addFlatLayer(scene, water, Y_WATER, () => 0x4a92c0, 3);
+  addRoads(scene, roads);
+  addBuildings(scene, buildings);
+}
+
+function fail(err) {
+  const message = "Could not load the lock schedule.";
+  headline.textContent = message;
+  const loading = document.getElementById("loading");
+  if (loading) {
+    loading.classList.add("is-error");
+    loading.replaceChildren();
+    const note = document.createElement("p");
+    note.textContent = message;
+    loading.appendChild(note);
+  }
+  console.error(err);
+}
+
+async function get(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(url + " returned " + res.status);
+  return res;
+}
+
+function parseTracks(text) {
+  const byShip = new Map();
+  const lines = text.trim().split(/\n/);
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i];
+    if (!line) continue;
+    const comma = line.indexOf(",");
+    const c2 = line.indexOf(",", comma + 1);
+    const c3 = line.indexOf(",", c2 + 1);
+    const ship = line.slice(0, comma);
+    const lon = +line.slice(comma + 1, c2);
+    const lat = +line.slice(c2 + 1, c3);
+    const t = Date.parse(line.slice(c3 + 1));
+    let rows = byShip.get(ship);
+    if (!rows) byShip.set(ship, rows = []);
+    const p = toLocal(lon, lat);
+    rows.push({ t, x: p.x, z: p.z });
+  }
+  for (const rows of byShip.values()) rows.sort((a, b) => a.t - b.t);
+  return byShip;
+}
+
+function ribbon(scene, coords, width, height, y, material) {
+  const xAxis = new THREE.Vector3(1, 0, 0);
+  const dir = new THREE.Vector3();
+  for (let i = 0; i < coords.length - 1; i++) {
+    const a = coords[i], b = coords[i + 1];
+    const dx = b.x - a.x, dz = b.z - a.z;
+    const len = Math.hypot(dx, dz);
+    if (len < 0.8) continue;
+    const mesh = new THREE.Mesh(new THREE.BoxGeometry(len, height, width), material);
+    mesh.position.set((a.x + b.x) / 2, y, (a.z + b.z) / 2);
+    dir.set(dx / len, 0, dz / len);
+    mesh.quaternion.setFromUnitVectors(xAxis, dir);
+    scene.add(mesh);
+  }
+}
+
+function lineCoords(feature) {
+  return feature.geometry.coordinates.map((pair) => toLocal(pair[0], pair[1]));
+}
+
+function makeLabel(text) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 256;
+  canvas.height = 64;
+  const g = canvas.getContext("2d");
+  g.fillStyle = "rgba(255,252,247,0.94)";
+  g.fillRect(0, 0, 256, 64);
+  g.strokeStyle = "#8a8175";
+  g.strokeRect(1, 1, 254, 62);
+  g.fillStyle = "#1c2430";
+  g.font = "600 28px sans-serif";
+  g.textAlign = "center";
+  g.textBaseline = "middle";
+  g.fillText(text, 128, 32);
+  const sprite = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: new THREE.CanvasTexture(canvas),
+    transparent: true
+  }));
+  sprite.scale.set(96, 24, 1);
+  sprite.position.y = 26;
+  return sprite;
+}
+
+function makeHull(color) {
+  const group = new THREE.Group();
+  const hull = new THREE.Mesh(
+    new THREE.BoxGeometry(72, 8, 14),
+    new THREE.MeshLambertMaterial({ color })
+  );
+  hull.position.y = Y_SHIP_BOTTOM + 4;
+  const cabin = new THREE.Mesh(
+    new THREE.BoxGeometry(16, 6, 10),
+    new THREE.MeshLambertMaterial({ color: 0xf4f1ea })
+  );
+  cabin.position.set(-18, Y_SHIP_BOTTOM + 10, 0);
+  group.add(hull, cabin);
+  return group;
+}
+
+function formatClock(min) {
+  const d = new Date(DAY0 + min * 60000);
+  const hh = String(d.getUTCHours()).padStart(2, "0");
+  const mm = String(d.getUTCMinutes()).padStart(2, "0");
+  const day = d.getUTCDate();
+  return day + " Jan " + hh + ":" + mm + " UTC";
+}
+
+async function main() {
+  const [dayRes, planRes, csvRes, mapRes, landRes, waterRes, roadRes, bldRes] = await Promise.all([
+    get("data/brunsbuettel-2023-01-23.json"),
+    get("data/brunsbuettel-2023-01-23.plan.json"),
+    get("data/brunsbuettel-2023-01-23.csv"),
+    get("data/water-sm.geojson"),
+    get("data/osm-landuse.geojson"),
+    get("data/osm-water.geojson"),
+    get("data/osm-roads.geojson"),
+    get("data/osm-buildings.geojson")
+  ]);
+  const day = await dayRes.json();
+  const plan = await planRes.json();
+  const tracks = parseTracks(await csvRes.text());
+  const geo = await mapRes.json();
+  const landGeo = await landRes.json();
+  const waterGeo = await waterRes.json();
+  const roadGeo = await roadRes.json();
+  const bldGeo = await bldRes.json();
+
+  const passage = (day.chambers[0] && day.chambers[0].passage_min) || PASSAGE_FALLBACK;
+  const arrivalOf = new Map(day.arrivals.map((a) => [a.ship, a.arrival_min]));
+  const ships = plan.plan.map((job) => ({
+    ship: job.ship,
+    chamber: String(job.chamber),
+    arrival: arrivalOf.get(job.ship),
+    start: job.start_min,
+    end: job.start_min + passage
+  }));
+  const totalWait = ships.reduce((sum, s) => sum + (s.start - s.arrival), 0);
+  headline.textContent = day.date + " · " + ships.length + " ships · total wait "
+    + totalWait + " min · this view does not grade the plan";
+  about.textContent = "Ships arrive from AIS, and each is assigned one of the two large chambers. "
+    + passage + " minutes is one trip through a large chamber, from the Elbe gate to the canal gate or the other way. It is not the voyage to Kiel. Total waiting in this plan is "
+    + totalWait + " minutes across " + ships.length + " ships.";
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xc5d7e8);
+  scene.add(new THREE.HemisphereLight(0xe7f0f8, 0x8a8478, 0.95));
+  const sun = new THREE.DirectionalLight(0xffffff, 0.85);
+  sun.position.set(-280, 520, 180);
+  scene.add(sun);
+
+  const ground = new THREE.Mesh(
+    new THREE.PlaneGeometry(6400, 6400),
+    new THREE.MeshLambertMaterial({ color: 0xc5d0b8, depthWrite: true })
+  );
+  ground.rotation.x = -Math.PI / 2;
+  ground.position.y = Y_GROUND;
+  ground.renderOrder = 0;
+  scene.add(ground);
+  drawBackdrop(scene, landGeo, waterGeo, roadGeo, bldGeo);
+
+  const gateMat = new THREE.MeshLambertMaterial({ color: 0x3a424c, depthWrite: true });
+  const entranceMat = new THREE.MeshLambertMaterial({ color: 0x4a92c0, depthWrite: true });
+  const ENTRANCE = { "144489147": 130, "144489148": 130 };
+  const concrete = new THREE.MeshLambertMaterial({ color: 0xd9d3c7 });
+  const chamberMat = new THREE.MeshLambertMaterial({ color: 0x1d5f86 });
+
+  const chamberPose = new Map();
+  const xAxis = new THREE.Vector3(1, 0, 0);
+  const dir = new THREE.Vector3();
+  const LARGE = { "144489145": "Large A", "144489146": "Large B" };
+
+  function osmId(props) {
+    return String(props["@id"] ?? props.id ?? "").replace(/^way\//, "");
+  }
+
+  function localRuns(feature) {
+    const runs = [];
+    let run = [];
+    for (const p of lineCoords(feature)) {
+      if (Math.hypot(p.x, p.z) <= CLIP_M) run.push(p);
+      else if (run.length) {
+        if (run.length >= 2) runs.push(run);
+        run = [];
+      }
+    }
+    if (run.length >= 2) runs.push(run);
+    return runs;
+  }
+
+  function addBasin(coords, length, width, label, id) {
+    if (coords.length < 2) return;
+    const a = coords[0];
+    const b = coords[coords.length - 1];
+    const dx = b.x - a.x, dz = b.z - a.z;
+    const span = Math.hypot(dx, dz) || 1;
+    const group = new THREE.Group();
+    group.position.set((a.x + b.x) / 2, 0, (a.z + b.z) / 2);
+    dir.set(dx / span, 0, dz / span);
+    group.quaternion.setFromUnitVectors(xAxis, dir);
+    const basinH = 1.2;
+    const basin = new THREE.Mesh(new THREE.BoxGeometry(length, basinH, width), chamberMat);
+    basin.position.y = Y_BASIN_TOP - basinH / 2;
+    group.add(basin);
+    const wallH = 3.2;
+    for (const side of [-1, 1]) {
+      const wall = new THREE.Mesh(new THREE.BoxGeometry(length, wallH, 3), concrete);
+      wall.position.set(0, Y_BASIN_TOP + wallH / 2, side * (width / 2 + 1.2));
+      group.add(wall);
+    }
+    if (label) group.add(makeLabel(label));
+    scene.add(group);
+    if (label) {
+      chamberPose.set(id, {
+        x: group.position.x,
+        z: group.position.z,
+        quat: group.quaternion.clone(),
+        name: label
+      });
+    }
+  }
+
+  let gateMinX = Infinity, gateMaxX = -Infinity, gateMinZ = Infinity, gateMaxZ = -Infinity;
+  let canalAxis = { x: 0.743, z: -0.669 };
+  for (const feature of geo.features) {
+    const props = feature.properties || {};
+    const id = osmId(props);
+    const runs = localRuns(feature);
+    if (!runs.length) continue;
+    if (LARGE[id]) {
+      const a0 = runs[0][0], b0 = runs[0][runs[0].length - 1];
+      const adx = b0.x - a0.x, adz = b0.z - a0.z;
+      const alen = Math.hypot(adx, adz) || 1;
+      canalAxis = { x: adx / alen, z: adz / alen };
+      addBasin(runs[0], 330, 45, LARGE[id], id);
+    } else if (props.lock === "yes") {
+      addBasin(runs[0], Number(props.maxlength) || 125, Number(props.maxwidth) || 22, "", id);
+    } else if (props.waterway === "lock_gate" || props["seamark:type"] === "gate") {
+      for (const coords of runs) {
+        ribbon(scene, coords, 3.2, 6, Y_WATER + 5, gateMat);
+        for (const p of coords) {
+          gateMinX = Math.min(gateMinX, p.x);
+          gateMaxX = Math.max(gateMaxX, p.x);
+          gateMinZ = Math.min(gateMinZ, p.z);
+          gateMaxZ = Math.max(gateMaxZ, p.z);
+        }
+      }
+    } else if (ENTRANCE[id]) {
+      const coords = lineCoords(feature);
+      const mouth = coords[0], next = coords[1];
+      const intoX = mouth.x - next.x, intoZ = mouth.z - next.z;
+      const intoLen = Math.hypot(intoX, intoZ) || 1;
+      const line = [{
+        x: mouth.x + intoX / intoLen * 70,
+        z: mouth.z + intoZ / intoLen * 70
+      }, ...coords];
+      if (id === "144489148") {
+        const tail = coords[coords.length - 1];
+        const prev = coords[coords.length - 2];
+        const dx = tail.x - prev.x, dz = tail.z - prev.z;
+        const len = Math.hypot(dx, dz) || 1;
+        line.push({ x: tail.x + dx / len * 500, z: tail.z + dz / len * 500 });
+      }
+      ribbon(scene, line, ENTRANCE[id], 0.4, Y_WATER + 1.5, entranceMat);
+    }
+  }
+
+  function clipToRadius(coords, radius) {
+    const out = [];
+    const push = (p) => {
+      const last = out[out.length - 1];
+      if (last && Math.hypot(last.x - p.x, last.z - p.z) < 1.2) return;
+      out.push({ x: p.x, z: p.z });
+    };
+    const crossings = (a, b) => {
+      const dx = b.x - a.x, dz = b.z - a.z;
+      const A = dx * dx + dz * dz || 1;
+      const B = 2 * (a.x * dx + a.z * dz);
+      const C = a.x * a.x + a.z * a.z - radius * radius;
+      const disc = B * B - 4 * A * C;
+      if (disc < 0) return [];
+      const root = Math.sqrt(disc);
+      return [(-B - root) / (2 * A), (-B + root) / (2 * A)]
+        .filter((t) => t >= 0 && t <= 1)
+        .sort((u, v) => u - v)
+        .map((t) => ({ x: a.x + dx * t, z: a.z + dz * t }));
+    };
+    for (let i = 0; i < coords.length - 1; i++) {
+      const a = coords[i], b = coords[i + 1];
+      const da = Math.hypot(a.x, a.z), db = Math.hypot(b.x, b.z);
+      if (da <= radius && db <= radius) { push(a); push(b); continue; }
+      const cuts = crossings(a, b);
+      if (!cuts.length) continue;
+      if (da <= radius) { push(a); push(cuts[cuts.length - 1]); }
+      else if (db <= radius) { push(cuts[0]); push(b); }
+      else if (cuts.length >= 2) { push(cuts[0]); push(cuts[1]); }
+    }
+    return out.length >= 2 ? out : [];
+  }
+
+  const waterLines = [];
+  for (const feature of geo.features) {
+    const props = feature.properties || {};
+    if (props.waterway === "lock_gate") continue;
+    if (props.waterway !== "canal" && props.lock !== "yes") continue;
+    const clipped = clipToRadius(lineCoords(feature), WATER_M);
+    if (clipped.length >= 2) waterLines.push(clipped);
+  }
+
+  function projectWater(x, z) {
+    let best = null;
+    for (let li = 0; li < waterLines.length; li++) {
+      const line = waterLines[li];
+      for (let i = 0; i < line.length - 1; i++) {
+        const a = line[i], b = line[i + 1];
+        const dx = b.x - a.x, dz = b.z - a.z;
+        const L2 = dx * dx + dz * dz || 1;
+        const u = Math.max(0, Math.min(1, ((x - a.x) * dx + (z - a.z) * dz) / L2));
+        const qx = a.x + dx * u, qz = a.z + dz * u;
+        const d = Math.hypot(x - qx, z - qz);
+        if (!best || d < best.d) best = { li, i, u, x: qx, z: qz, d };
+      }
+    }
+    return best;
+  }
+
+  function sliceLine(line, A, B) {
+    const pts = [{ x: A.x, z: A.z }];
+    if (A.i === B.i) {
+      pts.push({ x: B.x, z: B.z });
+      return pts;
+    }
+    if (A.i < B.i) {
+      for (let i = A.i + 1; i <= B.i; i++) pts.push(line[i]);
+    } else {
+      for (let i = A.i; i >= B.i + 1; i--) pts.push(line[i]);
+    }
+    pts.push({ x: B.x, z: B.z });
+    return pts;
+  }
+
+  function dedupePts(pts) {
+    const out = [];
+    for (const p of pts) {
+      const last = out[out.length - 1];
+      if (last && Math.hypot(last.x - p.x, last.z - p.z) < 1.5) continue;
+      out.push({ x: p.x, z: p.z });
+    }
+    if (out.length === 1) out.push({ x: out[0].x, z: out[0].z });
+    return out;
+  }
+
+  function routeOnWater(x0, z0, x1, z1) {
+    const A = projectWater(x0, z0);
+    const B = projectWater(x1, z1);
+    if (!A || !B || A.d > 220 || B.d > 220) return [{ x: x0, z: z0 }, { x: x1, z: z1 }];
+    if (A.li === B.li) return dedupePts(sliceLine(waterLines[A.li], A, B));
+    const nodes = [];
+    const owner = [];
+    for (let li = 0; li < waterLines.length; li++) {
+      for (const p of waterLines[li]) {
+        nodes.push(p);
+        owner.push(li);
+      }
+    }
+    const N = nodes.length;
+    const start = N, goal = N + 1;
+    const adj = Array.from({ length: N + 2 }, () => []);
+    const link = (i, j, w) => { adj[i].push([j, w]); adj[j].push([i, w]); };
+    let base = 0;
+    for (let li = 0; li < waterLines.length; li++) {
+      const line = waterLines[li];
+      for (let i = 0; i < line.length - 1; i++) {
+        link(base + i, base + i + 1, Math.hypot(line[i + 1].x - line[i].x, line[i + 1].z - line[i].z));
+      }
+      base += line.length;
+    }
+    for (let i = 0; i < N; i++) {
+      for (let j = i + 1; j < N; j++) {
+        if (owner[i] === owner[j]) continue;
+        const w = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].z - nodes[j].z);
+        if (w < 90) link(i, j, w);
+      }
+    }
+    const attach = (virt, proj) => {
+      let b = 0;
+      for (let li = 0; li < proj.li; li++) b += waterLines[li].length;
+      const line = waterLines[proj.li];
+      link(virt, b + proj.i, Math.hypot(proj.x - line[proj.i].x, proj.z - line[proj.i].z));
+      link(virt, b + proj.i + 1, Math.hypot(proj.x - line[proj.i + 1].x, proj.z - line[proj.i + 1].z));
+    };
+    attach(start, A);
+    attach(goal, B);
+    const dist = new Array(N + 2).fill(Infinity);
+    const prev = new Array(N + 2).fill(-1);
+    const used = new Array(N + 2).fill(false);
+    dist[start] = 0;
+    for (let n = 0; n < N + 2; n++) {
+      let u = -1;
+      for (let i = 0; i < N + 2; i++) if (!used[i] && (u < 0 || dist[i] < dist[u])) u = i;
+      if (u < 0 || dist[u] === Infinity) break;
+      used[u] = true;
+      for (const [v, w] of adj[u]) if (dist[u] + w < dist[v]) { dist[v] = dist[u] + w; prev[v] = u; }
+    }
+    if (!Number.isFinite(dist[goal])) return [{ x: x0, z: z0 }, { x: x1, z: z1 }];
+    const seq = [];
+    for (let u = goal; u >= 0; u = prev[u]) seq.push(u);
+    seq.reverse();
+    const pts = [];
+    for (const u of seq) {
+      if (u === start) pts.push({ x: A.x, z: A.z });
+      else if (u === goal) pts.push({ x: B.x, z: B.z });
+      else pts.push({ x: nodes[u].x, z: nodes[u].z });
+    }
+    return dedupePts(pts);
+  }
+
+  function bridge(x0, z0, x1, z1) {
+    return dedupePts([{ x: x0, z: z0 }, ...routeOnWater(x0, z0, x1, z1), { x: x1, z: z1 }]);
+  }
+
+  function samplePath(path, t) {
+    if (!path || !path.length) return null;
+    const n = path.length;
+    const first = path[0];
+    const last = path[n - 1];
+    if (!first || !last || !Number.isFinite(first.t) || !Number.isFinite(last.t)) return null;
+    if (t <= first.t) return { x: first.x, z: first.z, dx: 0, dz: 0 };
+    if (t >= last.t) {
+      const a = path[Math.max(0, n - 2)] || first;
+      return { x: last.x, z: last.z, dx: last.x - a.x, dz: last.z - a.z };
+    }
+    let lo = 0, hi = n - 1;
+    while (lo + 1 < hi) {
+      const mid = (lo + hi) >> 1;
+      const midPt = path[mid];
+      if (midPt && Number.isFinite(midPt.t) && midPt.t <= t) lo = mid;
+      else hi = mid;
+    }
+    const a = path[lo], b = path[hi];
+    if (!a || !b || !Number.isFinite(a.t) || !Number.isFinite(b.t)) {
+      return { x: first.x, z: first.z, dx: 0, dz: 0 };
+    }
+    const dt = b.t - a.t;
+    const u = dt <= 0 ? 0 : (t - a.t) / dt;
+    return { x: a.x + (b.x - a.x) * u, z: a.z + (b.z - a.z) * u, dx: b.x - a.x, dz: b.z - a.z };
+  }
+
+  function alongOf(origin, p) {
+    return (p.x - origin.x) * canalAxis.x + (p.z - origin.z) * canalAxis.z;
+  }
+
+  function perpOf(origin, p) {
+    return (p.x - origin.x) * canalAxis.z - (p.z - origin.z) * canalAxis.x;
+  }
+
+  function outboundSpine(pose, sign) {
+    const bins = new Map();
+    for (const line of waterLines) {
+      for (const p of line) {
+        const s = alongOf(pose, p);
+        if (s * sign < 30) continue;
+        if (Math.abs(perpOf(pose, p)) > 160) continue;
+        const key = Math.round(s / 50);
+        const prev = bins.get(key);
+        if (!prev || Math.abs(perpOf(pose, p)) < Math.abs(perpOf(pose, prev))) {
+          bins.set(key, { x: p.x, z: p.z, s });
+        }
+      }
+    }
+    const pts = [{ x: pose.x, z: pose.z }];
+    const ordered = [...bins.values()].sort((a, b) => (a.s - b.s) * sign);
+    for (const p of ordered) {
+      const last = pts[pts.length - 1];
+      if (Math.hypot(last.x - p.x, last.z - p.z) < 25) continue;
+      pts.push({ x: p.x, z: p.z });
+    }
+    let guard = 0;
+    while (Math.hypot(pts[pts.length - 1].x, pts[pts.length - 1].z) < LEAVE_M && guard++ < 24) {
+      const last = pts[pts.length - 1];
+      const prev = pts.length > 1 ? pts[pts.length - 2] : {
+        x: last.x - canalAxis.x * sign,
+        z: last.z - canalAxis.z * sign
+      };
+      let dx = last.x - prev.x, dz = last.z - prev.z;
+      const len = Math.hypot(dx, dz) || 1;
+      dx /= len;
+      dz /= len;
+      if (dx * canalAxis.x * sign + dz * canalAxis.z * sign < 0.2) {
+        dx = canalAxis.x * sign;
+        dz = canalAxis.z * sign;
+      }
+      pts.push({ x: last.x + dx * 160, z: last.z + dz * 160 });
+    }
+    return pts;
+  }
+
+  function stamp(pts, route, t0, t1) {
+    if (!route || !route.length || !Number.isFinite(t0) || !Number.isFinite(t1) || !(t1 >= t0)) return;
+    const clean = [];
+    for (const p of route) {
+      if (p && Number.isFinite(p.x) && Number.isFinite(p.z)) clean.push(p);
+    }
+    if (!clean.length) return;
+    const len = [0];
+    for (let i = 1; i < clean.length; i++) {
+      len.push(len[i - 1] + Math.hypot(clean[i].x - clean[i - 1].x, clean[i].z - clean[i - 1].z));
+    }
+    const total = len[len.length - 1] || 1;
+    for (let i = 0; i < clean.length; i++) {
+      const u = clean.length === 1 ? 1 : len[i] / total;
+      const t = t0 + (t1 - t0) * u;
+      if (!Number.isFinite(t)) continue;
+      const last = pts[pts.length - 1];
+      if (last && Number.isFinite(last.t) && t < last.t - 0.5) continue;
+      if (last && Number.isFinite(last.t) && Math.abs(t - last.t) < 1 && Math.hypot(last.x - clean[i].x, last.z - clean[i].z) < 1) continue;
+      pts.push({ t, x: clean[i].x, z: clean[i].z });
+    }
+  }
+
+  function onWater(x, z) {
+    const snapped = projectWater(x, z);
+    if (snapped && snapped.d <= 200) return { x: snapped.x, z: snapped.z };
+    return { x, z };
+  }
+
+  function sailOut(from, sign, t0) {
+    if (!from || !Number.isFinite(from.x) || !Number.isFinite(from.z)) return [];
+    const dir = sign || 1;
+    const spine = outboundSpine({ x: from.x, z: from.z }, dir);
+    const route = [{ x: from.x, z: from.z }];
+    const along0 = alongOf(from, from);
+    for (const p of spine) {
+      if (!p || !Number.isFinite(p.x) || !Number.isFinite(p.z)) continue;
+      if (alongOf(from, p) * dir < along0 * dir - 15) continue;
+      const last = route[route.length - 1];
+      if (!last || Math.hypot(last.x - p.x, last.z - p.z) < 20) continue;
+      route.push(p);
+    }
+    if (route.length < 2) {
+      const tail = spine.length ? spine[spine.length - 1] : null;
+      if (tail && Number.isFinite(tail.x) && Number.isFinite(tail.z) && Math.hypot(route[0].x - tail.x, route[0].z - tail.z) >= 20) {
+        route.push({ x: tail.x, z: tail.z });
+      } else {
+        route.push({
+          x: from.x + canalAxis.x * dir * 160,
+          z: from.z + canalAxis.z * dir * 160
+        });
+      }
+    }
+    let dist = 0;
+    for (let i = 1; i < route.length; i++) {
+      const a = route[i - 1], b = route[i];
+      if (!a || !b || !Number.isFinite(a.x) || !Number.isFinite(b.x)) continue;
+      dist += Math.hypot(b.x - a.x, b.z - a.z);
+    }
+    const tStart = Number.isFinite(t0) ? t0 : 0;
+    const pts = [];
+    stamp(pts, route, tStart, tStart + Math.max(SLIDE_MIN * 60000, (dist / EXIT_M_PER_MIN) * 60000));
+    if (!pts.length || !pts[0]) pts.push({ t: tStart, x: from.x, z: from.z });
+    if (pts.length < 2) {
+      const end = route[route.length - 1] || from;
+      const a = pts[pts.length - 1];
+      pts.push({
+        t: a.t + Math.max(1000, SLIDE_MIN * 60000),
+        x: Number.isFinite(end.x) ? end.x : a.x + canalAxis.x * dir * 160,
+        z: Number.isFinite(end.z) ? end.z : a.z + canalAxis.z * dir * 160
+      });
+    }
+    return pts;
+  }
+
+  function buildCruise(ship, rows) {
+    const pose = chamberPose.get(ship.chamber);
+    if (!pose) return null;
+    const track = [];
+    for (const p of rows || []) {
+      if (p && Number.isFinite(p.t) && Number.isFinite(p.x) && Number.isFinite(p.z)) track.push(p);
+    }
+    const startMs = DAY0 + ship.start * 60000;
+    const endMs = DAY0 + ship.end * 60000;
+    const slideMs = Math.min(SLIDE_MIN * 60000, Math.max(1, (endMs - startMs) / 3));
+    let enter = null;
+    for (const p of track) {
+      if (Math.hypot(p.x, p.z) <= NEAR_M) { enter = p; break; }
+    }
+    if (!enter) enter = track[0] || { t: startMs, x: pose.x, z: pose.z };
+    const approachSign = Math.sign(alongOf(pose, enter)) || 1;
+    const exitSign = -approachSign;
+    const entry = onWater(enter.x, enter.z);
+    const enterT = Number.isFinite(enter.t) ? enter.t : startMs;
+
+    if (enterT >= endMs && Math.abs(alongOf(pose, entry)) > 70) {
+      const departed = sailOut(entry, Math.sign(alongOf(pose, entry)) || exitSign, enterT);
+      return departed.length >= 2 ? departed : null;
+    }
+
+    const pts = [];
+    const onApproach = (p) => p && alongOf(pose, p) * approachSign > -40;
+    if (enterT < startMs) {
+      let prev = null;
+      for (const p of track) {
+        if (p.t < enterT || p.t > startMs) continue;
+        if (Math.hypot(p.x, p.z) > WATER_M + 80) continue;
+        if (!onApproach(p)) continue;
+        const q = onWater(p.x, p.z);
+        if (!q || !onApproach(q)) continue;
+        if (prev && (p.t - prev.t > 90000 || Math.hypot(q.x - prev.x, q.z - prev.z) > 80)) {
+          stamp(pts, routeOnWater(prev.x, prev.z, q.x, q.z), prev.t, p.t);
+        } else {
+          stamp(pts, [q], p.t, p.t);
+        }
+        prev = { t: p.t, x: q.x, z: q.z };
+      }
+    }
+    let atGate = pts[pts.length - 1];
+    if (!atGate || !Number.isFinite(atGate.t)) {
+      const seed = entry && Number.isFinite(entry.x) && Number.isFinite(entry.z) ? entry : pose;
+      atGate = { t: enterT, x: seed.x, z: seed.z };
+      pts.push(atGate);
+    }
+    const tIn0 = Math.max(atGate.t, Math.min(enterT, startMs));
+    const tIn1 = Math.max(tIn0 + 1000, Math.min(endMs - slideMs, Math.max(startMs, tIn0) + slideMs));
+    stamp(pts, bridge(atGate.x, atGate.z, pose.x, pose.z), tIn0, tIn1);
+    const tOut0 = Math.max(tIn1, endMs - slideMs);
+    stamp(pts, [{ x: pose.x, z: pose.z }], tOut0, tOut0);
+    const leaving = sailOut(pose, exitSign, tOut0);
+    for (const p of leaving) {
+      if (!p || !Number.isFinite(p.t) || !Number.isFinite(p.x) || !Number.isFinite(p.z)) continue;
+      const last = pts[pts.length - 1];
+      if (last && Number.isFinite(last.t) && p.t < last.t - 0.5) continue;
+      if (last && Number.isFinite(last.t) && Math.abs(p.t - last.t) < 1 && Math.hypot(last.x - p.x, last.z - p.z) < 1) continue;
+      pts.push(p);
+    }
+    if (pts.length < 2) {
+      const a = pts[pts.length - 1];
+      const baseT = a && Number.isFinite(a.t) ? a.t : tOut0;
+      const baseX = a && Number.isFinite(a.x) ? a.x : pose.x;
+      const baseZ = a && Number.isFinite(a.z) ? a.z : pose.z;
+      if (!a) pts.push({ t: baseT, x: baseX, z: baseZ });
+      pts.push({
+        t: baseT + Math.max(1000, SLIDE_MIN * 60000),
+        x: baseX + canalAxis.x * exitSign * 160,
+        z: baseZ + canalAxis.z * exitSign * 160
+      });
+    }
+    return pts.length >= 2 ? pts : null;
+  }
+
+  for (const ship of ships) {
+    ship.cruise = buildCruise(ship, tracks.get(ship.ship) || []);
+    ship.path = ship.cruise;
+  }
+
+  const palette = [0xc4513c, 0x2f6f4e, 0xd08a2a, 0x3d4c8a, 0x8a3d6b, 0x3f7d8a, 0x6b5344, 0xb23b4a, 0x4e6b2f, 0x8a6a2f];
+  const hulls = [];
+  ships.forEach((ship, i) => {
+    const mesh = makeHull(palette[i % palette.length]);
+    mesh.visible = false;
+    mesh.userData.ship = ship;
+    scene.add(mesh);
+    hulls.push(mesh);
+  });
+
+  let maxMin = 24 * 60;
+  for (const ship of ships) {
+    maxMin = Math.max(maxMin, ship.end);
+    const cruise = ship.cruise;
+    if (cruise && cruise.length) maxMin = Math.max(maxMin, (cruise[cruise.length - 1].t - DAY0) / 60000);
+  }
+  for (const rows of tracks.values()) {
+    const min = (rows[rows.length - 1].t - DAY0) / 60000;
+    if (min > maxMin) maxMin = min;
+  }
+  maxMin = Math.ceil(maxMin);
+  slider.max = String(maxMin);
+
+  const camera = new THREE.PerspectiveCamera(45, 1, 1, 14000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  view.appendChild(renderer.domElement);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.maxPolarAngle = Math.PI / 2 - 0.05;
+  controls.minDistance = 40;
+  controls.maxDistance = 4500;
+  const focus = Number.isFinite(gateMinX)
+    ? { x: (gateMinX + gateMaxX) / 2, z: (gateMinZ + gateMaxZ) / 2 }
+    : { x: 0, z: 0 };
+  controls.target.set(focus.x, 0, focus.z);
+  camera.position.set(focus.x + 80, 700, focus.z + 200);
+  camera.lookAt(focus.x, 0, focus.z);
+  controls.update();
+
+  function resize() {
+    const w = view.clientWidth, h = view.clientHeight;
+    if (!w || !h) return;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h, false);
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  const scratch = new THREE.Vector3();
+  let minute = 90;
+  let playing = true;
+  let last = performance.now();
+  slider.value = String(minute);
+  playBtn.textContent = "Pause";
+
+  function placeShips(min) {
+    const t = DAY0 + min * 60000;
+    for (const mesh of hulls) {
+      const ship = mesh.userData.ship;
+      const path = ship.path;
+      const pathEnd = path && path[path.length - 1];
+      if (!path || path.length < 2 || !path[0] || !pathEnd || !Number.isFinite(path[0].t) || t < path[0].t) {
+        mesh.visible = false;
+        continue;
+      }
+      if (!Number.isFinite(pathEnd.t) || t > pathEnd.t) {
+        mesh.visible = false;
+        continue;
+      }
+      const sample = samplePath(path, t);
+      mesh.visible = true;
+      if (!sample || !Number.isFinite(sample.x) || !Number.isFinite(sample.z)) continue;
+      const pose = chamberPose.get(ship.chamber);
+      const holding = pose
+        && Math.hypot(sample.x - pose.x, sample.z - pose.z) < 18
+        && Math.hypot(sample.dx, sample.dz) < 1;
+      if (holding) {
+        mesh.position.set(sample.x, 0, sample.z);
+        mesh.quaternion.copy(pose.quat);
+        mesh.userData.phase = "in " + pose.name;
+        continue;
+      }
+      if (Math.hypot(sample.dx, sample.dz) > 0.4) mesh.userData.heading = Math.atan2(sample.dz, sample.dx);
+      const heading = mesh.userData.heading || 0;
+      scratch.set(Math.cos(heading), 0, Math.sin(heading));
+      mesh.quaternion.setFromUnitVectors(xAxis, scratch);
+      mesh.position.set(sample.x, 0, sample.z);
+      mesh.userData.phase = min < ship.arrival ? "approaching" : "moving";
+    }
+  }
+
+  const DAY_MINUTES = 24 * 60;
+  const waitingSeries = new Array(DAY_MINUTES + 1);
+  const insideSeries = new Array(DAY_MINUTES + 1);
+  let seriesPeak = 1;
+  function trafficAt(m) {
+    let waiting = 0, inside = 0, through = 0;
+    for (const ship of ships) {
+      if (!Number.isFinite(ship.arrival) || !Number.isFinite(ship.start) || m < ship.arrival) continue;
+      if (m < ship.start) waiting++;
+      else if (m < ship.end) inside++;
+      else through++;
+    }
+    return { waiting, inside, through };
+  }
+  for (let m = 0; m <= DAY_MINUTES; m++) {
+    const row = trafficAt(m);
+    waitingSeries[m] = row.waiting;
+    insideSeries[m] = row.inside;
+    if (row.waiting > seriesPeak) seriesPeak = row.waiting;
+    if (row.inside > seriesPeak) seriesPeak = row.inside;
+  }
+
+  function drawGraph(min) {
+    const cssW = graph.clientWidth;
+    const cssH = graph.clientHeight;
+    if (cssW < 8 || cssH < 8) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const bw = Math.round(cssW * dpr);
+    const bh = Math.round(cssH * dpr);
+    if (graph.width !== bw || graph.height !== bh) {
+      graph.width = bw;
+      graph.height = bh;
+    }
+    const g = graph.getContext("2d");
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.clearRect(0, 0, cssW, cssH);
+    g.fillStyle = "#ffffff";
+    g.fillRect(0, 0, cssW, cssH);
+    const padL = 28, padR = 8, padT = 10, padB = 22;
+    const plotW = cssW - padL - padR;
+    const plotH = cssH - padT - padB;
+    const xOf = (m) => padL + (m / DAY_MINUTES) * plotW;
+    const yOf = (v) => padT + plotH - (v / seriesPeak) * plotH;
+    g.font = "11px sans-serif";
+    g.textAlign = "center";
+    g.textBaseline = "top";
+    g.strokeStyle = "#e4e9ef";
+    g.lineWidth = 1;
+    g.fillStyle = "#6b7785";
+    for (let hour = 0; hour <= 24; hour += 6) {
+      const x = xOf(hour * 60);
+      g.beginPath();
+      g.moveTo(x, padT);
+      g.lineTo(x, padT + plotH);
+      g.stroke();
+      g.fillText(String(hour).padStart(2, "0"), x, padT + plotH + 4);
+    }
+    g.textAlign = "right";
+    g.textBaseline = "middle";
+    const yStep = seriesPeak <= 6 ? 1 : Math.ceil(seriesPeak / 4);
+    for (let v = 0; v <= seriesPeak; v += yStep) {
+      const y = yOf(v);
+      g.strokeStyle = "#e4e9ef";
+      g.beginPath();
+      g.moveTo(padL, y);
+      g.lineTo(padL + plotW, y);
+      g.stroke();
+      g.fillStyle = "#6b7785";
+      g.fillText(String(v), padL - 4, y);
+    }
+    function fillStep(series, color) {
+      g.beginPath();
+      g.moveTo(xOf(0), yOf(0));
+      g.lineTo(xOf(0), yOf(series[0]));
+      for (let m = 0; m < DAY_MINUTES; m++) {
+        g.lineTo(xOf(m + 1), yOf(series[m]));
+        g.lineTo(xOf(m + 1), yOf(series[m + 1]));
+      }
+      g.lineTo(xOf(DAY_MINUTES), yOf(0));
+      g.closePath();
+      g.fillStyle = color;
+      g.fill();
+    }
+    function strokeStep(series, color) {
+      g.beginPath();
+      g.moveTo(xOf(0), yOf(series[0]));
+      for (let m = 0; m < DAY_MINUTES; m++) {
+        g.lineTo(xOf(m + 1), yOf(series[m]));
+        g.lineTo(xOf(m + 1), yOf(series[m + 1]));
+      }
+      g.strokeStyle = color;
+      g.lineWidth = 1.75;
+      g.stroke();
+    }
+    fillStep(waitingSeries, "rgba(196, 123, 18, 0.18)");
+    fillStep(insideSeries, "rgba(29, 95, 134, 0.18)");
+    strokeStep(waitingSeries, "#c47b12");
+    strokeStep(insideSeries, "#1d5f86");
+    const clamped = Math.max(0, Math.min(DAY_MINUTES, min));
+    const xNow = xOf(clamped);
+    g.beginPath();
+    g.moveTo(xNow, padT);
+    g.lineTo(xNow, padT + plotH);
+    g.strokeStyle = "#b4332a";
+    g.lineWidth = 1.5;
+    g.stroke();
+    const live = trafficAt(min);
+    for (const [value, color] of [[live.waiting, "#c47b12"], [live.inside, "#1d5f86"]]) {
+      g.beginPath();
+      g.arc(xNow, yOf(value), 3.5, 0, Math.PI * 2);
+      g.fillStyle = color;
+      g.fill();
+      g.lineWidth = 1.5;
+      g.strokeStyle = "#ffffff";
+      g.stroke();
+    }
+  }
+
+  function paintClock() {
+    clock.textContent = formatClock(minute);
+    slider.value = String(Math.round(minute));
+    const live = trafficAt(minute);
+    counts.textContent = live.waiting + " waiting · " + live.inside + " in lock · " + live.through + " through";
+    drawGraph(minute);
+  }
+
+  playBtn.addEventListener("click", () => {
+    playing = !playing;
+    if (playing && minute >= maxMin - 0.05) minute = 0;
+    playBtn.textContent = playing ? "Pause" : "Play";
+    last = performance.now();
+  });
+  slider.addEventListener("pointerdown", () => {
+    playing = false;
+    playBtn.textContent = "Play";
+  });
+  slider.addEventListener("input", () => {
+    minute = +slider.value;
+    placeShips(minute);
+    paintClock();
+  });
+  window.addEventListener("keydown", (ev) => {
+    if (ev.code !== "Space" || ev.target.closest("input, button")) return;
+    ev.preventDefault();
+    playBtn.click();
+  });
+
+  const raycaster = new THREE.Raycaster();
+  const pointer = new THREE.Vector2();
+  renderer.domElement.addEventListener("pointermove", (ev) => {
+    const rect = renderer.domElement.getBoundingClientRect();
+    pointer.x = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
+    pointer.y = -((ev.clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(pointer, camera);
+    const hits = raycaster.intersectObjects(hulls, true);
+    let ship = null;
+    for (const hit of hits) {
+      let obj = hit.object;
+      while (obj && !obj.userData.ship) obj = obj.parent;
+      if (obj) { ship = obj.userData.ship; break; }
+    }
+    if (!ship) {
+      tip.style.display = "none";
+      return;
+    }
+    const wait = ship.start - ship.arrival;
+    tip.textContent = ship.ship + " · chamber " + ship.chamber + " · wait " + wait + " min";
+    tip.style.display = "block";
+    tip.style.left = (ev.clientX + 12) + "px";
+    tip.style.top = (ev.clientY + 12) + "px";
+  });
+  renderer.domElement.addEventListener("pointerleave", () => { tip.style.display = "none"; });
+
+  function frame(now) {
+    const dt = Math.min(0.1, (now - last) / 1000);
+    last = now;
+    if (playing) {
+      minute = Math.min(maxMin, minute + dt * PLAY_MIN_PER_SEC);
+      if (minute >= maxMin) {
+        playing = false;
+        playBtn.textContent = "Play";
+      }
+    }
+    placeShips(minute);
+    paintClock();
+    controls.update();
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  placeShips(minute);
+  paintClock();
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(frame);
+  const loading = document.getElementById("loading");
+  if (loading) loading.remove();
+}
+
+main().catch(fail);
+</script>
+</body>
+</html>
