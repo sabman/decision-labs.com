@@ -33,6 +33,8 @@
     "id": "announcing-decision-labs-edge",
     "title": "Announcing Decision Labs Edge",
     "description": "On-device AI for field hardware: LiteRT time-series and perception weights that run on cameras, buoys, drones, and sensor nodes without a cloud round-trip.",
+    "titleDe": "Decision Labs Edge ist da",
+    "descriptionDe": "KI auf dem Gerät für Hardware im Feld: LiteRT-Gewichte für Zeitreihen und Wahrnehmung. Sie laufen auf Kameras, Bojen, Drohnen und Sensorknoten, ohne Umweg über die Cloud.",
     "image": "/images/blog/edge-hero.png",
     "link": "/blog/announcing-decision-labs-edge",
     "date": "2026-07-23",

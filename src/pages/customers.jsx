@@ -1,11 +1,14 @@
 import * as React from 'react'
 import '../styles/global.css'
 import SiteLayout from '../components/SiteLayout'
+import { useI18n } from '../i18n/I18nProvider'
+import { localizedField } from '../i18n/content'
+import { PageHead } from '../i18n/PageHead'
 import customersData from '../data/customers.json'
 import CustomerLogo from '../components/CustomerLogo'
 
 const CustomersPage = ({ location }) => {
-
+  const { locale, t } = useI18n()
 
   return (
     <SiteLayout location={location}>
@@ -13,11 +16,9 @@ const CustomersPage = ({ location }) => {
       <main className="main-content customers-content">
         <div className="content-cards customers-cards">
           <div className="card card-primary customers-hero-card">
-            <h1 className="customers-page-title">Customers</h1>
+            <h1 className="customers-page-title">{t('customers.title')}</h1>
             <div className="card-body">
-              <p className="mission-text">
-                We work with leading organizations across finance, government, space, and technology — from custom AI products to geospatial infrastructure on Geobase.
-              </p>
+              <p className="mission-text">{t('customers.intro')}</p>
             </div>
           </div>
         </div>
@@ -30,7 +31,7 @@ const CustomersPage = ({ location }) => {
                   <CustomerLogo customerId={customer.id} name={customer.name} />
                 </div>
                 <h2 className="customer-name">{customer.name}</h2>
-                <span className="customer-category">{customer.category}</span>
+                <span className="customer-category">{localizedField(customer, 'category', locale)}</span>
               </div>
             </div>
           ))}
@@ -39,9 +40,7 @@ const CustomersPage = ({ location }) => {
         <div className="content-cards customers-cards">
           <div className="card card-secondary customers-migration-card">
             <div className="card-body">
-              <p className="mission-text">
-                Many teams have moved from CartoDB to Geobase for Postgres-native geospatial infrastructure — lower cost, full data ownership, and modern AI workflows.
-              </p>
+              <p className="mission-text">{t('customers.migration')}</p>
             </div>
           </div>
         </div>
@@ -52,4 +51,4 @@ const CustomersPage = ({ location }) => {
 
 export default CustomersPage
 
-export const Head = () => <title>Customers - Decision Labs</title>
+export const Head = (props) => <PageHead pageKey="customers" {...props} />

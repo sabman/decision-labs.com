@@ -1,0 +1,25 @@
+{
+  "metaTitle": "Über uns - Decision Labs",
+  "metaDescription": "Beratung zu Digitalisierung, Analytics und Data Science.",
+  "title": "Über uns",
+  "mission": "Wir helfen Ihnen, durch Digitalisierung effizienter zu arbeiten und Kompetenzen in Analytics und Data Science aufzubauen.",
+  "processTitle": "Unser Vorgehen",
+  "steps": [
+    {
+      "title": "Auftragsklärung und Architektur",
+      "description": "Zuerst verstehen wir Ihre Aufgabe. Wenn maschinelles Lernen dazu passt, erarbeiten wir mit Ihnen einen Fahrplan, sichten die Fachliteratur und legen die Anforderungen fest."
+    },
+    {
+      "title": "Datenerhebung und Exploration",
+      "description": "Maschinelles Lernen braucht Daten. Liegen Trainingsdaten vor, untersuchen wir sie auf Muster und Zusammenhänge. Fehlen sie, beschaffen wir sie aus zugänglichen Quellen, soweit das möglich ist."
+    },
+    {
+      "title": "Modellentwicklung",
+      "description": "Wir führen Tausende Experimente parallel aus, um ein Modell zu entwickeln. Das Modell ist der Kern eines Systems für maschinelles Lernen. An historischen Daten trainiert, kann es Verläufe schätzen oder den Inhalt eines Textes erfassen."
+    },
+    {
+      "title": "Anwendungsentwicklung",
+      "description": "Wir binden das Modell an eine REST-API oder eine Oberfläche an und bauen die Funktionen, die für einen verständlichen Zugriff nötig sind. Die Anwendung lässt sich skalieren und folgt aktuellen Sicherheitsstandards."
+    }
+  ]
+}

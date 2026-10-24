@@ -20,5 +20,14 @@
   "switcherLabel": "Sprache",
   "hint": "Diese Website gibt es auch auf Deutsch.",
   "hintAction": "Auf Deutsch lesen",
-  "hintDismiss": "Englisch behalten"
+  "hintDismiss": "Englisch behalten",
+  "categories": {
+    "Blog": "Blog",
+    "Talk": "Vortrag",
+    "Podcast": "Podcast",
+    "Partnership": "Partnerschaft",
+    "Project": "Projekt",
+    "Field Notes": "Feldnotizen",
+    "Post": "Beitrag"
+  }
 }

@@ -1,6 +1,9 @@
 import * as React from 'react'
 import '../styles/global.css'
 import SiteLayout from '../components/SiteLayout'
+import { useI18n } from '../i18n/I18nProvider'
+import { dateLocale, localizedField } from '../i18n/content'
+import { PageHead } from '../i18n/PageHead'
 import projectsData from '../data/projects.json'
 
 // Import project images
@@ -21,7 +24,10 @@ const projectImages = {
 
 // Work Card Component
 const WorkCard = ({ project, projectImage }) => {
+  const { locale, t } = useI18n()
   const videoRef = React.useRef(null)
+  const title = localizedField(project, 'title', locale)
+  const description = localizedField(project, 'description', locale)
   
   const handleMouseEnter = () => {
     if (videoRef.current && project.metadata?.demo) {
@@ -48,15 +54,15 @@ const WorkCard = ({ project, projectImage }) => {
         <div className="work-card-text">
           <div className="card-body work-card-body">
             {project.featured && (
-              <span className="work-card-badge">New</span>
+              <span className="work-card-badge">{t('work.badge')}</span>
             )}
-            <h2 className="work-card-title">{project.title}</h2>
-            <p className="work-card-description">{project.description}</p>
+            <h2 className="work-card-title">{title}</h2>
+            <p className="work-card-description">{description}</p>
           </div>
           <div className="card-footer">
             <div className="work-card-footer-content">
               <span className="card-brand">
-                {new Date(project.date).toLocaleDateString('en-US', {
+                {new Date(project.date).toLocaleDateString(dateLocale(locale), {
                   year: 'numeric',
                   month: 'short',
                   day: 'numeric'
@@ -68,7 +74,7 @@ const WorkCard = ({ project, projectImage }) => {
         <div className="work-card-image-wrapper">
           <img 
             src={projectImage} 
-            alt={project.title}
+            alt={title}
             className="work-card-image"
           />
           {project.metadata?.demo && (
@@ -87,9 +93,9 @@ const WorkCard = ({ project, projectImage }) => {
             target="_blank" 
             rel="noopener noreferrer"
             className="work-card-link"
-            aria-label="View project"
+            aria-label={t('work.viewProjectAria')}
           >
-            view project ↗
+            {t('work.viewProject')} ↗
           </a>
         </div>
       </div>
@@ -98,6 +104,7 @@ const WorkCard = ({ project, projectImage }) => {
 }
 
 const WorkPage = ({ location }) => {
+  const { t } = useI18n()
   const projects = [...projectsData].sort((a, b) => {
     if (Boolean(a.featured) !== Boolean(b.featured)) {
       return a.featured ? -1 : 1
@@ -112,7 +119,7 @@ const WorkPage = ({ location }) => {
         <div className="content-cards work-cards">
           <div className="card card-primary work-hero-card">
             <div className="work-hero-header">
-              <h1 className="work-page-title">Work</h1>
+              <h1 className="work-page-title">{t('work.title')}</h1>
             </div>
           </div>
         </div>
@@ -131,7 +138,7 @@ const WorkPage = ({ location }) => {
           </div>
         ) : (
           <div className="work-empty">
-            <p className="mission-text">No projects yet. Check back soon!</p>
+            <p className="mission-text">{t('work.empty')}</p>
           </div>
         )}
       </main>
@@ -141,5 +148,5 @@ const WorkPage = ({ location }) => {
 
 export default WorkPage
 
-export const Head = () => <title>Work - Decision Labs</title>
+export const Head = (props) => <PageHead pageKey="work" {...props} />
 

@@ -1,0 +1,25 @@
+{
+  "metaTitle": "About - Decision Labs",
+  "metaDescription": "Consulting on digital transformation, analytics, and data science capabilities.",
+  "title": "About",
+  "mission": "We help our clients achieve efficiencies through digital transformation, develop analytics and data science capabilities.",
+  "processTitle": "Our Process",
+  "steps": [
+    {
+      "title": "Scoping & Architecture Design",
+      "description": "First, we need to understand your problem better. Once we determine there is a fit for Machine Learning, we will work closely together to prepare a roadmap, review the scientific literature, and determine requirements."
+    },
+    {
+      "title": "Data Collection & Exploration",
+      "description": "Machine Learning needs data. If you have data needed to train the models, we will perform an exploratory analysis phase to find patterns and correlations. If you don't, we will collect the data for you using online sources (if possible)."
+    },
+    {
+      "title": "Model Development",
+      "description": "We run thousands of experiments in parallel to develop a machine learning model. A model is the core of a machine learning system - trained on historical data it can predict the future trends or understand the semantics of a text."
+    },
+    {
+      "title": "Full-stack application development",
+      "description": "We integrate the model with a REST API or a front-end application, developing all necessary features to access the model in an user-friendly way. Scalable and with the state-of-the-art security."
+    }
+  ]
+}

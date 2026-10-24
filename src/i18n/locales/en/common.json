@@ -20,5 +20,14 @@
   "switcherLabel": "Language",
   "hint": "This site is also available in German.",
   "hintAction": "Read in German",
-  "hintDismiss": "Keep English"
+  "hintDismiss": "Keep English",
+  "categories": {
+    "Blog": "Blog",
+    "Talk": "Talk",
+    "Podcast": "Podcast",
+    "Partnership": "Partnership",
+    "Project": "Project",
+    "Field Notes": "Field Notes",
+    "Post": "Post"
+  }
 }

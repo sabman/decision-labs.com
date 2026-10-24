@@ -2,8 +2,12 @@ import * as React from 'react'
 import '../styles/global.css'
 import postsData from '../data/posts.json'
 import SiteLayout from '../components/SiteLayout'
+import { useI18n } from '../i18n/I18nProvider'
+import { categoryLabel, dateLocale, localizedField } from '../i18n/content'
+import { PageHead } from '../i18n/PageHead'
 
 const FeedPage = ({ location }) => {
+  const { locale, t } = useI18n()
   const allPosts = postsData.sort((a, b) => new Date(b.date) - new Date(a.date))
   const [activeFilter, setActiveFilter] = React.useState('all')
   
@@ -87,23 +91,23 @@ const FeedPage = ({ location }) => {
         <div className="content-cards feed-cards">
           <div className="card card-primary feed-hero-card">
             <div className="feed-hero-header">
-              <h1 className="feed-page-title">Feed</h1>
-              <a href="/rss.xml" className="rss-link" aria-label="RSS Feed">
+              <h1 className="feed-page-title">{t('feed.title')}</h1>
+              <a href="/rss.xml" className="rss-link" aria-label={t('feed.rss')}>
                 RSS
               </a>
             </div>
             <div className="feed-metrics">
               <div className="feed-metric feed-metric-item">
                 <div className="feed-metric-number">{metrics.totalPosts}</div>
-                <div className="feed-metric-label">TOTAL POSTS</div>
+                <div className="feed-metric-label">{t('feed.totalPosts')}</div>
               </div>
               <div className="feed-metric feed-metric-item">
                 <div className="feed-metric-number">{metrics.socialPosts}</div>
-                <div className="feed-metric-label">SOCIAL POSTS</div>
+                <div className="feed-metric-label">{t('feed.socialPosts')}</div>
               </div>
               <div className="feed-metric feed-metric-item">
                 <div className="feed-metric-number">{metrics.totalLikes}+</div>
-                <div className="feed-metric-label">TOTAL LIKES</div>
+                <div className="feed-metric-label">{t('feed.totalLikes')}</div>
               </div>
             </div>
             <div className="feed-filters">
@@ -111,31 +115,31 @@ const FeedPage = ({ location }) => {
                 className={`feed-filter feed-filter-item ${activeFilter === 'all' ? 'active' : ''}`}
                 onClick={() => setActiveFilter('all')}
               >
-                All
+                {t('feed.all')}
               </button>
               <button
                 className={`feed-filter feed-filter-item ${activeFilter === 'social' ? 'active' : ''}`}
                 onClick={() => setActiveFilter('social')}
               >
-                Social
+                {t('feed.social')}
               </button>
               <button
                 className={`feed-filter feed-filter-item ${activeFilter === 'talks' ? 'active' : ''}`}
                 onClick={() => setActiveFilter('talks')}
               >
-                Talks
+                {t('feed.talks')}
               </button>
               <button
                 className={`feed-filter feed-filter-item ${activeFilter === 'posts' ? 'active' : ''}`}
                 onClick={() => setActiveFilter('posts')}
               >
-                Posts
+                {t('feed.posts')}
               </button>
               <button
                 className={`feed-filter feed-filter-item ${activeFilter === 'launches' ? 'active' : ''}`}
                 onClick={() => setActiveFilter('launches')}
               >
-                Launches
+                {t('feed.launches')}
               </button>
             </div>
           </div>
@@ -148,27 +152,27 @@ const FeedPage = ({ location }) => {
                 className={`card ${post.featured ? 'card-primary featured' : 'card-secondary'}`}
               >
                 <div className="card-header">
-                  <span className="card-title">{post.metadata?.category || 'Blog'}</span>
+                  <span className="card-title">{categoryLabel(locale, post.metadata?.category || 'Blog')}</span>
                   <a 
                     href={post.link} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="card-icon"
-                    aria-label="View post"
+                    aria-label={t('feed.viewPost')}
                   >
                     ↗
                   </a>
                 </div>
                 <div className="card-body blog-card-body">
                   <div className="blog-card-image">
-                    <img src={post.image} alt={post.title} />
+                    <img src={post.image} alt={localizedField(post, 'title', locale)} />
                   </div>
-                  <h2 className="blog-card-title">{post.title}</h2>
-                  <p className="blog-card-description">{post.description}</p>
+                  <h2 className="blog-card-title">{localizedField(post, 'title', locale)}</h2>
+                  <p className="blog-card-description">{localizedField(post, 'description', locale)}</p>
                 </div>
                 <div className="card-footer">
                   <span className="card-brand">
-                    {new Date(post.date).toLocaleDateString('en-US', {
+                    {new Date(post.date).toLocaleDateString(dateLocale(locale), {
                       year: 'numeric',
                       month: 'short',
                       day: 'numeric'
@@ -181,7 +185,7 @@ const FeedPage = ({ location }) => {
           </div>
         ) : (
           <div className="blog-empty">
-            <p className="mission-text">No posts yet. Check back soon!</p>
+            <p className="mission-text">{t('feed.empty')}</p>
           </div>
         )}
       </main>
@@ -191,9 +195,8 @@ const FeedPage = ({ location }) => {
 
 export default FeedPage
 
-export const Head = () => (
-  <>
-    <title>Feed - Decision Labs</title>
+export const Head = (props) => (
+  <PageHead pageKey="feed" {...props}>
     <link rel="alternate" type="application/rss+xml" title="Decision Labs RSS Feed" href="/rss.xml" />
-  </>
+  </PageHead>
 )

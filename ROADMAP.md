@@ -51,7 +51,7 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
 
 - [x] **Extract `SiteLayout`** — Move duplicated header, nav, background-color logic, and `Footer` from every page into `src/components/SiteLayout.jsx`. Pages become content-only.
 - [x] **Add i18n stack** — Locale pages are created in `gatsby-node.js` from `src/i18n/routes.js`. Copy lives in `src/i18n/locales/{en,de}`. No i18n plugin: slugs such as `/de/ueber-uns` do not match a same-slug prefix.
-- [ ] **Translation file structure**
+- [x] **Translation file structure**
   ```
   src/i18n/
     locales/
@@ -89,10 +89,10 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
 | Newsletter | Signup copy | Hardcoded JSX |
 | 404 | Message + link home | Hardcoded JSX |
 
-- [ ] Migrate hardcoded page copy from JSX into locale JSON files (keep JSX for structure only).
-- [ ] Translate all Phase 1 copy to German (professional, not machine-translated — human review required).
-- [ ] Update `Head` exports: localized `<title>`, `<meta name="description">`, Open Graph tags per page.
-- [ ] German footer labels: **Rechtliches**, **Kontakt**, **Folgen**, **AGB & Datenschutz**, **Termin buchen**.
+- [x] Migrate hardcoded page copy from JSX into locale JSON files (keep JSX for structure only).
+- [x] Translate all Phase 1 copy to German (professional, not machine-translated — human review required).
+- [x] Update `Head` exports: localized `<title>`, `<meta name="description">`, Open Graph tags per page.
+- [x] German footer labels: **Rechtliches**, **Kontakt**, **Folgen**, **AGB & Datenschutz**, **Termin buchen**.
 
 **Exit criteria:** A German-speaking prospect can browse home → about → work → customers → contact without hitting English UI chrome.
 
@@ -222,7 +222,7 @@ Record choices here as they are made:
 | 2 | Blog post file strategy | Frontmatter fields vs `src/blog/de/` folder | **TBD** |
 | 3 | i18n library | `gatsby-plugin-react-i18next` vs custom `gatsby-node` | **Custom `gatsby-node` + JSON catalogs** |
 | 4 | Default locale for unknown visitors | Always English vs `Accept-Language` hint | **English URLs. One-line hint on first visit, no redirect.** |
-| 5 | Translate `posts.json` featured content on home? | Yes / No / Top 3 only | **TBD** — recommend top 3 featured only |
+| 5 | Translate `posts.json` featured content on home? | Yes / No / Top 3 only | **Featured posts only.** Optional `titleDe` / `descriptionDe`. Other posts stay in the original language. |
 
 ---
 

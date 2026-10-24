@@ -4,8 +4,12 @@ import { FileText, Mic, Handshake, BookOpen, Radio } from 'lucide-react'
 import '../styles/global.css'
 import postsData from '../data/posts.json'
 import SiteLayout from '../components/SiteLayout'
+import { useI18n } from '../i18n/I18nProvider'
+import { categoryLabel, localizedField } from '../i18n/content'
+import { PageHead } from '../i18n/PageHead'
 
 const IndexPage = ({ location }) => {
+  const { locale, t } = useI18n()
   const [activeIndex, setActiveIndex] = React.useState(0)
 
   const featuredPosts = postsData.filter(post => post.featured === true)
@@ -14,6 +18,8 @@ const IndexPage = ({ location }) => {
     : postsData.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3)
 
   const currentPost = postsToShow[activeIndex]
+  const currentTitle = localizedField(currentPost, 'title', locale)
+  const currentDescription = localizedField(currentPost, 'description', locale)
   const currentPostImage = currentPost?.image && !currentPost.image.includes('via.placeholder.com')
     ? currentPost.image
     : null
@@ -53,7 +59,7 @@ const IndexPage = ({ location }) => {
             </div>
             <div className="card-body">
               <p className="mission-text">
-                We build AI-driven products, train custom models, and create intelligent systems that turn complex data into actionable insights. From concept to deployment.
+                {t('home.mission')}
               </p>
             </div>
           </div>
@@ -73,16 +79,16 @@ const IndexPage = ({ location }) => {
                     {currentPost?.metadata?.category ? (
                       <span className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         {getCategoryIcon(currentPost.metadata.category)}
-                        <span>{currentPost.metadata.category}</span>
+                        <span>{categoryLabel(locale, currentPost.metadata.category)}</span>
                       </span>
                     ) : (
-                      <span className="card-title">Featured</span>
+                      <span className="card-title">{t('home.featured')}</span>
                     )}
                   </div>
                   <div className="card-body featured-post-body">
                     <div className="featured-post-content">
-                      <h3 className="featured-post-title">{currentPost.title}</h3>
-                      <p className="featured-post-description">{currentPost.description}</p>
+                      <h3 className="featured-post-title">{currentTitle}</h3>
+                      <p className="featured-post-description">{currentDescription}</p>
                     </div>
                   </div>
                 </Link>
@@ -98,16 +104,16 @@ const IndexPage = ({ location }) => {
                     {currentPost?.metadata?.category ? (
                       <span className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         {getCategoryIcon(currentPost.metadata.category)}
-                        <span>{currentPost.metadata.category}</span>
+                        <span>{categoryLabel(locale, currentPost.metadata.category)}</span>
                       </span>
                     ) : (
-                      <span className="card-title">Featured</span>
+                      <span className="card-title">{t('home.featured')}</span>
                     )}
                   </div>
                   <div className="card-body featured-post-body">
                     <div className="featured-post-content">
-                      <h3 className="featured-post-title">{currentPost.title}</h3>
-                      <p className="featured-post-description">{currentPost.description}</p>
+                      <h3 className="featured-post-title">{currentTitle}</h3>
+                      <p className="featured-post-description">{currentDescription}</p>
                     </div>
                   </div>
                 </a>
@@ -118,20 +124,20 @@ const IndexPage = ({ location }) => {
                   {currentPost?.metadata?.category ? (
                     <span className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                       {getCategoryIcon(currentPost.metadata.category)}
-                      <span>{currentPost.metadata.category}</span>
+                      <span>{categoryLabel(locale, currentPost.metadata.category)}</span>
                     </span>
                   ) : (
-                    <span className="card-title">Featured</span>
+                    <span className="card-title">{t('home.featured')}</span>
                   )}
                 </div>
                 <div className="card-body featured-post-body">
                   {currentPost ? (
                     <div className="featured-post-content">
-                      <h3 className="featured-post-title">{currentPost.title}</h3>
-                      <p className="featured-post-description">{currentPost.description}</p>
+                      <h3 className="featured-post-title">{currentTitle}</h3>
+                      <p className="featured-post-description">{currentDescription}</p>
                     </div>
                   ) : (
-                    <p className="project-text">No posts available</p>
+                    <p className="project-text">{t('home.empty')}</p>
                   )}
                 </div>
               </>
@@ -144,7 +150,7 @@ const IndexPage = ({ location }) => {
                       key={index}
                       className={`tab-indicator ${index === activeIndex ? 'active' : ''}`}
                       onClick={() => setActiveIndex(index)}
-                      aria-label={`View post ${index + 1}`}
+                      aria-label={t('home.viewPost').replace('{n}', String(index + 1))}
                     />
                   ))}
                 </div>
@@ -159,4 +165,4 @@ const IndexPage = ({ location }) => {
 
 export default IndexPage
 
-export const Head = () => <title>Decision Labs</title>
+export const Head = (props) => <PageHead pageKey="home" {...props} />

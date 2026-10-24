@@ -2,27 +2,32 @@
   {
     "id": "morgan-stanley",
     "name": "Morgan Stanley",
-    "category": "Financial Services"
+    "category": "Financial Services",
+    "categoryDe": "Finanzdienstleistungen"
   },
   {
     "id": "hugging-face",
     "name": "Hugging Face",
-    "category": "AI & Open Source"
+    "category": "AI & Open Source",
+    "categoryDe": "KI und Open Source"
   },
   {
     "id": "esa",
     "name": "European Space Agency",
     "shortName": "ESA",
-    "category": "Space & Earth Observation"
+    "category": "Space & Earth Observation",
+    "categoryDe": "Raumfahrt und Erdbeobachtung"
   },
   {
     "id": "australian-government",
     "name": "Australian Government",
-    "category": "Government"
+    "category": "Government",
+    "categoryDe": "Öffentliche Hand"
   },
   {
     "id": "naver",
     "name": "Naver",
-    "category": "Technology"
+    "category": "Technology",
+    "categoryDe": "Technologie"
   }
 ]

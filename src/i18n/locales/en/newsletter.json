@@ -1,0 +1,15 @@
+{
+  "metaTitle": "Newsletter - Decision Labs",
+  "metaDescription": "Monthly notes on geospatial data products, AI workflows, and client work.",
+  "title": "Newsletter",
+  "lede": "Monthly insights on geospatial data products, AI workflows, and practical lessons from our client work.",
+  "formTitle": "Subscribe to Newsletter",
+  "name": "Name",
+  "optional": "(optional)",
+  "email": "Email",
+  "consent": "I agree to receive email updates from Decision Labs.",
+  "subscribe": "Subscribe",
+  "submitting": "Subscribing…",
+  "successTitle": "You are subscribed",
+  "success": "Thanks for subscribing. We will send occasional updates from Decision Labs."
+}

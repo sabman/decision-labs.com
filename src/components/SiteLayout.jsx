@@ -1,28 +1,17 @@
 import * as React from 'react'
-import { Link, navigate } from 'gatsby'
+import { Link } from 'gatsby'
 import Footer from './Footer'
 import useHeaderContrast from './useHeaderContrast'
-import { I18nProvider, useI18n } from '../i18n/I18nProvider'
+import { useI18n } from '../i18n/I18nProvider'
 import {
   PAGES,
   PUBLISHED_LOCALES,
-  findPage,
-  localeFromPath,
   localeHref,
   normalizePath,
-  queryLocale,
-  readStoredLocale,
   storeLocale,
   switchTarget,
 } from '../i18n/routes'
 import { translate } from '../i18n/catalogs'
-
-function resolveLocale(pathname, search, storedLocale) {
-  const page = findPage(pathname)
-  const requested = queryLocale(search)
-  if (page?.shared) return requested || storedLocale || 'en'
-  return localeFromPath(pathname)
-}
 
 const LocaleSwitcher = ({ pathname, locale }) => {
   const { t } = useI18n()
@@ -109,39 +98,14 @@ const SiteHeader = ({ location, locale }) => {
 }
 
 const SiteLayout = ({ children, location, className = '' }) => {
-  const pathname = location?.pathname || '/'
-  const search = location?.search || ''
-  const [storedLocale, setStoredLocale] = React.useState(null)
-  const locale = resolveLocale(pathname, search, storedLocale)
-
-  React.useEffect(() => {
-    const requested = queryLocale(search)
-    const stored = readStoredLocale()
-    setStoredLocale(stored)
-
-    if (requested) storeLocale(requested)
-
-    const page = findPage(pathname)
-    if (requested && !page?.shared) {
-      const target = switchTarget(pathname, requested)
-      if (target !== `${normalizePath(pathname)}${search}`) {
-        navigate(target, { replace: true })
-      }
-    }
-  }, [pathname, search])
-
-  React.useEffect(() => {
-    document.documentElement.lang = locale
-  }, [locale])
+  const { locale } = useI18n()
 
   return (
-    <I18nProvider locale={locale}>
-      <div className={`page-container${className ? ` ${className}` : ''}`}>
-        <SiteHeader location={location} locale={locale} />
-        {children}
-        <Footer />
-      </div>
-    </I18nProvider>
+    <div className={`page-container${className ? ` ${className}` : ''}`}>
+      <SiteHeader location={location} locale={locale} />
+      {children}
+      <Footer />
+    </div>
   )
 }
 

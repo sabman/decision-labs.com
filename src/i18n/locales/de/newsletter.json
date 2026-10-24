@@ -1,0 +1,15 @@
+{
+  "metaTitle": "Newsletter - Decision Labs",
+  "metaDescription": "Monatliche Notizen zu Geodatenprodukten, KI-Workflows und Projektarbeit.",
+  "title": "Newsletter",
+  "lede": "Einmal im Monat: Geodatenprodukte, KI-Workflows und was wir in der Projektarbeit gelernt haben.",
+  "formTitle": "Newsletter abonnieren",
+  "name": "Name",
+  "optional": "(optional)",
+  "email": "E-Mail",
+  "consent": "Ich möchte E-Mail-Updates von Decision Labs erhalten.",
+  "subscribe": "Abonnieren",
+  "submitting": "Wird gesendet…",
+  "successTitle": "Sie sind angemeldet",
+  "success": "Danke. Wir schicken gelegentlich Neuigkeiten von Decision Labs."
+}

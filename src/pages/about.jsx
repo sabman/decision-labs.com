@@ -1,8 +1,12 @@
 import * as React from 'react'
 import '../styles/global.css'
 import SiteLayout from '../components/SiteLayout'
+import { useI18n } from '../i18n/I18nProvider'
+import { PageHead } from '../i18n/PageHead'
 
 const AboutPage = ({ location }) => {
+  const { t } = useI18n()
+  const steps = t('about.steps')
   // Scroll-triggered animations for process steps
   React.useEffect(() => {
     const processSteps = document.querySelectorAll('.process-step')
@@ -46,11 +50,9 @@ const AboutPage = ({ location }) => {
       <main className="main-content about-content">
         <div className="content-cards about-cards">
           <div className="card card-primary about-main-card">
-            <h1 className="about-page-title">About</h1>
+            <h1 className="about-page-title">{t('about.title')}</h1>
             <div className="card-body">
-              <p className="mission-text">
-                We help our clients achieve efficiencies through digital transformation, develop analytics and data science capabilities.
-              </p>
+              <p className="mission-text">{t('about.mission')}</p>
             </div>
           </div>
         </div>
@@ -59,7 +61,7 @@ const AboutPage = ({ location }) => {
           <div className="content-cards about-cards">
             <div className="card card-secondary process-timeline-card">
               <div className="card-header">
-                <span className="card-title">Our Process</span>
+                <span className="card-title">{t('about.processTitle')}</span>
               </div>
               <div className="card-body process-timeline-body">
                 <div className="process-timeline">
@@ -75,10 +77,8 @@ const AboutPage = ({ location }) => {
                         </svg>
                       </div>
                       <div className="process-step-text">
-                        <h3 className="process-step-title">Scoping & Architecture Design</h3>
-                        <p className="process-step-description">
-                          First, we need to understand your problem better. Once we determine there is a fit for Machine Learning, we will work closely together to prepare a roadmap, review the scientific literature, and determine requirements.
-                        </p>
+                        <h3 className="process-step-title">{steps[0].title}</h3>
+                        <p className="process-step-description">{steps[0].description}</p>
                       </div>
                     </div>
                     <div className="process-connector">
@@ -99,10 +99,8 @@ const AboutPage = ({ location }) => {
                         </svg>
                       </div>
                       <div className="process-step-text">
-                        <h3 className="process-step-title">Data Collection & Exploration</h3>
-                        <p className="process-step-description">
-                          Machine Learning needs data. If you have data needed to train the models, we will perform an exploratory analysis phase to find patterns and correlations. If you don't, we will collect the data for you using online sources (if possible).
-                        </p>
+                        <h3 className="process-step-title">{steps[1].title}</h3>
+                        <p className="process-step-description">{steps[1].description}</p>
                       </div>
                     </div>
                     <div className="process-connector">
@@ -122,10 +120,8 @@ const AboutPage = ({ location }) => {
                         </svg>
                       </div>
                       <div className="process-step-text">
-                        <h3 className="process-step-title">Model Development</h3>
-                        <p className="process-step-description">
-                          We run thousands of experiments in parallel to develop a machine learning model. A model is the core of a machine learning system - trained on historical data it can predict the future trends or understand the semantics of a text.
-                        </p>
+                        <h3 className="process-step-title">{steps[2].title}</h3>
+                        <p className="process-step-description">{steps[2].description}</p>
                       </div>
                     </div>
                     <div className="process-connector">
@@ -146,10 +142,8 @@ const AboutPage = ({ location }) => {
                         </svg>
                       </div>
                       <div className="process-step-text">
-                        <h3 className="process-step-title">Full-stack application development</h3>
-                        <p className="process-step-description">
-                          We integrate the model with a REST API or a front-end application, developing all necessary features to access the model in an user-friendly way. Scalable and with the state-of-the-art security.
-                        </p>
+                        <h3 className="process-step-title">{steps[3].title}</h3>
+                        <p className="process-step-description">{steps[3].description}</p>
                       </div>
                     </div>
                   </div>
@@ -165,5 +159,5 @@ const AboutPage = ({ location }) => {
 
 export default AboutPage
 
-export const Head = () => <title>About - Decision Labs</title>
+export const Head = (props) => <PageHead pageKey="about" {...props} />
 
