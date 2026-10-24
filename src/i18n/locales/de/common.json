@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "about": "Über uns",
+    "blog": "Blog",
+    "contact": "Kontakt",
+    "customers": "Kunden",
+    "work": "Projekte"
+  },
+  "footer": {
+    "legal": "Rechtliches",
+    "impressum": "Impressum",
+    "terms": "AGB & Datenschutz",
+    "rights": "Alle Rechte vorbehalten.",
+    "contact": "Kontakt",
+    "book": "Termin buchen",
+    "newsletter": "Newsletter",
+    "follow": "Folgen",
+    "feed": "Feed"
+  },
+  "switcherLabel": "Sprache",
+  "hint": "Diese Website gibt es auch auf Deutsch.",
+  "hintAction": "Auf Deutsch lesen",
+  "hintDismiss": "Englisch behalten"
+}

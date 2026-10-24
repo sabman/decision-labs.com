@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "customers": "Customers",
+    "work": "Work"
+  },
+  "footer": {
+    "legal": "Legal",
+    "impressum": "Impressum",
+    "terms": "Terms & Conditions",
+    "rights": "All rights reserved.",
+    "contact": "Contact",
+    "book": "Book a Call",
+    "newsletter": "Newsletter",
+    "follow": "Follow",
+    "feed": "Feed"
+  },
+  "switcherLabel": "Language",
+  "hint": "This site is also available in German.",
+  "hintAction": "Read in German",
+  "hintDismiss": "Keep English"
+}

@@ -127,6 +127,62 @@ img {
   transition: color 0.2s ease;
 }
 
+.header-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.locale-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.locale-switcher a {
+  color: #999;
+}
+
+.locale-switcher a.active,
+.locale-switcher a[aria-current='true'] {
+  color: inherit;
+}
+
+.locale-switcher-sep {
+  color: #999;
+}
+
+.locale-hint {
+  max-width: 16rem;
+  margin: 0;
+  text-align: right;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.locale-hint a,
+.locale-hint button {
+  font: inherit;
+  font-weight: 700;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.locale-hint button {
+  display: block;
+  margin-left: auto;
+  font-weight: 400;
+  text-decoration: none;
+}
+
 .nav {
   display: flex;
   flex-direction: column;

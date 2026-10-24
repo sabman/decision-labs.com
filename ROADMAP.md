@@ -50,7 +50,7 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
 **Goal:** One shared layout and i18n plumbing before translating copy.
 
 - [x] **Extract `SiteLayout`** — Move duplicated header, nav, background-color logic, and `Footer` from every page into `src/components/SiteLayout.jsx`. Pages become content-only.
-- [ ] **Add i18n stack** — `i18next`, `react-i18next`, and `gatsby-plugin-react-i18next` (or equivalent locale-aware page generation in `gatsby-node.js` if we want zero plugin dependency).
+- [x] **Add i18n stack** — Locale pages are created in `gatsby-node.js` from `src/i18n/routes.js`. Copy lives in `src/i18n/locales/{en,de}`. No i18n plugin: slugs such as `/de/ueber-uns` do not match a same-slug prefix.
 - [ ] **Translation file structure**
   ```
   src/i18n/
@@ -66,10 +66,10 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
         about.json
         ...
   ```
-- [ ] **Locale context** — `useI18next()` / `Link` with locale prefix; helper `localizedPath('/about')` → `/de/ueber-uns` when locale is `de`.
-- [ ] **Language switcher** — Small `EN · DE` control in header; highlights active locale; links to the equivalent page in the other language (fallback to home if no counterpart exists).
-- [ ] **Persist preference** — `localStorage` key `dl-locale`; optional `?lang=de` query param for shareable links; respect `Accept-Language` only on first visit (never override an explicit choice).
-- [ ] **HTML `lang` attribute** — `lang="en"` on English pages, `lang="de"` on German pages via Gatsby `Head`.
+- [x] **Locale context** — `useI18n()` plus `localeHref()` and `switchTarget()`. `/about` stays English; the German page is `/de/ueber-uns`.
+- [x] **Language switcher** — Small `EN · DE` control in the header. It highlights the active locale and links to the matching page, or home when the page has no counterpart.
+- [x] **Persist preference** — `localStorage` key `dl-locale`. `?lang=de` opens the German URL and stores the choice. English URLs stay English. A German `Accept-Language` on the first visit shows a one-line hint and does not redirect.
+- [x] **HTML `lang` attribute** — `lang="en"` on English pages, `lang="de"` on `/de/` pages, set in `gatsby-ssr.js` and updated on route changes.
 
 **Exit criteria:** Empty German pages render at `/de/*` with translated nav/footer; English site unchanged.
 
@@ -185,34 +185,7 @@ Blog posts without a German version stay English-only at `/blog/{slug}`; the Ger
 
 ### Technical notes (Gatsby 5)
 
-**Recommended plugin setup** (adjust during Phase 0 spike):
-
-```js
-// gatsby-config.js (sketch)
-{
-  resolve: `gatsby-plugin-react-i18next`,
-  options: {
-    localeJsonSourceName: `locale`,
-    languages: [`en`, `de`],
-    defaultLanguage: `en`,
-    siteUrl: `https://decision-labs.com`,
-    i18nextOptions: {
-      fallbackLng: `en`,
-      ns: [`common`, `home`, `about`, `work`, `customers`, `contact`, `blog`, `newsletter`],
-      defaultNS: `common`,
-    },
-  },
-},
-{
-  resolve: `gatsby-source-filesystem`,
-  options: {
-    name: `locale`,
-    path: `${__dirname}/src/i18n/locales`,
-  },
-},
-```
-
-**Alternative (lighter):** Generate duplicate pages in `gatsby-node.js` from a route manifest + JSON translations — fewer dependencies, more manual wiring. Choose based on Phase 0 spike.
+Locale pages are created in `gatsby-node.js` from `src/i18n/routes.js`. `gatsby-plugin-react-i18next` was not used, because it keeps the English slug under `/de/` and this site uses German slugs.
 
 **Out of scope for v1**
 
@@ -245,10 +218,10 @@ Record choices here as they are made:
 
 | # | Question | Options | Decision |
 |---|----------|---------|----------|
-| 1 | German URL slugs vs English slugs under `/de/` | Localized (`/de/ueber-uns`) vs `/de/about` | **TBD** — recommend localized slugs |
+| 1 | German URL slugs vs English slugs under `/de/` | Localized (`/de/ueber-uns`) vs `/de/about` | **Localized slugs** |
 | 2 | Blog post file strategy | Frontmatter fields vs `src/blog/de/` folder | **TBD** |
-| 3 | i18n library | `gatsby-plugin-react-i18next` vs custom `gatsby-node` | **TBD** — spike in Phase 0 |
-| 4 | Default locale for unknown visitors | Always English vs `Accept-Language` hint | **TBD** — recommend English default, hint only |
+| 3 | i18n library | `gatsby-plugin-react-i18next` vs custom `gatsby-node` | **Custom `gatsby-node` + JSON catalogs** |
+| 4 | Default locale for unknown visitors | Always English vs `Accept-Language` hint | **English URLs. One-line hint on first visit, no redirect.** |
 | 5 | Translate `posts.json` featured content on home? | Yes / No / Top 3 only | **TBD** — recommend top 3 featured only |
 
 ---

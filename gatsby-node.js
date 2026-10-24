@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const { PAGES, PAGE_COMPONENTS, PUBLISHED_LOCALES } = require('./src/i18n/routes')
 const fetchTwitterPosts = require('./scripts/fetch-twitter-posts')
 const fetchWordpressPosts = require('./scripts/fetch-wordpress-posts')
 const generateLlmFiles = require('./scripts/generate-llm-files')
@@ -57,9 +58,23 @@ exports.createPages = async ({ graphql, actions }) => {
         component: blogPostTemplate,
         context: {
           id: post.id,
+          locale: 'en',
         },
       })
     }
+  })
+
+  PUBLISHED_LOCALES.filter((locale) => locale !== 'en').forEach((locale) => {
+    PAGES.filter((page) => !page.shared && PAGE_COMPONENTS[page.key]).forEach((page) => {
+      createPage({
+        path: page.paths[locale],
+        component: path.resolve(__dirname, PAGE_COMPONENTS[page.key]),
+        context: {
+          locale,
+          pageKey: page.key,
+        },
+      })
+    })
   })
 }
 

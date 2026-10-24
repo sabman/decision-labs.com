@@ -1,9 +1,13 @@
 import * as React from 'react'
+import { Link } from 'gatsby'
 import '../styles/global.css'
+import { useI18n } from '../i18n/I18nProvider'
+import { localeHref } from '../i18n/routes'
 
 const Footer = () => {
   const [isVisible, setIsVisible] = React.useState(false)
   const footerRef = React.useRef(null)
+  const { locale, t } = useI18n()
   const currentYear = new Date().getFullYear()
   const copyrightYears = currentYear > 2012 ? `2012-${currentYear}` : '2012'
 
@@ -56,23 +60,22 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-columns">
           <div className="footer-column">
-            <h3 className="footer-column-title">Legal</h3>
-            <a href="/impressum" className="footer-link">Impressum</a>
-            <a href="/terms" className="footer-link">Terms & Conditions</a>
-            <p className="footer-copyright">© {copyrightYears} SpacialDB UG. All rights reserved.</p>
+            <h3 className="footer-column-title">{t('common.footer.legal')}</h3>
+            <Link to={localeHref('impressum', locale)} className="footer-link">{t('common.footer.impressum')}</Link>
+            <Link to={localeHref('terms', locale)} className="footer-link">{t('common.footer.terms')}</Link>
+            <p className="footer-copyright">© {copyrightYears} SpacialDB UG. {t('common.footer.rights')}</p>
           </div>
           <div className="footer-column">
-            <h3 className="footer-column-title">Contact</h3>
+            <h3 className="footer-column-title">{t('common.footer.contact')}</h3>
             <a href="mailto:team@decision-labs.com" className="footer-link footer-link-external">team@decision-labs.com</a>
-            <a href="/contact" className="footer-link">Book a Call</a>
-            <a href="/newsletter" className="footer-link">Newsletter</a>
+            <Link to={localeHref('contact', locale)} className="footer-link">{t('common.footer.book')}</Link>
+            <Link to={localeHref('newsletter', locale)} className="footer-link">{t('common.footer.newsletter')}</Link>
           </div>
           <div className="footer-column">
-            <h3 className="footer-column-title">Follow</h3>
+            <h3 className="footer-column-title">{t('common.footer.follow')}</h3>
             <a href="https://www.linkedin.com/company/spacialdb-ug-decision-labs" target="_blank" rel="noopener noreferrer" className="footer-link footer-link-external">LinkedIn</a>
             <a href="https://github.com/decision-labs/" target="_blank" rel="noopener noreferrer" className="footer-link footer-link-external">GitHub</a>
-            <a href="/feed" className="footer-link footer-link-follow">Feed</a>
-
+            <Link to={localeHref('feed', locale)} className="footer-link footer-link-follow">{t('common.footer.feed')}</Link>
           </div>
         </div>
       </div>
